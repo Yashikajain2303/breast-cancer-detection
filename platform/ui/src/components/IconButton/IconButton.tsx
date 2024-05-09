@@ -21,11 +21,11 @@ const disabledClasses = {
 const variantClasses = {
   text: {
     default:
-      'text-white hover:bg-primary-light hover:text-black active:opacity-80 focus:!bg-primary-light focus:text-black',
+      'text-white hover:bg-[#4d4c4d] hover:text-black active:opacity-80 focus:!bg-[#4d4c4d] focus:text-black',
     primary:
-      'text-primary-main hover:bg-primary-main hover:text-white active:opacity-80 focus:bg-primary-main focus:text-white',
+      'text-[#e4b4db] hover:bg-[#4d4c4d] hover:text-white active:opacity-80 focus:bg-[#4d4c4d] focus:text-white',
     secondary:
-      'text-secondary-light hover:bg-secondary-light hover:text-white active:opacity-80 focus:bg-secondary-light focus:text-white',
+      'text-[#e4b4db] hover:bg-secondary-light hover:text-white active:opacity-80 focus:bg-secondary-light focus:text-white',
     white:
       'text-white hover:bg-white hover:text-black active:opacity-80 focus:bg-white focus:text-black',
     black:
@@ -33,14 +33,14 @@ const variantClasses = {
   },
   outlined: {
     default:
-      'border border-primary-light text-white hover:opacity-80 active:opacity-100 focus:opacity-80',
+      'border border-[#e4b4db] text-white hover:opacity-80 active:opacity-100 focus:opacity-80',
     primary:
-      'border border-primary-main text-primary-main hover:opacity-80 active:opacity-100 focus:opacity-80',
+      'border border-[#e4b4db] text-[#e4b4db] hover:opacity-80 active:opacity-100 focus:opacity-80',
     secondary:
-      'border border-secondary-light text-secondary-light hover:opacity-80 active:opacity-100 focus:opacity-80',
+      'border border-[#e4b4db] text-[#e4b4db] hover:opacity-80 active:opacity-100 focus:opacity-80',
     white: 'border border-white text-white hover:opacity-80 active:opacity-100 focus:opacity-80',
     black:
-      'border border-primary-main text-white hover:bg-primary-main focus:bg-primary-main hover:border-black focus:border-black',
+      'border border-[#e4b4db] text-white hover:bg-[#4d4c4d] focus:bg-[#4d4c4d] hover:border-black focus:border-black',
   },
   contained: {
     default: 'text-common-bright hover:opacity-80 active:opacity-100 focus:opacity-80',
@@ -122,7 +122,7 @@ const IconButton = ({
 };
 
 IconButton.defaultProps = {
-  onClick: () => {},
+  onClick: () => { },
   color: 'default',
   disabled: false,
   fullWidth: false,

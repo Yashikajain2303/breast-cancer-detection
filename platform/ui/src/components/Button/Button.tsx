@@ -24,11 +24,11 @@ const baseEnabledEffectClasses = 'transition duration-300 ease-in-out focus:outl
 const enabledEffectClasses = {
   [ButtonEnums.type.primary]: classnames(
     baseEnabledEffectClasses,
-    'hover:bg-customblue-80 active:bg-customblue-40'
+    'hover:bg-[#702963] active:bg-[#4d4c4d]'
   ),
   [ButtonEnums.type.secondary]: classnames(
     baseEnabledEffectClasses,
-    'hover:bg-customblue-50 active:bg-customblue-20'
+    'hover:bg-[#622456] active:bg-customblue-20'
   ),
 };
 
@@ -36,12 +36,12 @@ const baseEnabledClasses = 'text-white';
 
 const enabledClasses = {
   [ButtonEnums.type.primary]: classnames(
-    'bg-primary-main',
+    'bg-[#4d4c4d]',
     baseEnabledClasses,
     enabledEffectClasses[ButtonEnums.type.primary]
   ),
   [ButtonEnums.type.secondary]: classnames(
-    'bg-customblue-30',
+    'bg-[#702963]',
     baseEnabledClasses,
     enabledEffectClasses[ButtonEnums.type.secondary]
   ),
@@ -124,7 +124,7 @@ const Button = ({
 Button.defaultProps = {
   disabled: false,
   children: '',
-  onClick: () => {},
+  onClick: () => { },
   type: defaults.type,
   size: defaults.size,
 };

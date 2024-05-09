@@ -135,14 +135,14 @@ function LayoutSelector({
       dropdownContent={
         DropdownContent !== null && (
           <div className="flex ">
-            <div className="bg-secondary-dark flex flex-col gap-2.5 p-2">
-              <div className="text-aqua-pale text-xs">Common</div>
+            <div className="bg-[#702963] flex flex-col gap-2.5 p-2">
+              <div className="text-white text-xs">Common</div>
 
               <div className="flex gap-4">
                 {commonPresets.map((preset, index) => (
                   <LayoutPreset
                     key={index}
-                    classNames="hover:bg-primary-dark group p-1 cursor-pointer"
+                    classNames="hover:bg-[#702963] group p-1 cursor-pointer"
                     icon={preset.icon}
                     commandOptions={preset.commandOptions}
                     onSelection={onSelection}
@@ -152,13 +152,13 @@ function LayoutSelector({
 
               <div className="h-[2px] bg-black"></div>
 
-              <div className="text-aqua-pale text-xs">Advanced</div>
+              <div className="text-white text-xs">Advanced</div>
 
               <div className="flex flex-col gap-2.5">
                 {advancedPresets.map((preset, index) => (
                   <LayoutPreset
                     key={index + commonPresets.length}
-                    classNames="hover:bg-primary-dark group flex gap-2 p-1 cursor-pointer"
+                    classNames="hover:bg-[#702963] group flex gap-2 p-1 cursor-pointer"
                     icon={preset.icon}
                     title={preset.title}
                     commandOptions={preset.commandOptions}
@@ -168,14 +168,14 @@ function LayoutSelector({
               </div>
             </div>
 
-            <div className="bg-primary-dark flex flex-col gap-2.5 border-l-2 border-solid border-black  p-2">
-              <div className="text-aqua-pale text-xs">Custom</div>
+            <div className="bg-[#702963] flex flex-col gap-2.5 border-l-2 border-solid border-black  p-2">
+              <div className="text-white text-xs">Custom</div>
               <DropdownContent
                 rows={rows}
                 columns={columns}
                 onSelection={onSelection}
               />
-              <p className="text-aqua-pale text-xs leading-tight">
+              <p className="text-white text-xs leading-tight">
                 Hover to select <br></br>rows and columns <br></br> Click to apply
               </p>
             </div>
@@ -198,7 +198,7 @@ LayoutSelector.propTypes = {
 LayoutSelector.defaultProps = {
   columns: 4,
   rows: 3,
-  onLayoutChange: () => {},
+  onLayoutChange: () => { },
 };
 
 export default ToolbarLayoutSelectorWithServices;

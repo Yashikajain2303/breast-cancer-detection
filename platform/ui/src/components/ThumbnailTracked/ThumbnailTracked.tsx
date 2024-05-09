@@ -52,7 +52,7 @@ function ThumbnailTracked({
                 <div className="flex-2 flex items-center justify-center pr-4">
                   <Icon
                     name="info-link"
-                    className="text-primary-active"
+                    className="text-white"
                   />
                 </div>
                 <div className="flex flex-1 flex-col">
@@ -67,7 +67,7 @@ function ThumbnailTracked({
           >
             <Icon
               name={trackedIcon}
-              className="text-primary-light mb-2 w-4"
+              className="text-[#e4b4db] mb-2 w-4"
             />
           </Tooltip>
         </div>
@@ -75,7 +75,7 @@ function ThumbnailTracked({
           <div onClick={onClickUntrack}>
             <Icon
               name="cancel"
-              className="text-primary-active w-4"
+              className="text-white w-4"
             />
           </div>
         )}

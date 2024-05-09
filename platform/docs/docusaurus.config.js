@@ -49,7 +49,7 @@ const isI18nStaging = process.env.I18N_STAGING === 'true';
 module.exports = {
   title: 'OHIF',
   tagline: 'Open-source web-based medical imaging platform',
-  organizationName: 'Open Health Imaging Foundation',
+  organizationName: 'Breast Cancer Detection',
   projectName: 'OHIF',
   baseUrl,
   baseUrlIssueBanner: true,
@@ -58,12 +58,12 @@ module.exports = {
     defaultLocale: 'en',
     locales: isDeployPreview
       ? // Deploy preview: keep it fast!
-        ['en']
+      ['en']
       : isI18nStaging
         ? // Staging locales: https://docusaurus-i18n-staging.netlify.app/
-          ['en']
+        ['en']
         : // Production locales
-          ['en'],
+        ['en'],
   },
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',

@@ -16,14 +16,14 @@ const StudyListTableRow = props => {
       >
         <td
           className={classnames('border-0 p-0', {
-            'border-secondary-light bg-primary-dark border-b': isExpanded,
+            'border-[#e4b4db] bg-[#702963] border-b': isExpanded,
           })}
         >
           <div
             className={classnames(
               'w-full transition duration-300',
               {
-                'border-primary-light hover:border-secondary-light mb-2 overflow-visible rounded border':
+                'border-[#e4b4db] hover:border-[#e4b4db] mb-2 overflow-visible rounded border':
                   isExpanded,
               },
               {
@@ -35,11 +35,11 @@ const StudyListTableRow = props => {
               <tbody>
                 <tr
                   className={classnames(
-                    'hover:bg-secondary-main cursor-pointer transition duration-300',
+                    'hover:bg-[#1a0000] cursor-pointer transition duration-300',
                     {
-                      'bg-primary-dark': !isExpanded,
+                      'bg-[#702963]': !isExpanded,
                     },
-                    { 'bg-secondary-dark': isExpanded }
+                    { 'bg-[#702963]': isExpanded }
                   )}
                   onClick={onClickRow}
                 >
@@ -50,7 +50,7 @@ const StudyListTableRow = props => {
                         key={index}
                         className={classnames(
                           'truncate px-4 py-2 text-base',
-                          { 'border-secondary-light border-b': !isExpanded },
+                          { 'border-[#e4b4db] border-b': !isExpanded },
                           getGridWidthClass(gridCol) || ''
                         )}
                         style={{
@@ -86,7 +86,7 @@ const StudyListTableRow = props => {
             </table>
           </div>
         </td>
-      </tr>
+      </tr >
     </>
   );
 };

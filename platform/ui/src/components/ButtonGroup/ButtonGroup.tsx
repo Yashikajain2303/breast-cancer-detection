@@ -42,8 +42,8 @@ const ButtonGroup = ({
             className: classnames(
               'rounded-[4px] px-2 py-1 text-center',
               index === activeIndex
-                ? 'bg-customblue-40 text-white'
-                : 'text-primary-active bg-black',
+                ? 'bg-[#4d4c4d] text-white'
+                : 'text-white bg-black',
               child.props.className,
               disabled ? 'ohif-disabled' : ''
             ),

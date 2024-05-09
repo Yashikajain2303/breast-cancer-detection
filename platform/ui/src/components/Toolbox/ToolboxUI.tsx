@@ -22,7 +22,7 @@ function ToolboxUI(props) {
     return (
       <>
         <div className="flex flex-col bg-black">
-          <div className="bg-primary-dark mt-0.5 flex flex-wrap py-2">
+          <div className="bg-[#702963] mt-0.5 flex flex-wrap py-2">
             {toolbarButtons.map((toolDef, index) => {
               if (!toolDef) {
                 return null;
@@ -55,7 +55,7 @@ function ToolboxUI(props) {
                       content={componentProps.label}
                       secondaryContent={componentProps.disabledText}
                     >
-                      <div className="border-secondary-light rounded border bg-black">
+                      <div className="border-[#e4b4db] rounded border bg-black">
                         <Component
                           {...componentProps}
                           {...props}
@@ -67,7 +67,7 @@ function ToolboxUI(props) {
                       </div>
                     </Tooltip>
                   ) : (
-                    <div className="border-secondary-light rounded border bg-black">
+                    <div className="border-[#e4b4db] rounded border bg-black">
                       <Component
                         {...componentProps}
                         {...props}
@@ -83,7 +83,7 @@ function ToolboxUI(props) {
             })}
           </div>
         </div>
-        <div className="bg-primary-dark h-auto px-2">
+        <div className="bg-[#702963] h-auto px-2">
           {activeToolOptions && <ToolSettings options={activeToolOptions} />}
         </div>
       </>

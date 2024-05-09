@@ -33,8 +33,8 @@ const ThumbnailNoImage = ({
   return (
     <div
       className={classnames(
-        'flex flex-1 cursor-pointer select-none flex-row rounded outline-none hover:border-blue-300 focus:border-blue-300',
-        isActive ? 'border-primary-light border-2' : 'border border-transparent'
+        'flex flex-1 cursor-pointer select-none flex-row rounded outline-none hover:border-[#e4b4db] focus:border-[#e4b4db]',
+        isActive ? 'border-[#e4b4db] border-2' : 'border border-transparent'
       )}
       style={{
         padding: isActive ? '11px' : '12px',
@@ -53,7 +53,7 @@ const ThumbnailNoImage = ({
               name="list-bullets"
               className={classnames(
                 'w-12',
-                isHydratedForDerivedDisplaySet ? 'text-primary-light' : 'text-secondary-light'
+                isHydratedForDerivedDisplaySet ? 'text-[#e4b4db]' : 'text-[#e4b4db]'
               )}
             />
             <Tooltip
@@ -64,14 +64,14 @@ const ThumbnailNoImage = ({
                 className={classnames(
                   'rounded-sm px-3  text-lg',
                   isHydratedForDerivedDisplaySet
-                    ? 'bg-primary-light text-black'
-                    : 'bg-primary-main text-white'
+                    ? 'bg-[#4d4c4d] text-black'
+                    : 'bg-[#4d4c4d] text-white'
                 )}
               >
                 {modality}
               </div>
             </Tooltip>
-            <span className="ml-4 text-base text-blue-300">{seriesDate}</span>
+            <span className="ml-4 text-base text-[#e4b4db]">{seriesDate}</span>
             <DisplaySetMessageListTooltip
               messages={messages}
               id={`display-set-tooltip-${displaySetInstanceUID}`}

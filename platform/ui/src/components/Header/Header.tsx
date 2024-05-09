@@ -50,11 +50,12 @@ function Header({
             {isReturnEnabled && (
               <Icon
                 name="chevron-left"
-                className="text-primary-active w-8"
+                className="text-white w-8"
               />
             )}
-            <div className="ml-1">
-              {WhiteLabeling?.createLogoComponentFn?.(React, props) || <Svg name="logo-ohif" />}
+            <div className="ml-1 text-white">
+              Breast Cancer Detection by IITD/AIIMS
+              {/* {WhiteLabeling?.createLogoComponentFn?.(React, props) || <Svg name="logo-ohif" />} */}
             </div>
           </div>
         </div>
@@ -65,8 +66,8 @@ function Header({
         <div className="absolute right-0 top-1/2 flex -translate-y-1/2 select-none items-center">
           {(showPatientInfo === PatientInfoVisibility.VISIBLE ||
             showPatientInfo === PatientInfoVisibility.VISIBLE_COLLAPSED) && (
-            <HeaderPatientInfo servicesManager={servicesManager} />
-          )}
+              <HeaderPatientInfo servicesManager={servicesManager} />
+            )}
           <div className="border-primary-dark mx-1.5 h-[25px] border-r"></div>
           <div className="flex-shrink-0">
             <Dropdown
@@ -80,7 +81,7 @@ function Header({
                 variant="text"
                 color="inherit"
                 size="initial"
-                className="text-primary-active hover:bg-primary-dark h-full w-full"
+                className="text-white hover:bg-[#702963] h-full w-full"
               >
                 <Icon name="icon-settings" />
               </IconButton>

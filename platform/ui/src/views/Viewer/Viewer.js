@@ -10,7 +10,7 @@ const Viewer = () => {
       <div>
         <Header />
         <div
-          className="flex w-full flex-1 flex-row flex-nowrap items-stretch overflow-hidden"
+          className="flex w-full flex-1 flex-row flex-nowrap items-stretch overflow-hidden float-left"
           style={{ height: 'calc(100vh - 52px' }}
         >
           <LegacySidePanel
@@ -22,7 +22,7 @@ const Viewer = () => {
           >
             <StudyBrowser />
           </LegacySidePanel>
-          <div className="h-100 bg-primary-main flex flex-1 items-center justify-center overflow-hidden text-white">
+          <div className="h-100 bg-[#4d4c4d] flex flex-1 items-center justify-center overflow-hidden text-white">
             {/* <ViewportToolbar /> */}
             <div>CONTENT</div>
           </div>

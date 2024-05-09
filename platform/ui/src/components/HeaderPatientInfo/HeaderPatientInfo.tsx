@@ -93,12 +93,12 @@ function HeaderPatientInfo({ servicesManager }) {
 
   return (
     <div
-      className="align-items-center hover:bg-primary-dark flex cursor-pointer justify-center gap-1 rounded-lg"
+      className="align-items-center hover:bg-[#702963] flex cursor-pointer justify-center gap-1 rounded-lg"
       onClick={handleOnClick}
     >
       <Icon
         name={isMixedPatients ? 'icon-multiple-patients' : 'icon-patient'}
-        className="text-primary-active"
+        className="text-white"
       />
       <div className="flex flex-col justify-center">
         {expanded ? (
@@ -106,14 +106,14 @@ function HeaderPatientInfo({ servicesManager }) {
             <div className="self-start text-[13px] font-bold text-white">
               {formattedPatientName}
             </div>
-            <div className="text-aqua-pale flex gap-2 text-[11px]">
+            <div className="text-white flex gap-2 text-[11px]">
               <div>{formattedPatientID}</div>
               <div>{patientInfo.PatientSex}</div>
               <div>{patientInfo.PatientDOB}</div>
             </div>
           </>
         ) : (
-          <div className="text-primary-active self-center text-[13px]">
+          <div className="text-white self-center text-[13px]">
             {' '}
             {isMixedPatients ? 'Multiple Patients' : 'Patient'}
           </div>
@@ -121,7 +121,7 @@ function HeaderPatientInfo({ servicesManager }) {
       </div>
       <Icon
         name="icon-chevron-patient"
-        className={`text-primary-active ${expanded ? 'rotate-180' : ''}`}
+        className={`text-white ${expanded ? 'rotate-180' : ''}`}
       />
     </div>
   );

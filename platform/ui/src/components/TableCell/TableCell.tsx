@@ -22,7 +22,7 @@ const TableCell = ({
     },
     isTableHead: {
       true: '',
-      false: 'border-r border-secondary-light',
+      false: 'border-r border-[#e4b4db]',
     },
   };
 

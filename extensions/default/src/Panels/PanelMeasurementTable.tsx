@@ -77,7 +77,7 @@ export default function PanelMeasurementTable({
     const trackedMeasurements = measurements.filter(
       m => displaySet.StudyInstanceUID === m.referenceStudyUID
     );
-
+    console.log(activeViewport, measurements, displaySet, trackedMeasurements, 'details-------------1')
     if (trackedMeasurements.length <= 0) {
       uiNotificationService.show({
         title: 'No Measurements',
@@ -88,10 +88,11 @@ export default function PanelMeasurementTable({
       return;
     }
 
+    alert('called')
     const promptResult = await createReportDialogPrompt(uiDialogService, {
       extensionManager,
     });
-
+    console.log(promptResult, 'promptResult')
     if (promptResult.action === CREATE_REPORT_DIALOG_RESPONSE.CREATE_REPORT) {
       const dataSources = extensionManager.getDataSources(promptResult.dataSourceName);
       const dataSource = dataSources[0];
@@ -107,6 +108,7 @@ export default function PanelMeasurementTable({
       const options = findSRWithSameSeriesDescription(SeriesDescription, displaySetService);
 
       const getReport = async () => {
+        console.log(trackedMeasurements, 'trackedmeasurements')
         return commandsManager.runCommand(
           'storeMeasurements',
           {
@@ -177,7 +179,7 @@ export default function PanelMeasurementTable({
               labelClassName="text-white text-[14px] leading-[1.2]"
               autoFocus
               id="annotation"
-              className="border-primary-main bg-black"
+              className="border-[#e4b4db] bg-black"
               type="text"
               value={value.label}
               onChange={onChangeHandler}
@@ -208,7 +210,7 @@ export default function PanelMeasurementTable({
   return (
     <>
       <div
-        className="ohif-scrollbar overflow-y-auto overflow-x-hidden"
+        className="ohif-scrollbar overflow-y-auto overflow-x-auto"
         data-cy={'measurements-panel'}
       >
         <MeasurementTable
@@ -221,6 +223,7 @@ export default function PanelMeasurementTable({
       </div>
       <div className="flex justify-center p-4">
         <ActionButtons
+          data={displayMeasurements}
           onExportClick={exportReport}
           onClearMeasurementsClick={clearMeasurements}
           onCreateReportClick={createReport}
@@ -281,9 +284,11 @@ function _mapMeasurementToDisplay(measurement, index, types) {
     uid,
     label,
     baseLabel,
+    length,
+    //  breadth,
     measurementType: type,
     displayText,
-    baseDisplayText,
+    // baseDisplayText,
     isActive: selected,
     finding,
     findingSites,

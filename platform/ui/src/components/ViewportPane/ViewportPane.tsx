@@ -66,7 +66,7 @@ function ViewportPane({
       className={classnames(
         'group h-full w-full overflow-hidden rounded-md transition duration-300',
         {
-          'border-primary-light border-2': isActive,
+          'border-[#e4b4db] border-2': isActive,
           'border-2 border-transparent': !isActive,
         },
         className
@@ -80,7 +80,7 @@ function ViewportPane({
           'h-full w-full overflow-hidden rounded-md',
           {
             'border border-transparent': isActive,
-            'border-secondary-light group-hover:border-primary-light/70 border': !isActive,
+            'border-[#e4b4db] group-hover:border-[#e4b4db]/70 border': !isActive,
           },
           className
         )}
@@ -108,7 +108,7 @@ ViewportPane.propTypes = {
   onDoubleClick: PropTypes.func,
 };
 
-const noop = () => {};
+const noop = () => { };
 
 ViewportPane.defaultProps = {
   onInteraction: noop,

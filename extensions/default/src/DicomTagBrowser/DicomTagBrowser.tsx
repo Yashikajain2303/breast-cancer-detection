@@ -70,6 +70,7 @@ const DicomTagBrowser = ({ displaySets, displaySetInstanceUID }) => {
     } else {
       metadata = activeDisplaySet.instance || activeDisplaySet;
     }
+    console.log(metadata, 'metadata')
     const tags = getSortedTags(metadata);
     return getFormattedRowsFromTags(tags, metadata);
   }, [instanceNumber, selectedDisplaySetInstanceUID]);

@@ -31,7 +31,7 @@ const InputFilterText = ({
   const searchInputRef = useRef(null);
 
   const debouncedOnChange = useMemo(() => {
-    return debounce(onDebounceChange || (() => {}), debounceTime);
+    return debounce(onDebounceChange || (() => { }), debounceTime);
   }, []);
 
   // This allows for the filter value to be updated via the props.
@@ -61,7 +61,7 @@ const InputFilterText = ({
       <input
         ref={searchInputRef}
         type="text"
-        className="border-inputfield-main focus:border-inputfield-focus disabled:border-inputfield-disabled placeholder:text-inputfield-placeholder block w-full w-full appearance-none rounded-md border bg-black py-2 px-9 text-base leading-tight shadow transition duration-300 focus:outline-none"
+        className="border-[#e4b4db] focus:border-[#ffe6e6] disabled:border-inputfield-disabled placeholder:text-inputfield-placeholder block w-full w-full appearance-none rounded-md border bg-black py-2 px-9 text-base leading-tight shadow transition duration-300 focus:outline-none"
         placeholder={placeholder}
         onChange={event => handleFilterTextChanged(event.target.value)}
         autoComplete="off"

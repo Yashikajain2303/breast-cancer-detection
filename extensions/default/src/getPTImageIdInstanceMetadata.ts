@@ -6,7 +6,7 @@ const metadataProvider = OHIF.classes.MetadataProvider;
 
 export default function getPTImageIdInstanceMetadata(imageId: string): InstanceMetadata {
   const dicomMetaData = metadataProvider.get('instance', imageId);
-
+  console.log(dicomMetaData, 'dicomMetaData')
   if (!dicomMetaData) {
     throw new Error('dicom metadata are required');
   }
@@ -25,7 +25,7 @@ export default function getPTImageIdInstanceMetadata(imageId: string): InstanceM
     (dicomMetaData.RadiopharmaceuticalInformationSequence[0].RadiopharmaceuticalStartDateTime ===
       undefined &&
       dicomMetaData.RadiopharmaceuticalInformationSequence[0].RadiopharmaceuticalStartTime ===
-        undefined)
+      undefined)
   ) {
     throw new Error('required metadata are missing');
   }

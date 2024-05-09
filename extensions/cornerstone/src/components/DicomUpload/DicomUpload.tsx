@@ -45,7 +45,7 @@ function DicomUpload({ dataSource, onComplete, onStarted }: DicomUploadProps): R
                   <div {...getRootProps()}>
                     <Button
                       disabled={false}
-                      onClick={() => {}}
+                      onClick={() => { }}
                     >
                       {'Add files'}
                       <input {...getInputProps()} />
@@ -62,7 +62,7 @@ function DicomUpload({ dataSource, onComplete, onStarted }: DicomUploadProps): R
                     <Button
                       type={ButtonEnums.type.secondary}
                       disabled={false}
-                      onClick={() => {}}
+                      onClick={() => { }}
                     >
                       {'Add folder'}
                       <input
@@ -76,7 +76,7 @@ function DicomUpload({ dataSource, onComplete, onStarted }: DicomUploadProps): R
               </Dropzone>
             </div>
             <div className="pt-5">or drag images or folders here</div>
-            <div className="text-aqua-pale pt-3 text-lg">(DICOM files supported)</div>
+            <div className="text-white pt-3 text-lg">(DICOM files supported)</div>
           </div>
         )}
       </Dropzone>

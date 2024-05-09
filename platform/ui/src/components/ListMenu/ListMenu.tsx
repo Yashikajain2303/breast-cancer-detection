@@ -30,7 +30,7 @@ const ListMenu = ({ items = [], renderer, onClick }) => {
   };
 
   return (
-    <div className="bg-secondary-dark flex flex-col rounded-md pt-2 pb-2">
+    <div className="bg-[#702963] flex flex-col rounded-md pt-2 pb-2">
       {items.map((item, index) => {
         return (
           <ListItem
@@ -45,7 +45,7 @@ const ListMenu = ({ items = [], renderer, onClick }) => {
   );
 };
 
-const noop = () => {};
+const noop = () => { };
 
 ListMenu.propTypes = {
   items: PropTypes.array.isRequired,

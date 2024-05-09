@@ -23,7 +23,7 @@ const gridHorizontalPadding = 10;
 const tabSpacerWidth = 2;
 
 const baseClasses =
-  'transition-all duration-300 ease-in-out bg-black border-black justify-start box-content flex flex-col';
+  'transition-all duration-300 ease-in-out bg-black border-black justify-start box-content flex flex-col float-left overflow-y-auto overflow-x-auto';
 
 const classesMap = {
   open: {
@@ -102,7 +102,7 @@ const getTabClassNames = (
   isTabDisabled: boolean
 ) =>
   classnames('h-[28px] mb-[2px] cursor-pointer text-white bg-black', {
-    'hover:text-primary-active': !isActiveTab && !isTabDisabled,
+    'hover:text-white': !isActiveTab && !isTabDisabled,
     'rounded-l': tabIndex % numColumns === 0,
     'rounded-r': (tabIndex + 1) % numColumns === 0 || tabIndex === numTabs - 1,
   });
@@ -115,7 +115,7 @@ const getTabStyle = (numTabs: number) => {
 
 const getTabIconClassNames = (numTabs: number, isActiveTab: boolean) => {
   return classnames('h-full w-full flex items-center justify-center', {
-    'bg-customblue-40': isActiveTab,
+    'bg-[#4d4c4d]': isActiveTab,
     rounded: isActiveTab,
   });
 };
@@ -210,7 +210,7 @@ const SidePanel = ({
       <>
         <div
           className={classnames(
-            'bg-secondary-dark flex h-[28px] w-full cursor-pointer items-center rounded-md',
+            'bg-[#702963] flex h-[28px] w-full cursor-pointer items-center rounded-md',
             side === 'left' ? 'justify-end pr-2' : 'justify-start pl-2'
           )}
           onClick={() => {
@@ -220,7 +220,7 @@ const SidePanel = ({
         >
           <Icon
             name={'navigation-panel-right-reveal'}
-            className={classnames('text-primary-active', side === 'left' && 'rotate-180 transform')}
+            className={classnames('text-white', side === 'left' && 'rotate-180 transform')}
           />
         </div>
         <div className={classnames('mt-3 flex flex-col space-y-3')}>
@@ -237,7 +237,7 @@ const SidePanel = ({
               <div
                 id={`${childComponent.name}-btn`}
                 data-cy={`${childComponent.name}-btn`}
-                className="text-primary-active hover:cursor-pointer"
+                className="text-white hover:cursor-pointer"
                 onClick={() => {
                   return childComponent.disabled ? null : updateActiveTabIndex(index);
                 }}
@@ -245,7 +245,7 @@ const SidePanel = ({
                 <Icon
                   name={childComponent.iconName}
                   className={classnames({
-                    'text-primary-active': true,
+                    'text-white': true,
                     'ohif-disabled': childComponent.disabled,
                   })}
                   style={{
@@ -276,7 +276,7 @@ const SidePanel = ({
       >
         <Icon
           name={openStateIconName[side]}
-          className="text-primary-active"
+          className="text-white"
         />
       </div>
     );
@@ -288,7 +288,7 @@ const SidePanel = ({
     return (
       <div className={classnames('flex grow ', side === 'right' ? 'justify-start' : 'justify-end')}>
         <div
-          className={classnames('bg-primary-dark text-primary-active flex flex-wrap')}
+          className={classnames('bg-[#702963] text-white flex flex-wrap')}
           style={getGridStyle(side, tabs.length, gridWidth, expandedWidth)}
         >
           {tabs.map((tab, tabIndex) => {
@@ -302,7 +302,7 @@ const SidePanel = ({
                       tabSpacerWidth
                     )}
                   >
-                    <div className="bg-primary-dark h-[20px] w-full"></div>
+                    <div className="bg-[#702963] h-[20px] w-full"></div>
                   </div>
                 )}
                 <Tooltip
@@ -348,7 +348,7 @@ const SidePanel = ({
     return (
       <div
         className={classnames(
-          'text-primary-active flex grow cursor-pointer justify-center self-center text-[13px]'
+          'text-white flex grow cursor-pointer justify-center self-center text-[13px]'
         )}
         style={{
           ...(side === 'left'
@@ -365,7 +365,7 @@ const SidePanel = ({
 
   const getOpenStateComponent = () => {
     return (
-      <div className="bg-primary-dark flex rounded-t pt-1.5 pb-[2px]">
+      <div className="bg-[#702963] flex rounded-t pt-1.5 pb-[2px]">
         {getCloseIcon()}
         {tabs.length === 1 ? getOneTabComponent() : getTabGridComponent()}
       </div>

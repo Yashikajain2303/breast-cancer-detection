@@ -53,7 +53,7 @@ proposed collaboration has an impact on cancer research.
 
 ### Do you offer commercial support?
 
-The Open Health Imaging Foundation does not offer commercial support, however,
+The Breast Cancer Detection does not offer commercial support, however,
 some community members do offer consulting services. You can search our
 [Community Forum](https://community.ohif.org/) for more information.
 

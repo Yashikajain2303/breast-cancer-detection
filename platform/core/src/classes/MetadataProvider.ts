@@ -333,8 +333,8 @@ class MetadataProvider {
             description: instance[OverlayDescriptionTag],
             label: instance[OverlayLabelTag],
             roiArea: instance[ROIAreaTag],
-            roiMean: instance[ROIMeanTag],
-            roiStandardDeviation: instance[ROIStandardDeviationTag],
+            // roiMean: instance[ROIMeanTag],
+            // roiStandardDeviation: instance[ROIStandardDeviationTag],
           };
 
           overlays.push(overlay);

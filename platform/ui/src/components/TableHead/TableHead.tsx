@@ -6,15 +6,15 @@ const TableHead = ({ children, className, style }) => {
   return (
     <div
       className={classnames(
-        'bg-secondary-dark border-secondary-light flex border-b pr-2 font-bold',
+        'bg-[#702963] border-[#e4b4db] flex border-b pr-2 font-bold',
         className
       )}
       style={style}
     >
       {React.isValidElement(children)
         ? React.cloneElement(children, {
-            isTableHead: true,
-          })
+          isTableHead: true,
+        })
         : children}
     </div>
   );

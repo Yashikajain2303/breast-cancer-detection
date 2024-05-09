@@ -17,17 +17,17 @@ const DefaultFallback = ({ error, context, resetErrorBoundary, fallbackRoute }) 
   const subtitle = t('Sorry, something went wrong there. Try again.');
   return (
     <div
-      className="ErrorFallback bg-primary-dark h-full w-full"
+      className="ErrorFallback bg-[#702963] h-full w-full"
       role="alert"
     >
-      <p className="text-primary-light text-xl">{title}</p>
-      <p className="text-primary-light text-base">{subtitle}</p>
+      <p className="text-[#e4b4db] text-xl">{title}</p>
+      <p className="text-[#e4b4db] text-base">{subtitle}</p>
       {!isProduction && (
-        <div className="bg-secondary-dark mt-5 space-y-2 rounded-md p-5 font-mono">
-          <p className="text-primary-light">
+        <div className="bg-[#702963] mt-5 space-y-2 rounded-md p-5 font-mono">
+          <p className="text-[#e4b4db]">
             {t('Context')}: {context}
           </p>
-          <p className="text-primary-light">
+          <p className="text-[#e4b4db]">
             {t('Error Message')}: {error.message}
           </p>
 
@@ -35,7 +35,7 @@ const DefaultFallback = ({ error, context, resetErrorBoundary, fallbackRoute }) 
             variant="contained"
             color="inherit"
             size="initial"
-            className="text-primary-active"
+            className="text-white"
             onClick={() => setShowDetails(!showDetails)}
           >
             <React.Fragment>
@@ -49,7 +49,7 @@ const DefaultFallback = ({ error, context, resetErrorBoundary, fallbackRoute }) 
           </IconButton>
 
           {showDetails && (
-            <pre className="text-primary-light whitespace-pre-wrap px-4">Stack: {error.stack}</pre>
+            <pre className="text-[#e4b4db] whitespace-pre-wrap px-4">Stack: {error.stack}</pre>
           )}
         </div>
       )}
@@ -57,7 +57,7 @@ const DefaultFallback = ({ error, context, resetErrorBoundary, fallbackRoute }) 
   );
 };
 
-const noop = () => {};
+const noop = () => { };
 
 DefaultFallback.propTypes = {
   error: PropTypes.object.isRequired,

@@ -2,8 +2,8 @@ import { Enums } from '@cornerstonejs/tools';
 
 const getToggledClassName = (isToggled: boolean) => {
   return isToggled
-    ? '!text-primary-active'
-    : '!text-common-bright hover:!bg-primary-dark hover:text-primary-light';
+    ? '!text-white'
+    : '!text-common-bright hover:!bg-[#702963] hover:text-[#e4b4db]';
 };
 
 export default function getToolbarModule({ commandsManager, servicesManager }) {
@@ -43,8 +43,8 @@ export default function getToolbarModule({ commandsManager, servicesManager }) {
         return {
           disabled: false,
           className: isPrimaryActive
-            ? '!text-black bg-primary-light'
-            : '!text-common-bright hover:!bg-primary-dark hover:!text-primary-light',
+            ? '!text-black bg-[#4d4c4d]'
+            : '!text-common-bright hover:!bg-[#702963] hover:!text-[#e4b4db]',
           // Todo: isActive right now is used for nested buttons where the primary
           // button needs to be fully rounded (vs partial rounded) when active
           // otherwise it does not have any other use
@@ -104,7 +104,7 @@ export default function getToolbarModule({ commandsManager, servicesManager }) {
       name: 'evaluate.action',
       evaluate: ({ viewportId, button }) => {
         return {
-          className: '!text-common-bright hover:!bg-primary-dark hover:text-primary-light',
+          className: '!text-common-bright hover:!bg-[#702963] hover:text-[#e4b4db]',
         };
       },
     },
@@ -221,7 +221,7 @@ export default function getToolbarModule({ commandsManager, servicesManager }) {
         if (!prop) {
           return {
             disabled: false,
-            className: '!text-common-bright hover:!bg-primary-dark hover:text-primary-light',
+            className: '!text-common-bright hover:!bg-[#702963] hover:text-[#e4b4db]',
           };
         }
 

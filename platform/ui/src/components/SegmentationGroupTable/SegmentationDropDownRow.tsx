@@ -41,29 +41,29 @@ function SegmentationDropDownRow({
           id="segmentation-dropdown"
           showDropdownIcon={false}
           alignment="left"
-          itemsClassName="text-primary-active"
+          itemsClassName="text-white"
           showBorders={false}
           maxCharactersPerLine={30}
           list={[
             ...(!disableEditing
               ? [
-                  {
-                    title: t('Add new segmentation'),
-                    onClick: () => {
-                      onSegmentationAdd();
-                    },
+                {
+                  title: t('Add new segmentation'),
+                  onClick: () => {
+                    onSegmentationAdd();
                   },
-                ]
+                },
+              ]
               : []),
             ...(!disableEditing
               ? [
-                  {
-                    title: t('Rename'),
-                    onClick: () => {
-                      onSegmentationEdit(activeSegmentation.id);
-                    },
+                {
+                  title: t('Rename'),
+                  onClick: () => {
+                    onSegmentationEdit(activeSegmentation.id);
                   },
-                ]
+                },
+              ]
               : []),
             {
               title: t('Delete'),
@@ -73,13 +73,13 @@ function SegmentationDropDownRow({
             },
             ...(!disableEditing
               ? [
-                  {
-                    title: t('Export DICOM SEG'),
-                    onClick: () => {
-                      storeSegmentation(activeSegmentation.id);
-                    },
+                {
+                  title: t('Export DICOM SEG'),
+                  onClick: () => {
+                    storeSegmentation(activeSegmentation.id);
                   },
-                ]
+                },
+              ]
               : []),
             ...[
               {
@@ -97,7 +97,7 @@ function SegmentationDropDownRow({
             ],
           ]}
         >
-          <div className="hover:bg-secondary-dark  grid h-[28px] w-[28px]  cursor-pointer place-items-center rounded-[4px]">
+          <div className="hover:bg-[#702963]  grid h-[28px] w-[28px]  cursor-pointer place-items-center rounded-[4px]">
             <Icon name="icon-more-menu"></Icon>
           </div>
         </Dropdown>
@@ -118,7 +118,7 @@ function SegmentationDropDownRow({
           isSearchable={false}
           options={selectOptions}
           value={selectOptions?.find(o => o.value === activeSegmentation.id)}
-          className="text-aqua-pale h-[26px] w-1/2 text-[13px]"
+          className="text-white h-[26px] w-1/2 text-[13px]"
         />
       )}
       <div className="flex items-center">
@@ -127,28 +127,28 @@ function SegmentationDropDownRow({
           content={
             <div className="flex flex-col">
               <div className="text-[13px] text-white">Series:</div>
-              <div className="text-aqua-pale text-[13px]">{activeSegmentation.description}</div>
+              <div className="text-white text-[13px]">{activeSegmentation.description}</div>
             </div>
           }
         >
           <Icon
             name="info-action"
-            className="text-primary-active"
+            className="text-white"
           />
         </Tooltip>
         <div
-          className="hover:bg-secondary-dark  mr-1 grid h-[28px]  w-[28px] cursor-pointer place-items-center rounded-[4px]"
+          className="hover:bg-[#702963]  mr-1 grid h-[28px]  w-[28px] cursor-pointer place-items-center rounded-[4px]"
           onClick={() => onToggleSegmentationVisibility(activeSegmentation.id)}
         >
           {activeSegmentation.isVisible ? (
             <Icon
               name="row-shown"
-              className="text-primary-active"
+              className="text-white"
             />
           ) : (
             <Icon
               name="row-hidden"
-              className="text-primary-active"
+              className="text-white"
             />
           )}
         </div>

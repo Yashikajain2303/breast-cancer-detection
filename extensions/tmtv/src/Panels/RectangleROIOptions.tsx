@@ -193,7 +193,7 @@ function RectangleROIOptions({ servicesManager, commandsManager }) {
   }, []);
 
   return (
-    <div className="invisible-scrollbar mb-2 flex flex-col overflow-y-auto overflow-x-hidden">
+    <div className="invisible-scrollbar mb-2 flex flex-col overflow-y-auto overflow-x-auto">
       <ROIThresholdConfiguration
         config={config}
         dispatch={dispatch}

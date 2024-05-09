@@ -155,7 +155,7 @@ _Feel free to make a Pull Request if you want to add to this list._
   -->
 
 <!-- prettier-ignore-start -->
-[dcmjs-org]: https://server.dcmjs.org/dcm4chee-arc/aets/DCM4CHEE/wado
+[dcmjs-org]: https://server.dcmjs.org/dcm4chee-arc/aets/DCM4CHEE1DCM4CHEE1/wado
 [dicom-web]: https://en.wikipedia.org/wiki/DICOMweb
 [storescu]: http://support.dcmtk.org/docs/storescu.html
 [webpack-proxy]: https://webpack.js.org/configuration/dev-server/#devserverproxy

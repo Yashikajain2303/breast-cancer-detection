@@ -25,7 +25,7 @@ function Header({ appLogo = OHIFLogo(), children, t }) {
         <IconButton
           variant="text"
           color="inherit"
-          className="text-primary-active"
+          className="text-white"
           onClick={showSettingsDropdown}
         >
           <React.Fragment>

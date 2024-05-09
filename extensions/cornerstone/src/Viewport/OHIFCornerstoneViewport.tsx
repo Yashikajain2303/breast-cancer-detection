@@ -370,7 +370,7 @@ const OHIFCornerstoneViewport = React.memo(props => {
       unsubscribeFromJumpToMeasurementEvents();
     };
   }, [displaySets, elementRef, viewportId]);
-
+  console.log(displaySets, 'displaySets-------------------------3')
   // Set up the window level action menu in the viewport action corners.
   useEffect(() => {
     // Doing an === check here because the default config value when not set is true
@@ -389,7 +389,7 @@ const OHIFCornerstoneViewport = React.memo(props => {
       verticalDirection: AllInOneMenu.VerticalDirection.TopToBottom,
       horizontalDirection: AllInOneMenu.HorizontalDirection.RightToLeft,
     });
-
+    console.log(elementRef.current, 'elementRef');
     viewportActionCornersService.setComponent({
       viewportId,
       id: 'windowLevelActionMenu',
@@ -398,7 +398,7 @@ const OHIFCornerstoneViewport = React.memo(props => {
       indexPriority: -100,
     });
   }, [displaySets, viewportId, viewportActionCornersService, servicesManager, commandsManager]);
-
+  console.log(displaySets[0].SeriesDescription, 'displaysets inside')
   return (
     <React.Fragment>
       <div className="viewport-wrapper">
@@ -408,7 +408,15 @@ const OHIFCornerstoneViewport = React.memo(props => {
         />
         <div
           className="cornerstone-viewport-element"
-          style={{ height: '100%', width: '100%' }}
+          // style={{
+          //   height: '100%', width: '40%',
+          //   float: 'right'
+          // }}
+          style={{
+            height: '100%',
+            width: displaySets[0].SeriesDescription === 'L CC' || displaySets[0].SeriesDescription === 'L MLO' ? '160%' : '44%',
+            float: displaySets[0].SeriesDescription === 'L CC' || displaySets[0].SeriesDescription === 'L MLO' ? 'right' : 'right'
+          }}
           onContextMenu={e => e.preventDefault()}
           onMouseDown={e => e.preventDefault()}
           ref={elementRef}

@@ -4,6 +4,9 @@ import CommandsManager from '../classes/CommandsManager';
 import ExtensionManager from '../extensions/ExtensionManager';
 
 export default class ServicesManager {
+  static services(services: any, arg1: string) {
+    throw new Error('Method not implemented.');
+  }
   public services: Services = {};
   public registeredServiceNames: string[] = [];
   private _commandsManager: CommandsManager;

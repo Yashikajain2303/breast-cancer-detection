@@ -69,6 +69,7 @@ function modeFactory({ modeConfiguration }) {
         'Pan',
         'Zoom',
         'TrackballRotate',
+        'AITools',
         'Capture',
         'Layout',
         'Crosshairs',

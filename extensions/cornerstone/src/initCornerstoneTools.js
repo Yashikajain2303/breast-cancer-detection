@@ -93,6 +93,7 @@ export default function initCornerstoneTools(configuration = {}) {
 const toolNames = {
   Pan: PanTool.toolName,
   ArrowAnnotate: ArrowAnnotateTool.toolName,
+  BiradScore: ArrowAnnotateTool.toolName,
   WindowLevel: WindowLevelTool.toolName,
   StackScroll: StackScrollTool.toolName,
   StackScrollMouseWheel: StackScrollMouseWheelTool.toolName,

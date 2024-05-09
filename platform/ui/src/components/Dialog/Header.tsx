@@ -11,7 +11,7 @@ const CloseButton = ({ onClick }) => {
       data-cy="close-button"
       onClick={onClick}
       name="close"
-      className="text-primary-active cursor-pointer"
+      className="text-white cursor-pointer"
     />
   );
 };
@@ -21,7 +21,7 @@ CloseButton.propTypes = {
 };
 
 const Header = ({ title, noCloseButton, onClose }) => {
-  const theme = 'bg-primary-dark';
+  const theme = 'bg-[#702963]';
   const flex = 'flex items-center justify-between';
   const padding = 'pb-[20px]';
 

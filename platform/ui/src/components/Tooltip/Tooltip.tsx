@@ -118,14 +118,14 @@ const Tooltip = ({
       <div
         ref={tooltipRef}
         className={classnames(
-          'tooltip-box bg-primary-dark border-secondary-light w-max-content relative inset-x-auto top-full rounded border text-base text-white',
+          'tooltip-box bg-[#702963] border-[#e4b4db] w-max-content relative inset-x-auto top-full rounded border text-base text-white',
           {
             'py-[6px] px-[8px]': !tight,
           }
         )}
       >
         <div>{typeof content === 'string' ? t(content) : content}</div>
-        <div className="text-aqua-pale">
+        <div className="text-white">
           {typeof secondaryContent === 'string' ? t(secondaryContent) : secondaryContent}
         </div>
         <svg

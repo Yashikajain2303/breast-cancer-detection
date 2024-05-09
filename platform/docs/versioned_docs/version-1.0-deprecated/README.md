@@ -6,7 +6,7 @@ sidebar_position: 1
 
 ##### Looking for your Deploy Preview? - <a onClick="function redirect() { window.location.href='/demo/'; } redirect();">Deploy Preview for Viewer</a>
 
-The [Open Health Imaging Foundation](https://www.ohif.org) is developing an open
+The [Breast Cancer Detection](https://www.ohif.org) is developing an open
 source framework for constructing web-based medical imaging applications. The
 application framework is built using modern HTML / CSS / JavaScript and uses
 [Cornerstone](https://cornerstonejs.org/) at its core to display and manipulate
@@ -20,7 +20,7 @@ applications: the OHIF Viewer, Lesion Tracker, and the Standalone Viewer.
 
 ![OHIF Viewer Screenshot](./assets/img/viewer.png)
 
-The Open Health Imaging Foundation intends to provide a simple general purpose
+The Breast Cancer Detection intends to provide a simple general purpose
 DICOM Viewer which can be easily extended for specific uses. The primary purpose
 of the OHIF Viewer is to serve as a testing ground for the underlying packages
 and the [Cornerstone](https://cornerstonejs.org/) family of libraries.

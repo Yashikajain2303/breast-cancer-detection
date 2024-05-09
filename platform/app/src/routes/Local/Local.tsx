@@ -24,7 +24,7 @@ const getLoadButton = (onDrop, text, isDir) => {
             disabled={false}
             endIcon={<Icon name="launch-arrow" />} // launch-arrow | launch-info
             className={classnames('font-medium', 'ml-2')}
-            onClick={() => {}}
+            onClick={() => { }}
           >
             {text}
             {isDir ? (
@@ -124,7 +124,7 @@ function Local({ modePath }: LocalProps) {
           style={{ width: '100%', height: '100%' }}
         >
           <div className="flex h-screen w-screen items-center justify-center ">
-            <div className="bg-secondary-dark mx-auto space-y-2 rounded-lg py-8 px-8 drop-shadow-md">
+            <div className="bg-[#702963] mx-auto space-y-2 rounded-lg py-8 px-8 drop-shadow-md">
               <img
                 className="mx-auto block h-14"
                 src="./ohif-logo.svg"
@@ -137,14 +137,14 @@ function Local({ modePath }: LocalProps) {
                   </div>
                 ) : (
                   <div className="space-y-2">
-                    <p className="text-base text-blue-300">
+                    <p className="text-base text-[#e4b4db]">
                       Note: You data is not uploaded to any server, it will stay in your local
                       browser application
                     </p>
-                    <p className="text-xg text-primary-active pt-6 font-semibold">
+                    <p className="text-xg text-white pt-6 font-semibold">
                       Drag and Drop DICOM files here to load them in the Viewer
                     </p>
-                    <p className="text-lg text-blue-300">Or click to </p>
+                    <p className="text-lg text-[#e4b4db]">Or click to </p>
                   </div>
                 )}
               </div>

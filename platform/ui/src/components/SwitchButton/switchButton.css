@@ -1,7 +1,8 @@
-.switch-button input:checked ~ .switch-button-outer {
-  @apply border-primary-light;
+.switch-button input:checked~.switch-button-outer {
+  @apply border-[#e4b4db];
 }
-.switch-button input:checked ~ .switch-button-dot {
-  @apply bg-primary-light;
+
+.switch-button input:checked~.switch-button-dot {
+  @apply bg-[#4d4c4d];
   transform: translateX(12px);
 }

@@ -130,7 +130,7 @@ export default function PanelPetSUV({ servicesManager, commandsManager }) {
       <div className="flex min-h-0 flex-col bg-black text-[13px] font-[300]">
         <PanelSection title={t('Patient Information')}>
           <div className="flex flex-col">
-            <div className="bg-primary-dark flex flex-col gap-4 p-2">
+            <div className="bg-[#702963] flex flex-col gap-4 p-2">
               <Input
                 containerClassName={'!flex-row !justify-between items-center'}
                 label={t('Patient Sex')}
@@ -146,7 +146,7 @@ export default function PanelPetSUV({ servicesManager, commandsManager }) {
               <Input
                 containerClassName={'!flex-row !justify-between items-center'}
                 label={t('Weight')}
-                labelChildren={<span className="text-aqua-pale"> kg</span>}
+                labelChildren={<span className="text-white"> kg</span>}
                 labelClassName="text-[13px] font-inter text-white"
                 className="!m-0 !h-[26px] !w-[117px]"
                 value={metadata.PatientWeight || ''}
@@ -159,7 +159,7 @@ export default function PanelPetSUV({ servicesManager, commandsManager }) {
               <Input
                 containerClassName={'!flex-row !justify-between items-center'}
                 label={t('Total Dose')}
-                labelChildren={<span className="text-aqua-pale"> bq</span>}
+                labelChildren={<span className="text-white"> bq</span>}
                 labelClassName="text-[13px] font-inter text-white"
                 className="!m-0 !h-[26px] !w-[117px]"
                 value={metadata.RadiopharmaceuticalInformationSequence.RadionuclideTotalDose || ''}
@@ -174,7 +174,7 @@ export default function PanelPetSUV({ servicesManager, commandsManager }) {
               <Input
                 containerClassName={'!flex-row !justify-between items-center'}
                 label={t('Half Life')}
-                labelChildren={<span className="text-aqua-pale"> s</span>}
+                labelChildren={<span className="text-white"> s</span>}
                 labelClassName="text-[13px] font-inter text-white"
                 className="!m-0 !h-[26px] !w-[117px]"
                 value={metadata.RadiopharmaceuticalInformationSequence.RadionuclideHalfLife || ''}
@@ -189,7 +189,7 @@ export default function PanelPetSUV({ servicesManager, commandsManager }) {
               <Input
                 containerClassName={'!flex-row !justify-between items-center'}
                 label={t('Injection Time')}
-                labelChildren={<span className="text-aqua-pale"> s</span>}
+                labelChildren={<span className="text-white"> s</span>}
                 labelClassName="text-[13px] font-inter text-white"
                 className="!m-0 !h-[26px] !w-[117px]"
                 value={
@@ -206,11 +206,11 @@ export default function PanelPetSUV({ servicesManager, commandsManager }) {
               <Input
                 containerClassName={'!flex-row !justify-between items-center'}
                 label={t('Acquisition Time')}
-                labelChildren={<span className="text-aqua-pale"> s</span>}
+                labelChildren={<span className="text-white"> s</span>}
                 labelClassName="text-[13px] font-inter text-white"
                 className="!m-0 !h-[26px] !w-[117px]"
                 value={metadata.SeriesTime || ''}
-                onChange={() => {}}
+                onChange={() => { }}
               />
               <Button
                 className="!h-[26px] !w-[115px] self-end !p-0"

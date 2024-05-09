@@ -41,9 +41,9 @@ module.exports = {
 
       primary: {
         light: '#5acce6',
-        main: '#0944b3',
+        main: '#702963',
         dark: '#090c29',
-        active: '#348cfd',
+        active: '#e4b4db',
       },
 
       inputfield: {
@@ -220,7 +220,7 @@ module.exports = {
     },
     borderColor: theme => ({
       ...theme('colors'),
-      DEFAULT: theme('colors.gray.300', 'currentColor'),
+      DEFAULT: theme('colors.red.300', 'currentColor'),
     }),
     boxShadow: {
       xs: '0 0 0 1px rgba(0, 0, 0, 0.05)',

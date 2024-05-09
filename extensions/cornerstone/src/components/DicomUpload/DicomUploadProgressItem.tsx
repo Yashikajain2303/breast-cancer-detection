@@ -56,7 +56,7 @@ const DicomUploadProgressItem = memo(
           return (
             <Icon
               name="status-tracked"
-              className="text-primary-light"
+              className="text-[#e4b4db]"
             ></Icon>
           );
         case UploadStatus.InProgress:
@@ -71,7 +71,7 @@ const DicomUploadProgressItem = memo(
     };
 
     return (
-      <div className="min-h-14 border-secondary-light flex w-full items-center overflow-hidden border-b p-2.5 text-lg">
+      <div className="min-h-14 border-[#e4b4db] flex w-full items-center overflow-hidden border-b p-2.5 text-lg">
         <div className="self-top flex w-0 shrink grow flex-col gap-1">
           <div className="flex gap-4">
             <div className="flex w-6 shrink-0 items-center justify-center">{getStatusIcon()}</div>
@@ -89,7 +89,7 @@ const DicomUploadProgressItem = memo(
               )}
               <div className="ml-auto flex cursor-pointer">
                 <Icon
-                  className="text-primary-active self-center"
+                  className="text-white self-center"
                   name="close"
                   onClick={cancelUpload}
                 />

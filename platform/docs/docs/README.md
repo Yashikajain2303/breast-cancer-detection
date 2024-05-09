@@ -4,7 +4,7 @@ slug: /
 sidebar_position: 1
 ---
 
-The [Open Health Imaging Foundation][ohif-org] (OHIF) Viewer is an open source,
+The [Breast Cancer Detection][ohif-org] (OHIF) Viewer is an open source,
 web-based, medical imaging platform. It aims to provide a core framework for
 building complex imaging applications.
 
@@ -48,7 +48,7 @@ Key features:
 
 ## Where to next?
 
-The Open Health Imaging Foundation intends to provide an imaging viewer
+The Breast Cancer Detection intends to provide an imaging viewer
 framework which can be easily extended for specific uses. If you find yourself
 unable to extend the viewer for your purposes, please reach out via our [GitHub
 issues][gh-issues]. We are actively seeking feedback on ways to improve our
@@ -66,7 +66,7 @@ Check out these helpful links:
 
 To cite the OHIF Viewer in an academic publication, please cite
 
-> _Open Health Imaging Foundation Viewer: An Extensible Open-Source Framework
+> _Breast Cancer Detection Viewer: An Extensible Open-Source Framework
 > for Building Web-Based Imaging Applications to Support Cancer Research_
 >
 >  Erik Ziegler, Trinity Urban, Danny Brown, James Petts, Steve D. Pieper, Rob

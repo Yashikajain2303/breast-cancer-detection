@@ -34,12 +34,12 @@ const LegacyCinePlayer = ({
   };
 
   return (
-    <div className="LegacyCinePlayer border-primary-light flex h-10 flex-row items-center justify-center rounded-full border">
+    <div className="LegacyCinePlayer border-[#e4b4db] flex h-10 flex-row items-center justify-center rounded-full border">
       <IconButton
         variant="text"
         color="inherit"
         size="initial"
-        className="text-primary-active ml-4 mr-3"
+        className="text-white ml-4 mr-3"
         onClick={onPlayPauseChangeHandler}
       >
         <Icon
@@ -58,12 +58,12 @@ const LegacyCinePlayer = ({
           value={frameRate}
           onChange={onFrameRateChangeHandler}
         />
-        <p className="text-primary-light -mt-2 text-sm">{`${frameRate.toFixed(1)} fps`}</p>
+        <p className="text-[#e4b4db] -mt-2 text-sm">{`${frameRate.toFixed(1)} fps`}</p>
       </div>
       <IconButton
         color="inherit"
         size="initial"
-        className="text-primary-active border-primary-active mr-3 rounded-full border"
+        className="text-white border-primary-active mr-3 rounded-full border"
         onClick={onClose}
       >
         <Icon name="close" />
@@ -72,7 +72,7 @@ const LegacyCinePlayer = ({
   );
 };
 
-const noop = () => {};
+const noop = () => { };
 
 LegacyCinePlayer.defaultProps = {
   isPlaying: false,

@@ -203,7 +203,7 @@ export default function PanelRoiThresholdSegmentation({
   return (
     <>
       <div className="flex flex-col">
-        <div className="invisible-scrollbar overflow-y-auto overflow-x-hidden">
+        <div className="invisible-scrollbar overflow-y-auto overflow-x-auto">
           {/* show segmentation table */}
           <div className="flex min-h-0 flex-col bg-black text-[13px] font-[300]">
             <SegmentationGroupTableExpanded
@@ -265,7 +265,7 @@ export default function PanelRoiThresholdSegmentation({
             />
           </div>
           {tmtvValue !== null ? (
-            <div className="bg-secondary-dark mt-1 flex items-baseline justify-between px-2 py-1">
+            <div className="bg-[#702963] mt-1 flex items-baseline justify-between px-2 py-1">
               <span className="text-base font-bold uppercase tracking-widest text-white">
                 {'TMTV:'}
               </span>
@@ -291,7 +291,7 @@ export default function PanelRoiThresholdSegmentation({
           width="15px"
           height="15px"
           name={'info'}
-          className={'text-primary-active ml-4 mr-3'}
+          className={'text-white ml-4 mr-3'}
         />
         <span>{'User Guide'}</span>
       </div>

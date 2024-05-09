@@ -60,6 +60,14 @@ const toolbarButtons: Button[] = [
           evaluate: 'evaluate.cornerstoneTool',
         }),
         createButton({
+          id: 'BiradScore',
+          icon: 'birad-score',
+          label: 'Birad Score',
+          tooltip: 'Birad Score',
+          commands: setToolActiveToolbar,
+          evaluate: 'evaluate.cornerstoneTool',
+        }),
+        createButton({
           id: 'EllipticalROI',
           icon: 'tool-ellipse',
           label: 'Ellipse',
@@ -163,6 +171,16 @@ const toolbarButtons: Button[] = [
         name: 'evaluate.cornerstoneTool',
         disabledText: 'Select a 3D viewport to enable this tool',
       },
+    },
+  },
+  {
+    id: 'AITools',
+    uiType: 'ohif.radioGroup',
+    props: {
+      type: 'tool',
+      icon: 'ai-icon',
+      label: 'AI Tools',
+      commands: setToolActiveToolbar,
     },
   },
   {

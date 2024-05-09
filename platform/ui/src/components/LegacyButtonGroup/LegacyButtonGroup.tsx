@@ -37,25 +37,25 @@ const borderClasses = {
 
 const variantClasses = {
   text: {
-    default: 'border-primary-light',
-    primary: 'border-primary-main',
-    secondary: 'border-secondary-light',
+    default: 'border-[#e4b4db]',
+    primary: 'border-[#e4b4db]',
+    secondary: 'border-[#e4b4db]',
     white: 'border-white',
-    black: 'border-primary-main',
+    black: 'border-[#e4b4db]',
   },
   outlined: {
     default: '',
     primary: '',
-    secondary: 'border border-secondary-light',
+    secondary: 'border border-[#e4b4db]',
     white: '',
-    black: 'border-primary-main group-hover:bg-primary-main group-hover:border-black',
+    black: 'border-[#e4b4db] group-hover:bg-[#4d4c4d] group-hover:border-black',
   },
   contained: {
     default: 'border-white ',
     primary: 'border-white ',
     secondary: 'border-white ',
     white: 'border-black',
-    black: 'border-primary-main',
+    black: 'border-[#e4b4db]',
   },
 };
 

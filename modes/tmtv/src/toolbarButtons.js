@@ -46,6 +46,14 @@ const toolbarButtons = [
           evaluate: 'evaluate.cornerstoneTool',
         }),
         ToolbarService.createButton({
+          id: 'BiradScore',
+          icon: 'birad-score',
+          label: 'Birad Score',
+          tooltip: 'Birad Score',
+          commands: setToolActiveToolbar,
+          evaluate: 'evaluate.cornerstoneTool',
+        }),
+        ToolbarService.createButton({
           id: 'EllipticalROI',
           icon: 'tool-ellipse',
           label: 'Ellipse',

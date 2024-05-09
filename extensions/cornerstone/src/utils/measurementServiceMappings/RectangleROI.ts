@@ -1,10 +1,8 @@
 import SUPPORTED_TOOLS from './constants/supportedTools';
-import { getDisplayUnit } from './utils';
 import getSOPInstanceAttributes from './utils/getSOPInstanceAttributes';
-import { utils } from '@ohif/core';
 
 const RectangleROI = {
-  toAnnotation: measurement => {},
+  toAnnotation: measurement => { },
   toMeasurement: (
     csToolsEventDetail,
     DisplaySetService,
@@ -19,7 +17,7 @@ const RectangleROI = {
       return null;
     }
 
-    const { toolName, referencedImageId, FrameOfReferenceUID } = metadata;
+    const { toolName, referencedImageId } = metadata;
     const validToolType = SUPPORTED_TOOLS.includes(toolName);
 
     if (!validToolType) {
@@ -43,125 +41,49 @@ const RectangleROI = {
       displaySet = DisplaySetService.getDisplaySetsForSeries(SeriesInstanceUID);
     }
 
-    const { points, textBox } = data.handles;
+    const { points } = data.handles;
 
-    const mappedAnnotations = getMappedAnnotations(annotation, DisplaySetService);
+    const xCoordinates = points.map(point => point[1]);
+    const yCoordinates = points.map(point => point[2]);
 
-    const displayText = getDisplayText(mappedAnnotations, displaySet);
-    const getReport = () => _getReport(mappedAnnotations, points, FrameOfReferenceUID);
 
+
+    // const length = Math.max(...xCoordinates) - Math.min(...xCoordinates);
+    // const breadth = Math.max(...yCoordinates) - Math.min(...yCoordinates);
+    // console.log(points, 'points');
+    // const topLeft = points[1];
+    // const bottomRight = points[2];
+
+    const minX = Math.round(Math.min(...points.map(point => point[1])));
+    const maxX = Math.round(Math.max(...points.map(point => point[1])));
+    const minY = Math.round(Math.min(...points.map(point => point[2])));
+    const maxY = Math.round(Math.max(...points.map(point => point[2])));
+
+    // Assuming X-coordinates don't change significantly (adjust if needed)
+    const topLeftCorner = [minX, -maxY];
+    const bottomRightCorner = [maxX, -minY];
+
+    console.log("Top-Left X:-----------1", topLeftCorner);
+    // console.log("Top-Left Y:-----------1", topLeft[1]);
+    console.log("Bottom-Right:-----------1", bottomRightCorner);
     return {
       uid: annotationUID,
       SOPInstanceUID,
-      FrameOfReferenceUID,
       points,
-      textBox,
       metadata,
       referenceSeriesUID: SeriesInstanceUID,
       referenceStudyUID: StudyInstanceUID,
-      frameNumber: mappedAnnotations[0]?.frameNumber || 1,
+      frameNumber: 1,
+      displayText: topLeftCorner,
+      label: bottomRightCorner,
       toolName: metadata.toolName,
       displaySetInstanceUID: displaySet.displaySetInstanceUID,
-      label: data.label,
-      displayText: displayText,
-      data: data.cachedStats,
+      length,
+      // breadth,
       type: getValueTypeFromToolType(toolName),
-      getReport,
     };
   },
 };
-
-function getMappedAnnotations(annotation, DisplaySetService) {
-  const { metadata, data } = annotation;
-  const { cachedStats } = data;
-  const { referencedImageId } = metadata;
-  const targets = Object.keys(cachedStats);
-
-  if (!targets.length) {
-    return [];
-  }
-
-  const annotations = [];
-  Object.keys(cachedStats).forEach(targetId => {
-    const targetStats = cachedStats[targetId];
-
-    if (!referencedImageId) {
-      // Todo: Non-acquisition plane measurement mapping not supported yet
-      throw new Error('Non-acquisition plane measurement mapping not supported');
-    }
-
-    const { SOPInstanceUID, SeriesInstanceUID, frameNumber } =
-      getSOPInstanceAttributes(referencedImageId);
-
-    const displaySet = DisplaySetService.getDisplaySetForSOPInstanceUID(
-      SOPInstanceUID,
-      SeriesInstanceUID,
-      frameNumber
-    );
-
-    const { SeriesNumber } = displaySet;
-    const { mean, stdDev, max, area, Modality, modalityUnit, areaUnit } = targetStats;
-
-    annotations.push({
-      SeriesInstanceUID,
-      SOPInstanceUID,
-      SeriesNumber,
-      frameNumber,
-      Modality,
-      unit: modalityUnit,
-      mean,
-      stdDev,
-      max,
-      area,
-      areaUnit,
-    });
-  });
-
-  return annotations;
-}
-
-/*
-This function is used to convert the measurement data to a format that is
-suitable for the report generation (e.g. for the csv report). The report
-returns a list of columns and corresponding values.
-*/
-function _getReport(mappedAnnotations, points, FrameOfReferenceUID) {
-  const columns = [];
-  const values = [];
-
-  // Add Type
-  columns.push('AnnotationType');
-  values.push('Cornerstone:RectangleROI');
-
-  mappedAnnotations.forEach(annotation => {
-    const { mean, stdDev, max, area, unit, areaUnit } = annotation;
-
-    if (!mean || !unit || !max || !area) {
-      return;
-    }
-
-    columns.push(`Maximum`, `Mean`, `Std Dev`, 'Pixel Unit', `Area`, 'Unit');
-    values.push(max, mean, stdDev, unit, area, areaUnit);
-  });
-
-  if (FrameOfReferenceUID) {
-    columns.push('FrameOfReferenceUID');
-    values.push(FrameOfReferenceUID);
-  }
-
-  if (points) {
-    columns.push('points');
-    // points has the form of [[x1, y1, z1], [x2, y2, z2], ...]
-    // convert it to string of [[x1 y1 z1];[x2 y2 z2];...]
-    // so that it can be used in the csv report
-    values.push(points.map(p => p.join(' ')).join(';'));
-  }
-
-  return {
-    columns,
-    values,
-  };
-}
 
 function getDisplayText(mappedAnnotations, displaySet) {
   if (!mappedAnnotations || !mappedAnnotations.length) {
@@ -170,40 +92,20 @@ function getDisplayText(mappedAnnotations, displaySet) {
 
   const displayText = [];
 
-  // Area is the same for all series
-  const { area, SOPInstanceUID, frameNumber, areaUnit } = mappedAnnotations[0];
-
-  const instance = displaySet.images.find(image => image.SOPInstanceUID === SOPInstanceUID);
-
-  let InstanceNumber;
-  if (instance) {
-    InstanceNumber = instance.InstanceNumber;
-  }
-
-  const instanceText = InstanceNumber ? ` I: ${InstanceNumber}` : '';
-  const frameText = displaySet.isMultiFrame ? ` F: ${frameNumber}` : '';
-
-  // Area sometimes becomes undefined if `preventHandleOutsideImage` is off.
-  const roundedArea = utils.roundNumber(area || 0, 2);
-  displayText.push(`${roundedArea} ${getDisplayUnit(areaUnit)}`);
-
-  // Todo: we need a better UI for displaying all these information
   mappedAnnotations.forEach(mappedAnnotation => {
-    const { unit, max, SeriesNumber } = mappedAnnotation;
+    const { length, breadth } = mappedAnnotation;
 
-    let maxStr = '';
-    if (max) {
-      const roundedMax = utils.roundNumber(max, 2);
-      maxStr = `Max: ${roundedMax} <small>${getDisplayUnit(unit)}</small> `;
+    if (!length || !breadth) {
+      return;
     }
 
-    const str = `${maxStr}(S:${SeriesNumber}${instanceText}${frameText})`;
-    if (!displayText.includes(str)) {
-      displayText.push(str);
-    }
+    const roundedLength = Math.round(length * 100) / 100; // Round to 2 decimal places
+    const roundedBreadth = Math.round(breadth * 100) / 100; // Round to 2 decimal places
+
+    displayText.push(`Length: ${roundedLength} mm, Breadth: ${roundedBreadth} mm`);
   });
 
-  return displayText;
+  return displayText.join('\n');
 }
 
-export default RectangleROI;
+export { RectangleROI as default, getDisplayText };

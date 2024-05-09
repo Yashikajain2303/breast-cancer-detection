@@ -9,7 +9,7 @@ const Header = () => {
           <div className="mr-3 inline-flex items-center">
             <Icon
               name="chevron-left"
-              className="text-primary-active w-8 cursor-pointer"
+              className="text-white w-8 cursor-pointer"
               onClick={() => alert('Navigate to previous page')}
             />
             <a
@@ -28,8 +28,8 @@ const Header = () => {
           <IconButton
             variant="text"
             color="inherit"
-            className="text-primary-active"
-            onClick={() => {}}
+            className="text-white"
+            onClick={() => { }}
           >
             <React.Fragment>
               <Icon name="settings" /> <Icon name="chevron-down" />

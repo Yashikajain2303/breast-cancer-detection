@@ -26,7 +26,7 @@ export const generateFromConfig = ({
   topRight = [],
   bottomLeft = [],
   bottomRight = [],
-  itemGenerator = () => {},
+  itemGenerator = () => { },
 }: {
   topLeft?: OverlayItem[];
   topRight?: OverlayItem[];
@@ -35,10 +35,10 @@ export const generateFromConfig = ({
   itemGenerator?: (props: any) => any;
 }) => {
   return (props: any) => {
-    const topLeftClass = 'top-viewport left-viewport text-primary-light';
-    const topRightClass = 'top-viewport right-viewport-scrollbar text-primary-light';
-    const bottomRightClass = 'bottom-viewport right-viewport-scrollbar text-primary-light';
-    const bottomLeftClass = 'bottom-viewport left-viewport text-primary-light';
+    const topLeftClass = 'top-viewport left-viewport text-[#e4b4db]';
+    const topRightClass = 'top-viewport right-viewport-scrollbar text-[#e4b4db]';
+    const bottomRightClass = 'bottom-viewport right-viewport-scrollbar text-[#e4b4db]';
+    const bottomLeftClass = 'bottom-viewport left-viewport text-[#e4b4db]';
     const overlay = 'absolute pointer-events-none microscopy-viewport-overlay';
 
     return (

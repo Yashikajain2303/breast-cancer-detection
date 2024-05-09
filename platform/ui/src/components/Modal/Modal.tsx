@@ -33,7 +33,7 @@ const Modal = ({
 
   const renderHeader = () =>
     title && (
-      <header className="bg-primary-dark drag-handle flex items-center rounded-tl rounded-tr px-[20px] py-[13px]">
+      <header className="bg-[#702963] drag-handle flex items-center rounded-tl rounded-tr px-[20px] py-[13px]">
         <Typography
           variant="h6"
           color="primaryLight"
@@ -46,7 +46,7 @@ const Modal = ({
           <Icon
             onClick={onClose}
             name="close"
-            className="text-primary-active cursor-pointer"
+            className="text-white cursor-pointer"
           />
         )}
       </header>
@@ -58,8 +58,8 @@ const Modal = ({
       <section
         className={
           contentDimensions
-            ? `ohif-scrollbar bg-primary-dark overflow-y-auto ${contentDimensions}`
-            : 'ohif-scrollbar modal-content bg-primary-dark overflow-y-auto rounded-bl rounded-br px-[20px] pt-2 pb-[20px]'
+            ? `ohif-scrollbar bg-[#702963] overflow-y-auto ${contentDimensions}`
+            : 'ohif-scrollbar modal-content bg-[#702963] overflow-y-auto rounded-bl rounded-br px-[20px] pt-2 pb-[20px]'
         }
       >
         {children}
@@ -88,7 +88,7 @@ const Modal = ({
       {movable ? (
         <Draggable
           handle=".drag-handle"
-          defaultClassName="bg-primary-dark pointer-events-auto"
+          defaultClassName="bg-[#702963] pointer-events-auto"
         >
           <div>{modalContent}</div>
         </Draggable>

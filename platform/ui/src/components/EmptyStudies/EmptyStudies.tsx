@@ -16,7 +16,7 @@ const EmptyStudies = ({ className }) => {
         className="mb-4"
       />
       <Typography
-        className="text-primary-light"
+        className="text-[#e4b4db]"
         variant="h5"
       >
         {t('No studies available')}

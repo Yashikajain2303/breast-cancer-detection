@@ -36,7 +36,7 @@ const NotFoundStudy = () => {
         <h4>
           One or more of the requested studies are not available at this time. Return to the{' '}
           <Link
-            className="text-primary-light"
+            className="text-[#e4b4db]"
             to={'/'}
           >
             study list

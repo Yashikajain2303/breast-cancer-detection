@@ -29,6 +29,7 @@ function getFilteredCornerstoneToolState(measurementData, additionalFindingTypes
     const toolData = imageIdSpecificToolState[toolType].data;
 
     let { finding } = measurementDataI;
+    console.log(measurementDataI, finding, 'dataaa------1')
     const findingSites = [];
 
     // NOTE -> We use the CORNERSTONEJS coding schemeDesignator which we have

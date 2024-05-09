@@ -52,7 +52,7 @@
   width: 1px;
   height: 15px;
   background-color: var(--ol-foreground-color);
-  float: right;
+  float: left;
   z-index: 10;
 }
 
@@ -260,9 +260,9 @@
 }
 
 .DicomMicroscopyViewer .ol-attribution img {
-  max-height: 2em;
-  max-width: inherit;
-  vertical-align: middle;
+  /* max-height: 2em;
+  max-width: inherit; */
+  /* vertical-align: middle; */
 }
 
 .DicomMicroscopyViewer .ol-attribution button {

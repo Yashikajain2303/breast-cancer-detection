@@ -28,8 +28,8 @@ const SegmentItem = ({
 
   return (
     <div
-      className={classnames('text-aqua-pale group/row bg-primary-dark flex min-h-[28px] flex-col', {
-        'bg-primary-light border-primary-light rounded-l-[4px] border text-black': isActive,
+      className={classnames('text-white group/row bg-[#702963] flex min-h-[28px] flex-col', {
+        'bg-[#4d4c4d] border-[#e4b4db] rounded-l-[4px] border text-black': isActive,
       })}
       onClick={e => {
         e.stopPropagation();
@@ -41,8 +41,8 @@ const SegmentItem = ({
       <div className="flex min-h-[28px]">
         <div
           className={classnames('group/number grid w-[28px] place-items-center', {
-            'bg-primary-light border-primary-light rounded-l-[4px] border text-black': isActive,
-            'bg-primary-dark border-primary-dark border': !isActive,
+            'bg-[#4d4c4d] border-[#e4b4db] rounded-l-[4px] border text-black': isActive,
+            'bg-[#702963] border-primary-dark border': !isActive,
           })}
           onMouseEnter={() => setIsNumberBoxHovering(true)}
           onMouseLeave={() => setIsNumberBoxHovering(false)}
@@ -70,14 +70,14 @@ const SegmentItem = ({
           style={{ width: '3px' }}
         ></div>
         <div
-          className={classnames('text-aqua-pale relative flex w-full', {
+          className={classnames('text-white relative flex w-full', {
             'border border-l-0 border-transparent': !isActive,
           })}
           style={{
             width: 'calc(100% - 40px)',
           }}
         >
-          <div className="bg-primary-dark flex h-full flex-grow items-center">
+          <div className="bg-[#702963] flex h-full flex-grow items-center">
             <div className="pl-2 pr-1.5">
               <div
                 className={classnames('h-[8px] w-[8px] grow-0 rounded-full', {
@@ -159,7 +159,7 @@ const SegmentItem = ({
           {displayText.map(text => (
             <div
               key={text}
-              className="text-aqua-pale flex h-full items-center bg-black text-[11px]"
+              className="text-white flex h-full items-center bg-black text-[11px]"
             >
               {text}
             </div>
@@ -167,7 +167,7 @@ const SegmentItem = ({
         </div>
       ) : (
         displayText && (
-          <div className="text-aqua-pale flex h-full items-center bg-black px-2 py-[5px] pl-[45px] text-[11px]">
+          <div className="text-white flex h-full items-center bg-black px-2 py-[5px] pl-[45px] text-[11px]">
             {displayText}
           </div>
         )

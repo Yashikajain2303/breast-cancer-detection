@@ -43,7 +43,7 @@ const InputLabelWrapper = ({
             name={sortIconMap[sortDirection]}
             className={classnames(
               'mx-2 w-2',
-              sortDirection !== 'none' ? 'text-primary-light' : 'text-primary-main'
+              sortDirection !== 'none' ? 'text-[#e4b4db]' : 'text-[#e4b4db]'
             )}
           />
         )}

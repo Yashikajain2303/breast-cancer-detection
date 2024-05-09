@@ -33,9 +33,9 @@ window.config = {
       configuration: {
         name: 'aws',
         // old server
-        // wadoUriRoot: 'https://server.dcmjs.org/dcm4chee-arc/aets/DCM4CHEE/wado',
-        // qidoRoot: 'https://server.dcmjs.org/dcm4chee-arc/aets/DCM4CHEE/rs',
-        // wadoRoot: 'https://server.dcmjs.org/dcm4chee-arc/aets/DCM4CHEE/rs',
+        // wadoUriRoot: 'https://server.dcmjs.org/dcm4chee-arc/aets/DCM4CHEE1DCM4CHEE1/wado',
+        // qidoRoot: 'https://server.dcmjs.org/dcm4chee-arc/aets/DCM4CHEE1DCM4CHEE1/rs',
+        // wadoRoot: 'https://server.dcmjs.org/dcm4chee-arc/aets/DCM4CHEE1DCM4CHEE1/rs',
         // new server
         wadoUriRoot: 'https://domvja9iplmyu.cloudfront.net/dicomweb',
         qidoRoot: 'https://domvja9iplmyu.cloudfront.net/dicomweb',

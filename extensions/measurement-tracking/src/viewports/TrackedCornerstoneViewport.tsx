@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 
 function TrackedCornerstoneViewport(props) {
   const { displaySets, viewportId, servicesManager, extensionManager } = props;
-
+  console.log(displaySets, 'i am displaySet')
   const {
     measurementService,
     cornerstoneViewportService,
@@ -325,7 +325,7 @@ function _getStatusComponent(isTracked, t) {
             <div className="flex pt-1">
               <Icon
                 name="info-link"
-                className="text-primary-main w-4"
+                className="text-[#e4b4db] w-4"
               />
             </div>
             <div className="ml-4 flex">
@@ -346,7 +346,7 @@ function _getStatusComponent(isTracked, t) {
       >
         <Icon
           name={'viewport-status-tracked'}
-          className="text-aqua-pale"
+          className="text-white"
         />
       </Tooltip>
     </div>

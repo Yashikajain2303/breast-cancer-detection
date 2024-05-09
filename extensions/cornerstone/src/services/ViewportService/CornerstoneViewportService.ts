@@ -967,8 +967,8 @@ class CornerstoneViewportService extends PubSubService implements IViewportServi
       const { dimensions } = imageVolume;
       const slabThickness = Math.sqrt(
         dimensions[0] * dimensions[0] +
-          dimensions[1] * dimensions[1] +
-          dimensions[2] * dimensions[2]
+        dimensions[1] * dimensions[1] +
+        dimensions[2] * dimensions[2]
       );
 
       return slabThickness;
@@ -976,7 +976,7 @@ class CornerstoneViewportService extends PubSubService implements IViewportServi
   }
 
   _getFrameOfReferenceUID(displaySetInstanceUID) {
-    const { displaySetService } = this.servicesManager.services;
+    const { } = this.servicesManager.services;
     const displaySet = displaySetService.getDisplaySetByUID(displaySetInstanceUID);
 
     if (!displaySet) {

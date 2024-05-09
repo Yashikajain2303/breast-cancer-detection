@@ -33,7 +33,7 @@ const SegmentationItem = ({
       className={classnames(
         'group relative flex cursor-pointer items-stretch border border-transparent bg-black outline-none transition duration-300',
         {
-          'border-primary-light overflow-hidden rounded': isActive,
+          'border-[#e4b4db] overflow-hidden rounded': isActive,
         }
       )}
       onMouseEnter={onMouseEnter}
@@ -47,8 +47,8 @@ const SegmentationItem = ({
         className={classnames(
           'flex h-auto w-6 items-center justify-center text-center text-base transition duration-300',
           {
-            'bg-primary-light text-black': isActive,
-            'bg-primary-dark text-primary-light group-hover:bg-secondary-main': !isActive,
+            'bg-[#4d4c4d] text-black': isActive,
+            'bg-[#702963] text-[#e4b4db] group-hover:bg-[#1a0000]': !isActive,
           }
         )}
       >
@@ -56,8 +56,8 @@ const SegmentationItem = ({
           <Icon
             name="close"
             className={classnames('w-[10px] text-center transition duration-500 hover:opacity-80', {
-              'bg-primary-light text-black': isActive,
-              'bg-primary-dark text-primary-light group-hover:bg-secondary-main': !isActive,
+              'bg-[#4d4c4d] text-black': isActive,
+              'bg-[#702963] text-[#e4b4db] group-hover:bg-[#1a0000]': !isActive,
             })}
             onClick={e => {
               e.stopPropagation();
@@ -70,7 +70,7 @@ const SegmentationItem = ({
       </div>
       <div className="relative flex w-full flex-col p-1">
         <div className="ml-2 flex items-center">
-          <div className="text-primary-light flex flex-1 text-base">
+          <div className="text-[#e4b4db] flex flex-1 text-base">
             <div
               className="mt-1 mr-2 h-3 w-3 rounded-full"
               style={{ backgroundColor: 'red' }}
@@ -114,7 +114,7 @@ const SegmentationItem = ({
             displayText.map(line => (
               <span
                 key={line}
-                className="border-primary-light border-l pl-2 text-base text-white"
+                className="border-[#e4b4db] border-l pl-2 text-base text-white"
               >
                 {line}
               </span>

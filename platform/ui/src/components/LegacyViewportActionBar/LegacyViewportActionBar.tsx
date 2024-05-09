@@ -68,7 +68,7 @@ const LegacyViewportActionBar = ({
         <div className="ml-4 flex flex-col justify-start">
           <div className="flex">
             <span className="text-base text-white">{studyDate}</span>
-            <span className="border-primary-light text-primary-light ml-2 border-l pl-2 text-base">
+            <span className="border-[#e4b4db] text-[#e4b4db] ml-2 border-l pl-2 text-base">
               S: {currentSeries}
             </span>
           </div>
@@ -80,7 +80,7 @@ const LegacyViewportActionBar = ({
                 Can clean up by setting percentage widths + calc on parent
                 containers
              */}
-            <p className="max-w-40 text-primary-light truncate text-base">{seriesDescription}</p>
+            <p className="max-w-40 text-[#e4b4db] truncate text-base">{seriesDescription}</p>
           </div>
         </div>
       </div>

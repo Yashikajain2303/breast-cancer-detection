@@ -12,7 +12,7 @@ function LayoutPreset({ onSelection, title, icon, commandOptions, classNames }) 
     >
       <Icon
         name={icon}
-        className="group-hover:text-primary-light"
+        className="group-hover:text-[#e4b4db]"
       />
       {title && <div className="font-inter text-sm text-white">{title}</div>}
     </div>
@@ -20,7 +20,7 @@ function LayoutPreset({ onSelection, title, icon, commandOptions, classNames }) 
 }
 
 LayoutPreset.defaultProps = {
-  onSelection: () => {},
+  onSelection: () => { },
 };
 
 LayoutPreset.propTypes = {

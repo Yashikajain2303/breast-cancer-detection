@@ -44,7 +44,7 @@ const StudyListFilter = ({
                 {getDataSourceConfigurationComponent && getDataSourceConfigurationComponent()}
                 {onUploadClick && (
                   <div
-                    className="text-primary-active flex cursor-pointer items-center gap-2 self-center text-lg font-semibold"
+                    className="text-white flex cursor-pointer items-center gap-2 self-center text-lg font-semibold"
                     onClick={onUploadClick}
                   >
                     <Icon name="icon-upload"></Icon>
@@ -69,7 +69,7 @@ const StudyListFilter = ({
                 )}
                 <Typography
                   variant="h6"
-                  className="text-primary-light"
+                  className="text-[#e4b4db]"
                 >
                   {`${t('Number of studies')}: `}
                 </Typography>
@@ -86,7 +86,7 @@ const StudyListFilter = ({
         </div>
       </div>
       <div className="sticky -top-1 z-10 mx-auto border-b-4 border-black">
-        <div className="bg-primary-dark pt-3 pb-3">
+        <div className="bg-[#702963] pt-3 pb-3">
           <InputGroup
             inputMeta={filtersMeta}
             values={filterValues}
@@ -98,7 +98,7 @@ const StudyListFilter = ({
         </div>
         {numOfStudies > 100 && (
           <div className="container m-auto">
-            <div className="bg-primary-main rounded-b py-1 text-center text-base">
+            <div className="bg-[#4d4c4d] rounded-b py-1 text-center text-base">
               <p className="text-white">{t('Filter list to 100 studies or less to enable sorting')}</p>
             </div>
           </div>

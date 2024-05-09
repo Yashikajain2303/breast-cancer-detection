@@ -273,7 +273,7 @@ Cypress.Commands.add(
       }
     });
 
-    cy.get('@lengthButton').should('have.class', 'bg-primary-light');
+    cy.get('@lengthButton').should('have.class', 'bg-[#4d4c4d]');
 
     cy.get('@viewport').then($viewport => {
       const [x1, y1] = firstClick;
@@ -291,7 +291,7 @@ Cypress.Commands.add(
 //Add measurements in the viewport
 Cypress.Commands.add(
   'addAngleMeasurement',
-  (initPos = [180, 390], midPos = [300, 410], finalPos = [180, 450]) => {
+  (initPos = [0, 0], midPos = [0, 0], finalPos = [0, 0]) => {
     cy.get('[data-cy="MeasurementTools-split-button-secondary"]').click();
     cy.get('[data-cy="Angle"]').click();
 

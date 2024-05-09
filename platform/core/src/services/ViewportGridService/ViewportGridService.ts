@@ -195,10 +195,11 @@ class ViewportGridService extends PubSubService {
   ): { x: number; y: number; width: number; height: number }[] {
     return Array.from(state.viewports.entries()).map(([_, viewport]) => {
       return {
-        x: viewport.x,
-        y: viewport.y,
+        x: viewport.x + 10,
+        y: viewport.y + 10,
         width: viewport.width,
         height: viewport.height,
+
       };
     });
   }

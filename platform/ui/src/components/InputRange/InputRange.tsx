@@ -132,7 +132,7 @@ const InputRange: React.FC<InputRangeProps> = ({
                   className="absolute !m-0"
                   style={{ left: `calc(${position}%)`, bottom: '-20px' }}
                 >
-                  <span className="text-aqua-pale text-xs">{label.text}</span>
+                  <span className="text-white text-xs">{label.text}</span>
                 </div>
               );
             })}

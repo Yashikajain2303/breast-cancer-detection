@@ -130,8 +130,8 @@ export function WindowLevelActionMenu({
         activeViewportId === viewportId ? 'visible' : 'invisible group-hover:visible',
         'flex shrink-0 cursor-pointer rounded active:text-white',
         isLight
-          ? 'text-aqua-pale hover:bg-secondary-dark'
-          : 'text-primary-light hover:bg-secondary-light/60'
+          ? 'text-white hover:bg-[#702963]'
+          : 'text-[#e4b4db] hover:bg-secondary-light/60'
       )}
       menuStyle={{ maxHeight: vpHeight - 32, minWidth: 218 }}
       onVisibilityChange={() => {

@@ -3,7 +3,7 @@
 <div align="center">
   <h1>OHIF Medical Imaging Viewer</h1>
   <p><strong>The OHIF Viewer</strong> is a zero-footprint medical image viewer
-provided by the <a href="https://ohif.org/">Open Health Imaging Foundation (OHIF)</a>. It is a configurable and extensible progressive web application with out-of-the-box support for image archives which support <a href="https://www.dicomstandard.org/using/dicomweb/">DICOMweb</a>.</p>
+provided by the <a href="https://ohif.org/">Breast Cancer Detection (OHIF)</a>. It is a configurable and extensible progressive web application with out-of-the-box support for image archives which support <a href="https://www.dicomstandard.org/using/dicomweb/">DICOMweb</a>.</p>
 </div>
 
 
@@ -229,7 +229,7 @@ you'll see the following:
 
 To acknowledge the OHIF Viewer in an academic publication, please cite
 
-> _Open Health Imaging Foundation Viewer: An Extensible Open-Source Framework
+> _Breast Cancer Detection Viewer: An Extensible Open-Source Framework
 > for Building Web-Based Imaging Applications to Support Cancer Research_
 >
 > Erik Ziegler, Trinity Urban, Danny Brown, James Petts, Steve D. Pieper, Rob

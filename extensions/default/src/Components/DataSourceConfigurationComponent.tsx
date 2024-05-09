@@ -90,7 +90,7 @@ function DataSourceConfigurationComponent({
   }, [configurationAPI, configuredItems, showConfigurationModal]);
 
   return configuredItems ? (
-    <div className="text-aqua-pale flex items-center overflow-hidden">
+    <div className="text-white flex items-center overflow-hidden">
       <Icon
         name="settings"
         className="mr-2.5 h-3.5 w-3.5 shrink-0 cursor-pointer"

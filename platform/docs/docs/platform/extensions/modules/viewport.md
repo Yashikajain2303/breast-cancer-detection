@@ -70,7 +70,9 @@ function TrackedCornerstoneViewport({
       /** Div For displaying image */
       <div
         className="cornerstone-viewport-element"
-        style={{ height: '100%', width: '100%' }}
+        style={{
+          height: '100%', width: '40%',
+          float:'right' }}
         onContextMenu={e => e.preventDefault()}
         onMouseDown={e => e.preventDefault()}
         ref={elementRef}

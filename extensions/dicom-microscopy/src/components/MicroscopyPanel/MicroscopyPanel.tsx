@@ -327,7 +327,7 @@ function MicroscopyPanel(props: IMicroscopyPanelProps) {
   return (
     <>
       <div
-        className="ohif-scrollbar overflow-y-auto overflow-x-hidden"
+        className="ohif-scrollbar overflow-y-auto overflow-x-auto"
         data-cy={'measurements-panel'}
       >
         <MeasurementTable

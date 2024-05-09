@@ -26,7 +26,7 @@ export function VolumeRenderingOptions({
         serviceManager={serviceManager}
       />
       <div className="all-in-one-menu-item flex w-full justify-start">
-        <div className="text-aqua-pale text-[13px]">LIGHTING</div>
+        <div className="text-white text-[13px]">LIGHTING</div>
       </div>
       <AllInOneMenu.DividerItem />
       <div className="all-in-one-menu-item flex w-full justify-center">

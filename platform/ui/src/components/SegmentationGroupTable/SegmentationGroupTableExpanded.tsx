@@ -91,7 +91,7 @@ const SegmentationGroupTableExpanded = ({
             segmentationConfig={segmentationConfig}
           />
         )}
-        <div className="bg-primary-dark">
+        <div className="bg-[#702963]">
           <div className="select-none bg-black pt-[5px] pb-[5px]">
             {showAddSegmentation && !disableEditing && (
               <NoSegmentationRow onSegmentationAdd={onSegmentationAdd} />
@@ -185,27 +185,27 @@ SegmentationGroupTableExpanded.defaultProps = {
   showAddSegmentation: true,
   showAddSegment: true,
   showDeleteSegment: true,
-  onSegmentationAdd: () => {},
-  onSegmentationEdit: () => {},
-  onSegmentationClick: () => {},
-  onSegmentationDelete: () => {},
-  onSegmentationDownload: () => {},
-  onSemgnetationDownloadRTSS: () => {},
-  storeSegmentation: () => {},
-  onSegmentClick: () => {},
-  onSegmentAdd: () => {},
-  onSegmentDelete: () => {},
-  onSegmentEdit: () => {},
-  onToggleSegmentationVisibility: () => {},
-  onToggleSegmentVisibility: () => {},
-  onToggleSegmentLock: () => {},
-  onSegmentColorClick: () => {},
-  setFillAlpha: () => {},
-  setFillAlphaInactive: () => {},
-  setOutlineWidthActive: () => {},
-  setOutlineOpacityActive: () => {},
-  setRenderFill: () => {},
-  setRenderInactiveSegmentations: () => {},
-  setRenderOutline: () => {},
+  onSegmentationAdd: () => { },
+  onSegmentationEdit: () => { },
+  onSegmentationClick: () => { },
+  onSegmentationDelete: () => { },
+  onSegmentationDownload: () => { },
+  onSemgnetationDownloadRTSS: () => { },
+  storeSegmentation: () => { },
+  onSegmentClick: () => { },
+  onSegmentAdd: () => { },
+  onSegmentDelete: () => { },
+  onSegmentEdit: () => { },
+  onToggleSegmentationVisibility: () => { },
+  onToggleSegmentVisibility: () => { },
+  onToggleSegmentLock: () => { },
+  onSegmentColorClick: () => { },
+  setFillAlpha: () => { },
+  setFillAlphaInactive: () => { },
+  setOutlineWidthActive: () => { },
+  setOutlineOpacityActive: () => { },
+  setRenderFill: () => { },
+  setRenderInactiveSegmentations: () => { },
+  setRenderOutline: () => { },
 };
 export default SegmentationGroupTableExpanded;

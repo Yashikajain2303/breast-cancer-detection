@@ -49,6 +49,7 @@ const MEASUREMENT_SCHEMA_KEYS = [
   'source',
   'toolName',
   'metadata',
+  'breadth',
   // Todo: we shouldn't need to have all these here.
   'area', // TODO: Add concept names instead (descriptor)
   'mean',
@@ -374,6 +375,7 @@ class MeasurementService extends PubSubService {
    * @param {function} toMeasurementSchema A function to get the `data` into the same shape as the source annotationType.
    */
   addRawMeasurement(source, annotationType, data, toMeasurementSchema, dataSource = {}) {
+    console.log(source, annotationType, data, toMeasurementSchema, dataSource, 'details');
     if (!this._isValidSource(source)) {
       log.warn('Invalid source. Exiting early.');
       return;
@@ -402,7 +404,7 @@ class MeasurementService extends PubSubService {
       );
       return;
     }
-
+    log.info(`measurement`)
     if (!this._isValidMeasurement(measurement)) {
       log.warn(
         `Attempting to add or update a invalid measurement provided by '${sourceInfo}'. Exiting early.`

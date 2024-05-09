@@ -40,8 +40,8 @@ export function getToolbarModule({ commandsManager, servicesManager }) {
         return {
           disabled: false,
           className: isPrimaryActive
-            ? '!text-black !bg-primary-light hover:bg-primary-light hover-text-black hover:cursor-pointer'
-            : '!text-common-bright !bg-black hover:bg-primary-light hover:cursor-pointer hover:text-black',
+            ? '!text-black !bg-[#4d4c4d] hover:bg-[#4d4c4d] hover-text-black hover:cursor-pointer'
+            : '!text-common-bright !bg-black hover:bg-[#4d4c4d] hover:cursor-pointer hover:text-black',
           // Todo: isActive right now is used for nested buttons where the primary
           // button needs to be fully rounded (vs partial rounded) when active
           // otherwise it does not have any other use

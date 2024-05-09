@@ -347,7 +347,7 @@ function PanelStudyBrowserTracking({
           }
         });
       }}
-      onClickThumbnail={() => {}}
+      onClickThumbnail={() => { }}
       onDoubleClickThumbnail={onDoubleClickThumbnailHandler}
       activeDisplaySetInstanceUIDs={activeViewportDisplaySetInstanceUIDs}
     />
@@ -447,7 +447,7 @@ function _mapDisplaySets(
               contentProps: {
                 title: 'Delete Report',
                 body: () => (
-                  <div className="bg-primary-dark p-4 text-white">
+                  <div className="bg-[#702963] p-4 text-white">
                     <p>Are you sure you want to delete this report?</p>
                     <p className="mt-2">This action cannot be undone.</p>
                   </div>

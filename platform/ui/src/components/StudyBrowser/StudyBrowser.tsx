@@ -15,7 +15,7 @@ const getTrackedSeries = displaySets => {
       trackedSeries++;
     }
   });
-
+  console.log(trackedSeries, 'trackedSeries')
   return trackedSeries;
 };
 
@@ -39,6 +39,18 @@ const StudyBrowser = ({
     return tabData.studies.map(
       ({ studyInstanceUid, date, description, numInstances, modalities, displaySets }) => {
         const isExpanded = expandedStudyInstanceUIDs.includes(studyInstanceUid);
+        // console.log(displaySets, 'displaySetssss')
+        const order = ['R CC', 'L CC', 'R MLO', 'L MLO'];
+        // console.log(displaySets, 'displaySetssss--2')
+        const sortedData = displaySets.sort((a, b) => {
+          // console.log(a, b, 'displaySetssss--1')
+          const seriesA = a.description.toUpperCase();
+          const seriesB = b.description.toUpperCase();
+
+          return order.indexOf(seriesA) - order.indexOf(seriesB);
+        });
+
+        // console.log(sortedData, 'displaySetssss');
         return (
           <React.Fragment key={studyInstanceUid}>
             <StudyItem
@@ -46,7 +58,7 @@ const StudyBrowser = ({
               description={description}
               numInstances={numInstances}
               modalities={modalities}
-              trackedSeries={getTrackedSeries(displaySets)}
+              trackedSeries={getTrackedSeries(sortedData)}
               isActive={isExpanded}
               onClick={() => {
                 onClickStudy(studyInstanceUid);
@@ -55,7 +67,7 @@ const StudyBrowser = ({
             />
             {isExpanded && displaySets && (
               <ThumbnailList
-                thumbnails={displaySets}
+                thumbnails={sortedData}
                 activeDisplaySetInstanceUIDs={activeDisplaySetInstanceUIDs}
                 onThumbnailClick={onClickThumbnail}
                 onThumbnailDoubleClick={onDoubleClickThumbnail}
@@ -71,7 +83,7 @@ const StudyBrowser = ({
   return (
     <React.Fragment>
       <div
-        className="w-100 border-secondary-light bg-primary-dark flex h-16 flex-row items-center justify-center border-b p-4"
+        className="w-100 border-[#e4b4db] bg-[#702963] flex h-16 flex-row items-center justify-center border-b p-4"
         data-cy={'studyBrowser-panel'}
       >
         {/* TODO Revisit design of LegacyButtonGroup later - for now use LegacyButton for its children.*/}
@@ -98,7 +110,7 @@ const StudyBrowser = ({
                 className={'min-w-18 p-2 text-base text-white'}
                 size="initial"
                 color={color}
-                bgColor={isActive ? 'bg-primary-main' : 'bg-black'}
+                bgColor={isActive ? 'bg-[#4d4c4d]' : 'bg-black'}
                 onClick={() => {
                   onClickTab(name);
                 }}
@@ -168,7 +180,7 @@ StudyBrowser.propTypes = {
   ),
 };
 
-const noop = () => {};
+const noop = () => { };
 
 StudyBrowser.defaultProps = {
   onClickTab: noop,

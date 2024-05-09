@@ -209,6 +209,7 @@ import layoutCommon1x2 from './../../assets/icons/layout-common-1x2.svg';
 import layoutCommon2x2 from './../../assets/icons/layout-common-2x2.svg';
 import layoutCommon2x3 from './../../assets/icons/layout-common-2x3.svg';
 import iconToolRotate from './../../assets/icons/tool-3d-rotate.svg';
+import aiIcon from './../../assets/icons/ai_logo.svg';
 
 /** New investigational use */
 import investigationalUse from './../../assets/icons/illustration-investigational-use.svg';
@@ -300,6 +301,7 @@ const ICONS = {
   'tool-move': toolMove,
   'tool-window-level': toolWindow,
   'tool-annotate': toolAnnotate,
+  'birad-score': dicomTagBrowser,
   'tool-bidirectional': toolBidirectional,
   'tool-ellipse': toolElipse,
   'tool-circle': toolCircle,
@@ -323,6 +325,7 @@ const ICONS = {
   'tool-freehand-polygon': toolFreehandPolygon,
   'tool-polygon': toolPolygon,
   'tool-3d-rotate': iconToolRotate,
+  'ai-icon': aiIcon,
   'edit-patient': editPatient,
   'icon-mpr': iconMPR,
   'icon-next-inactive': iconNextInactive,

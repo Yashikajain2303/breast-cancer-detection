@@ -7,7 +7,7 @@ import Icon from '../Icon';
 import Tooltip from '../Tooltip';
 
 const classes = {
-  infoHeader: 'text-base text-primary-light',
+  infoHeader: 'text-base text-[#e4b4db]',
   infoText: 'text-base text-white max-w-24 truncate',
   firstRow: 'flex flex-col',
   row: 'flex flex-col ml-4',
@@ -42,7 +42,7 @@ function PatientInfo({
               <div className="flex pt-1">
                 <Icon
                   name="info-link"
-                  className="text-primary-main w-4"
+                  className="text-[#e4b4db] w-4"
                 />
               </div>
               <div className="ml-2 flex flex-col">
@@ -116,7 +116,7 @@ function PatientInfo({
         }
       >
         <Icon
-          className="hover:text-primary-light cursor-pointer text-white"
+          className="hover:text-[#e4b4db] cursor-pointer text-white"
           name="info-action"
         />
       </Tooltip>

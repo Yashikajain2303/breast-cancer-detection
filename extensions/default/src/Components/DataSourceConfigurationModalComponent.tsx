@@ -100,25 +100,25 @@ function DataSourceConfigurationModalComponent({
   const getSelectedItemBackgroundClasses = itemIndex =>
     itemIndex < selectedItems.length
       ? classNames(
-          'bg-black/[.4]',
-          itemIndex !== itemLabels.length - 1 ? 'hover:bg-transparent active:bg-secondary-dark' : ''
-        )
+        'bg-black/[.4]',
+        itemIndex !== itemLabels.length - 1 ? 'hover:bg-transparent active:bg-[#702963]' : ''
+      )
       : 'bg-transparent';
 
   const getSelectedItemBorderClasses = itemIndex =>
     itemIndex === currentSelectedItemIndex + 1
-      ? classNames('border-2', 'border-solid', 'border-primary-light')
+      ? classNames('border-2', 'border-solid', 'border-[#e4b4db]')
       : itemIndex < selectedItems.length
-      ? 'border border-solid border-primary-active hover:border-primary-light active:border-white'
-      : 'border border-dashed border-secondary-light';
+        ? 'border border-solid border-primary-active hover:border-[#e4b4db] active:border-white'
+        : 'border border-dashed border-[#e4b4db]';
 
   const getSelectedItemTextClasses = itemIndex =>
-    itemIndex <= selectedItems.length ? 'text-primary-light' : 'text-primary-active';
+    itemIndex <= selectedItems.length ? 'text-[#e4b4db]' : 'text-white';
 
   const getErrorComponent = (): ReactElement => {
     return (
       <div className="flex min-h-[1px] grow flex-col gap-4">
-        <div className="text-primary-light text-[20px]">
+        <div className="text-[#e4b4db] text-[20px]">
           {t(`Error fetching ${itemLabels[selectedItems.length]} list`)}
         </div>
         <div className="grow bg-black p-4 text-[14px]">{errorMessage}</div>
@@ -142,11 +142,11 @@ function DataSourceConfigurationModalComponent({
               )}
               onClick={
                 (showFullConfig && itemLabelIndex < currentSelectedItemIndex) ||
-                itemLabelIndex <= currentSelectedItemIndex
+                  itemLabelIndex <= currentSelectedItemIndex
                   ? () => {
-                      setShowFullConfig(false);
-                      setSelectedItems(theList => theList.slice(0, itemLabelIndex));
-                    }
+                    setShowFullConfig(false);
+                    setSelectedItems(theList => theList.slice(0, itemLabelIndex));
+                  }
                   : undefined
               }
             >

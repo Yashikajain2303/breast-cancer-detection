@@ -15,7 +15,7 @@ export default function _getStatusComponent({ isHydrated, onStatusClick }) {
     case false:
       StatusIcon = () => (
         <Icon
-          className="text-aqua-pale"
+          className="text-white"
           name="status-untracked"
         />
       );
@@ -35,7 +35,7 @@ export default function _getStatusComponent({ isHydrated, onStatusClick }) {
         </div>
         {!isHydrated && (
           <div
-            className="bg-primary-main hover:bg-primary-light ml-1 cursor-pointer rounded px-1.5 hover:text-black"
+            className="bg-[#4d4c4d] hover:bg-[#4d4c4d] ml-1 cursor-pointer rounded px-1.5 hover:text-black"
             // Using onMouseUp here because onClick is not working when the viewport is not active and is styled with pointer-events:none
             onMouseUp={onStatusClick}
           >

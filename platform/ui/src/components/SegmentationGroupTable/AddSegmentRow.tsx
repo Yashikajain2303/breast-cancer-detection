@@ -10,7 +10,7 @@ function AddSegmentRow({ onClick, onToggleSegmentationVisibility = null, segment
         className="group pt-[5px] pb-[5px]"
         onClick={onClick}
       >
-        <div className="text-primary-active group-hover:bg-secondary-dark flex items-center rounded-[4px] pr-2">
+        <div className="text-white group-hover:bg-[#702963] flex items-center rounded-[4px] pr-2">
           <div className="grid h-[28px] w-[28px] place-items-center">
             <Icon name="icon-add" />
           </div>
@@ -20,18 +20,18 @@ function AddSegmentRow({ onClick, onToggleSegmentationVisibility = null, segment
       {segmentation && (
         <div className="flex items-center">
           <div
-            className="hover:bg-secondary-dark ml-3 mr-1 grid h-[28px]  w-[28px] cursor-pointer place-items-center rounded-[4px]"
+            className="hover:bg-[#702963] ml-3 mr-1 grid h-[28px]  w-[28px] cursor-pointer place-items-center rounded-[4px]"
             onClick={() => onToggleSegmentationVisibility(segmentation.id)}
           >
             {segmentation.isVisible ? (
               <Icon
                 name="row-shown"
-                className="text-primary-active"
+                className="text-white"
               />
             ) : (
               <Icon
                 name="row-hidden"
-                className="text-primary-active"
+                className="text-white"
               />
             )}
           </div>

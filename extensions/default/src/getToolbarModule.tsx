@@ -7,8 +7,8 @@ import { ToolbarButton } from '@ohif/ui';
 const getClassName = isToggled => {
   return {
     className: isToggled
-      ? '!text-primary-active'
-      : '!text-common-bright hover:!bg-primary-dark hover:text-primary-light',
+      ? '!text-white'
+      : '!text-common-bright hover:!bg-[#702963] hover:text-[#e4b4db]',
   };
 };
 

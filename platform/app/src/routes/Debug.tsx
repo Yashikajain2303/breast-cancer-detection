@@ -7,7 +7,7 @@ function Debug() {
   return (
     <div style={{ width: '100%', height: '100%' }}>
       <div className="flex h-screen w-screen items-center justify-center ">
-        <div className="bg-secondary-dark mx-auto space-y-2 rounded-lg py-8 px-8 drop-shadow-md">
+        <div className="bg-[#702963] mx-auto space-y-2 rounded-lg py-8 px-8 drop-shadow-md">
           <img
             className="mx-auto block h-14"
             src="./ohif-logo.svg"
@@ -15,7 +15,7 @@ function Debug() {
           />
           <div className="space-y-2 pt-4 text-center">
             <div className="flex flex-col items-center justify-center">
-              <p className="text-primary-active mt-4 text-xl font-semibold">Debug Information</p>
+              <p className="text-white mt-4 text-xl font-semibold">Debug Information</p>
               <div className="mt-4 flex items-center space-x-2">
                 <p className="text-md text-white">Cross Origin Isolated (COOP/COEP)</p>
                 <Icon
@@ -33,7 +33,7 @@ function Debug() {
                       href="https://web.dev/coop-coep/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-primary-active"
+                      className="text-white"
                     >
                       Learn More
                     </a>

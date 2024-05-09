@@ -175,7 +175,7 @@ function PanelMeasurementTableTracking({ servicesManager, extensionManager }) {
   return (
     <>
       <div
-        className="invisible-scrollbar overflow-y-auto overflow-x-hidden"
+        className="invisible-scrollbar overflow-y-auto overflow-x-auto"
         ref={measurementsPanelRef}
         data-cy={'trackedMeasurements-panel'}
       >
@@ -203,10 +203,13 @@ function PanelMeasurementTableTracking({ servicesManager, extensionManager }) {
           />
         )}
       </div>
+      {/* {console.log("before onclick", !appConfig?.disableEditing)} */}
+      {console.log(additionalFindings, displayMeasurements, displayMeasurementsWithoutFindings, 'details')}
       {!appConfig?.disableEditing && (
         <div className="flex justify-center p-4">
           <ActionButtons
-            onExportClick={exportReport}
+            data={displayMeasurements}
+            onExportClick={() => { exportReport }}
             onCreateReportClick={() => {
               sendTrackedMeasurementsEvent('SAVE_REPORT', {
                 viewportId: viewportGrid.activeViewportId,

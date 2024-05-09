@@ -7,7 +7,7 @@ import { utils } from '@ohif/core';
  * Represents a mapping utility for Planar Freehand ROI measurements.
  */
 const PlanarFreehandROI = {
-  toAnnotation: measurement => {},
+  toAnnotation: measurement => { },
 
   /**
    * Maps cornerstone annotation event data to measurement service format.
@@ -128,7 +128,7 @@ function getDisplayText(annotation, displaySet) {
   if (!data.cachedStats || !data.cachedStats[`imageId:${metadata.referencedImageId}`]) {
     return [];
   }
-
+  console.log(data.cachedStats[`imageId:${metadata.referencedImageId}`], 'cached data')
   const { mean, stdDev, max, area, modalityUnit, areaUnit, perimeter } =
     data.cachedStats[`imageId:${metadata.referencedImageId}`];
 

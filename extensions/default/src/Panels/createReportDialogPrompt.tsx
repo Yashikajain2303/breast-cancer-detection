@@ -102,7 +102,7 @@ export default function CreateReportDialogPrompt(uiDialogService, { extensionMan
                   <label className="text-[14px] leading-[1.2] text-white">Data Source</label>
                   <Select
                     closeMenuOnSelect={true}
-                    className="border-primary-main  mt-2 bg-black"
+                    className="border-[#e4b4db]  mt-2 bg-black"
                     options={dataSourcesOpts}
                     placeholder={
                       dataSourcesOpts.find(option => option.value === value.dataSourceName)
@@ -121,7 +121,7 @@ export default function CreateReportDialogPrompt(uiDialogService, { extensionMan
                   autoFocus
                   label="Enter the report name"
                   labelClassName="text-white text-[14px] leading-[1.2]"
-                  className="border-primary-main bg-black"
+                  className="border-[#e4b4db] bg-black"
                   type="text"
                   value={value.label}
                   onChange={onChangeHandler}

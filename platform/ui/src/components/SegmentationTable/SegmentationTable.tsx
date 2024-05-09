@@ -47,7 +47,7 @@ const SegmentationTable = ({
 
   return (
     <div>
-      <div className="bg-secondary-main flex justify-between px-2 py-1">
+      <div className="bg-[#1a0000] flex justify-between px-2 py-1">
         <span className="text-base font-bold uppercase tracking-widest text-white">{title}</span>
         <div className="flex">
           <span className="text-base font-bold text-white">{amount}</span>
@@ -58,7 +58,7 @@ const SegmentationTable = ({
           />
         </div>
       </div>
-      <div className="ohif-scrollbar max-h-64 overflow-y-auto overflow-x-hidden">
+      <div className="ohif-scrollbar max-h-64 overflow-y-auto overflow-x-auto">
         {!!segmentations.length &&
           segmentations.map((segmentation, i) => {
             const { id, label, displayText = [] } = segmentation;
@@ -116,10 +116,10 @@ SegmentationTable.defaultProps = {
   title: '',
   segmentations: [],
   activeSegmentationId: '',
-  onClick: () => {},
-  onEdit: () => {},
-  onToggleVisibility: () => {},
-  onToggleVisibilityAll: () => {},
+  onClick: () => { },
+  onEdit: () => { },
+  onToggleVisibility: () => { },
+  onToggleVisibilityAll: () => { },
 };
 
 export default SegmentationTable;

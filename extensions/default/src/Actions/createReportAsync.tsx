@@ -25,7 +25,7 @@ async function createReportAsync({ servicesManager, getReport, reportType = 'mea
     const displaySet = displaySetService.getMostRecentDisplaySet();
 
     const displaySetInstanceUID = displaySet.displaySetInstanceUID;
-
+    console.log(displaySet.SeriesDescription, 'dataDetails-----------1')
     uiNotificationService.show({
       title: 'Create Report',
       message: `${reportType} saved successfully`,
@@ -45,7 +45,7 @@ async function createReportAsync({ servicesManager, getReport, reportType = 'mea
 }
 
 function Loading() {
-  return <div className="text-primary-active">Loading...</div>;
+  return <div className="text-white">Loading...</div>;
 }
 
 export default createReportAsync;

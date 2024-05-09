@@ -7,7 +7,7 @@ import Icon from '../Icon';
 import Tooltip from '../Tooltip';
 
 const classes = {
-  infoHeader: 'text-base text-primary-light',
+  infoHeader: 'text-base text-[#e4b4db]',
   infoText: 'text-base text-white max-w-24 truncate',
   firstRow: 'flex flex-col',
   row: 'flex flex-col ml-4',
@@ -42,7 +42,7 @@ function LegacyPatientInfo({
               <div className="flex pt-1">
                 <Icon
                   name="info-link"
-                  className="text-primary-main w-4"
+                  className="text-[#e4b4db] w-4"
                 />
               </div>
               <div className="ml-2 flex flex-col">

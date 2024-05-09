@@ -33,7 +33,7 @@ const StudyListPagination = ({ onChangePage, currentPage, perPage, onChangePerPa
           <div className="flex items-center">
             <Select
               id="rows-per-page"
-              className="border-primary-main relative mr-3 w-24"
+              className="border-[#e4b4db] relative mr-3 w-24"
               options={ranges}
               value={selectedRange}
               isMulti={false}

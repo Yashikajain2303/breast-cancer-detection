@@ -267,12 +267,11 @@ function DicomUploadProgress({
 
   const getNumCompletedAndTimeRemainingComponent = (): ReactElement => {
     return (
-      <div className="bg-primary-dark flex h-14 items-center px-1 pb-4 text-lg">
+      <div className="bg-[#702963] flex h-14 items-center px-1 pb-4 text-lg">
         {numFilesCompleted === dicomFileUploaderArr.length ? (
           <>
-            <span className={NO_WRAP_ELLIPSIS_CLASS_NAMES}>{`${dicomFileUploaderArr.length} ${
-              dicomFileUploaderArr.length > 1 ? 'files' : 'file'
-            } completed.`}</span>
+            <span className={NO_WRAP_ELLIPSIS_CLASS_NAMES}>{`${dicomFileUploaderArr.length} ${dicomFileUploaderArr.length > 1 ? 'files' : 'file'
+              } completed.`}</span>
             <Button
               disabled={false}
               className="ml-auto"
@@ -296,7 +295,7 @@ function DicomUploadProgress({
             <span
               className={classNames(
                 NO_WRAP_ELLIPSIS_CLASS_NAMES,
-                'text-primary-active hover:text-primary-light active:text-aqua-pale ml-auto cursor-pointer'
+                'text-white hover:text-[#e4b4db] active:text-white ml-auto cursor-pointer'
               )}
               onClick={cancelAllUploads}
             >
@@ -325,11 +324,11 @@ function DicomUploadProgress({
 
   const getPercentCompleteComponent = (): ReactElement => {
     return (
-      <div className="ohif-scrollbar border-secondary-light overflow-y-scroll border-b px-2">
+      <div className="ohif-scrollbar border-[#e4b4db] overflow-y-scroll border-b px-2">
         <div className="min-h-14 flex w-full items-center p-2.5">
           {numFilesCompleted === dicomFileUploaderArr.length ? (
             <>
-              <div className="text-primary-light text-xl">
+              <div className="text-[#e4b4db] text-xl">
                 {numFails > 0
                   ? `Completed with ${numFails} ${numFails > 1 ? 'errors' : 'error'}!`
                   : 'Completed!'}

@@ -169,7 +169,7 @@ export default function LegacyPanelRoiThresholdSegmentation({ servicesManager, c
   return (
     <>
       <div className="flex flex-col">
-        <div className="invisible-scrollbar overflow-y-auto overflow-x-hidden">
+        <div className="invisible-scrollbar overflow-y-auto overflow-x-auto">
           <div className="mx-4 my-4 mb-4 flex space-x-4">
             <Button
               onClick={() => {
@@ -187,7 +187,7 @@ export default function LegacyPanelRoiThresholdSegmentation({ servicesManager, c
             <Button onClick={handleROIThresholding}>Run</Button>
           </div>
           <div
-            className="bg-secondary-dark border-secondary-light mb-2 flex h-8 cursor-pointer select-none items-center justify-around border-t outline-none first:border-0"
+            className="bg-[#702963] border-[#e4b4db] mb-2 flex h-8 cursor-pointer select-none items-center justify-around border-t outline-none first:border-0"
             onClick={() => {
               setShowConfig(!showConfig);
             }}
@@ -235,7 +235,7 @@ export default function LegacyPanelRoiThresholdSegmentation({ servicesManager, c
             ) : null}
           </div>
           {tmtvValue !== null ? (
-            <div className="bg-secondary-dark mt-4 flex items-baseline justify-between px-2 py-1">
+            <div className="bg-[#702963] mt-4 flex items-baseline justify-between px-2 py-1">
               <span className="text-base font-bold uppercase tracking-widest text-white">
                 {'TMTV:'}
               </span>
@@ -261,7 +261,7 @@ export default function LegacyPanelRoiThresholdSegmentation({ servicesManager, c
           width="15px"
           height="15px"
           name={'info'}
-          className={'text-primary-active ml-4 mr-3'}
+          className={'text-white ml-4 mr-3'}
         />
         <span>{'User Guide'}</span>
       </div>

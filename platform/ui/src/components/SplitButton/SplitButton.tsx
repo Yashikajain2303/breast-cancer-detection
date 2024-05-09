@@ -22,7 +22,7 @@ const classes = {
   Button: ({ isExpanded }) =>
     classNames(
       baseClasses.Button,
-      !isExpanded && 'hover:!bg-primary-dark hover:border-primary-dark'
+      !isExpanded && 'hover:!bg-[#702963] hover:border-primary-dark'
     ),
   Interface: 'h-full flex flex-row items-center',
   Primary: ({ isExpanded, isActive }) =>
@@ -30,25 +30,25 @@ const classes = {
       baseClasses.Primary,
       isActive
         ? isExpanded
-          ? 'border-primary-dark !bg-primary-dark hover:border-primary-dark !text-primary-light'
-          : 'border-primary-light bg-primary-light border-2 rounded-md'
-        : `focus:!text-black focus:!rounded-md focus:!border-primary-light focus:!bg-primary-light ${isExpanded ? 'border-primary-dark bg-primary-dark !text-primary-light' : 'border-secondary-dark bg-secondary-dark group-hover/button:border-primary-dark group-hover/button:text-primary-light hover:!bg-primary-dark hover:border-primary-dark focus:!text-black'}`
+          ? 'border-primary-dark !bg-[#702963] hover:border-primary-dark !text-[#e4b4db]'
+          : 'border-[#e4b4db] bg-[#4d4c4d] border-2 rounded-md'
+        : `focus:!text-black focus:!rounded-md focus:!border-[#e4b4db] focus:!bg-[#4d4c4d] ${isExpanded ? 'border-primary-dark bg-[#702963] !text-[#e4b4db]' : 'border-[#702963] bg-[#702963] group-hover/button:border-primary-dark group-hover/button:text-[#e4b4db] hover:!bg-[#702963] hover:border-primary-dark focus:!text-black'}`
     ),
   Secondary: ({ isExpanded, primary }) =>
     classNames(
       baseClasses.Secondary,
       isExpanded
-        ? 'bg-primary-light !rounded-tr-md !rounded-br-md'
+        ? 'bg-[#4d4c4d] !rounded-tr-md !rounded-br-md'
         : primary.isActive
-          ? 'bg-secondary-dark'
-          : 'hover:bg-primary-dark bg-secondary-dark group-hover/button:border-primary-dark'
+          ? 'bg-[#702963]'
+          : 'hover:bg-[#702963] bg-[#702963] group-hover/button:border-primary-dark'
     ),
   SecondaryIcon: ({ isExpanded }) =>
     classNames(
       baseClasses.SecondaryIcon,
       isExpanded
         ? 'text-primary-dark'
-        : 'text-primary-active group-hover/secondary:text-primary-light'
+        : 'text-white group-hover/secondary:text-[#e4b4db]'
     ),
   Separator: ({ primary, isExpanded, isHovering }) =>
     classNames(
@@ -66,7 +66,7 @@ const DefaultListItemRenderer = props => {
         'flex h-8 w-full flex-row items-center p-3',
         'whitespace-pre text-base',
         className,
-        `${isActive ? 'hover:opacity-80' : 'hover:bg-primary-dark '}`
+        `${isActive ? 'hover:opacity-80' : 'hover:bg-[#702963] '}`
       )}
     >
       {icon && (
@@ -134,14 +134,14 @@ const SplitButton = ({
                 rounded="none"
                 className={primaryClassNames}
                 data-tool={primary.id}
-                data-cy={`${groupId}-split-button-primary`}
+                data-cy={`${groupId} -split - button - primary`}
               />
             </div>
             <div className={classes.Separator({ ...state, primary })}></div>
             <div
               className={classes.Secondary({ ...state, primary })}
               onClick={toggleExpanded}
-              data-cy={`${groupId}-split-button-secondary`}
+              data-cy={`${groupId} -split - button - secondary`}
             >
               <Tooltip
                 isDisabled={state.isExpanded || !secondary.tooltip}
@@ -158,7 +158,7 @@ const SplitButton = ({
         </div>
         <div
           className={classes.Content({ ...state })}
-          data-cy={`${groupId}-list-menu`}
+          data-cy={`${groupId} -list - menu`}
         >
           <ListMenu
             items={items}

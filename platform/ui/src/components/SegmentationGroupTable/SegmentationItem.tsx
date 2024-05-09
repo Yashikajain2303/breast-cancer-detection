@@ -37,7 +37,7 @@ function SegmentationItem({
 
   return (
     <>
-      <div className="bg-secondary-dark group relative flex items-center justify-start gap-1">
+      <div className="bg-[#702963] group relative flex items-center justify-start gap-1">
         <div
           onClick={e => {
             e.stopPropagation();
@@ -48,19 +48,19 @@ function SegmentationItem({
             id="segmentation-dropdown"
             showDropdownIcon={false}
             alignment="left"
-            itemsClassName="text-primary-active"
+            itemsClassName="text-white"
             showBorders={false}
             maxCharactersPerLine={30}
             list={[
               ...(!disableEditing
                 ? [
-                    {
-                      title: t('Rename'),
-                      onClick: () => {
-                        onSegmentationEdit(segmentation.id);
-                      },
+                  {
+                    title: t('Rename'),
+                    onClick: () => {
+                      onSegmentationEdit(segmentation.id);
                     },
-                  ]
+                  },
+                ]
                 : []),
               {
                 title: t('Delete'),
@@ -70,13 +70,13 @@ function SegmentationItem({
               },
               ...(!disableEditing
                 ? [
-                    {
-                      title: t('Export DICOM SEG'),
-                      onClick: () => {
-                        storeSegmentation(segmentation.id);
-                      },
+                  {
+                    title: t('Export DICOM SEG'),
+                    onClick: () => {
+                      storeSegmentation(segmentation.id);
                     },
-                  ]
+                  },
+                ]
                 : []),
               ...[
                 {
@@ -94,7 +94,7 @@ function SegmentationItem({
               ],
             ]}
           >
-            <div className="hover:bg-secondary-dark grid h-[28px] w-[28px]  cursor-pointer place-items-center rounded-[4px]">
+            <div className="hover:bg-[#702963] grid h-[28px] w-[28px]  cursor-pointer place-items-center rounded-[4px]">
               <Icon name="icon-more-menu"></Icon>
             </div>
           </Dropdown>
@@ -107,20 +107,20 @@ function SegmentationItem({
           className="flex h-full w-full cursor-pointer items-center justify-between pr-[8px]"
           onClick={handleHeaderClick}
         >
-          <div className="font-inter text-aqua-pale text-[13px]">{segmentation.label}</div>
+          <div className="font-inter text-white text-[13px]">{segmentation.label}</div>
           <div className="flex h-[28px] items-center justify-center gap-2">
             <Tooltip
               position="bottom-right"
               content={
                 <div className="flex flex-col">
                   <div className="text-[13px] text-white">Series:</div>
-                  <div className="text-aqua-pale text-[13px]">{segmentation.description}</div>
+                  <div className="text-white text-[13px]">{segmentation.description}</div>
                 </div>
               }
             >
               <Icon
                 name="info-action"
-                className="text-primary-active"
+                className="text-white"
               />
             </Tooltip>
             <div className={areChildrenVisible ? '' : 'mr-[4px]'}>
@@ -139,7 +139,7 @@ function SegmentationItem({
             />
           )}
           <div
-            className={classNames('ohif-scrollbar flex min-h-0 flex-col overflow-y-hidden', {
+            className={classNames('ohif-scrollbar flex min-h-0 flex-col overflow-y-auto overflow-x-auto', {
               'mt-1': disableEditing || !showAddSegment,
             })}
           >

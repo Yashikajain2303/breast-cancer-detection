@@ -36,7 +36,7 @@ const Item = ({
     >
       {icon && <div className="pr-2">{icon}</div>}
       <span>{label}</span>
-      {secondaryLabel != null && <span className="text-aqua-pale ml-[1ch]">{secondaryLabel}</span>}
+      {secondaryLabel != null && <span className="text-white ml-[1ch]">{secondaryLabel}</span>}
       {rightIcon && <div className="ml-auto">{rightIcon}</div>}
     </div>
   );

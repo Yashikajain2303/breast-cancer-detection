@@ -50,7 +50,7 @@ export class SelectTree extends Component<PropType> {
 
     return (
       <div className="max-h-80 w-80 text-base leading-7">
-        <div className="bg-primary-dark relative flex max-h-80 w-full flex-col overflow-hidden rounded-lg border-0 text-white outline-none drop-shadow-lg focus:outline-none">
+        <div className="bg-[#702963] relative flex max-h-80 w-full flex-col overflow-hidden rounded-lg border-0 text-white outline-none drop-shadow-lg focus:outline-none">
           {this.headerItem()}
 
           {this.props.items.length > 0 && (
@@ -173,9 +173,9 @@ export class SelectTree extends Component<PropType> {
 
     return (
       <div className="flex flex-col justify-between border-b-2 border-solid border-black p-4 ">
-        <div className="text-primary-active m-0 mb-5 p-2 leading-tight">
-          <span className="text-primary-light align-sub text-xl">{title}</span>
-          <div className="float-right">
+        <div className="text-white m-0 mb-5 p-2 leading-tight">
+          <span className="text-[#e4b4db] align-sub text-xl">{title}</span>
+          <div className="float-left">
             <Icon
               name="icon-close"
               className="cursor-pointer"
@@ -197,7 +197,7 @@ export class SelectTree extends Component<PropType> {
             <input
               data-cy="input-annotation"
               type="text"
-              className={`border-primary-main border-primary-main appearance-none rounded border bg-black bg-black py-2 pr-3 text-sm leading-tight shadow transition duration-300 hover:border-gray-500 focus:border-gray-500 focus:outline-none focus:outline-none ${inputLeftPadding}`}
+              className={`border-[#e4b4db] border-[#e4b4db] appearance-none rounded border bg-black bg-black py-2 pr-3 text-sm leading-tight shadow transition duration-300 hover:border-gray-500 focus:border-gray-500 focus:outline-none focus:outline-none ${inputLeftPadding}`}
               placeholder={this.props.items.length > 0 ? 'Search labels' : 'Enter label'}
               autoFocus={this.props.autoFocus}
               onChange={this.searchLocations}

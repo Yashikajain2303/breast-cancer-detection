@@ -21,10 +21,10 @@ const ExpandableToolbarButton = ({
     type: {
       primary: isActive
         ? 'text-black'
-        : 'text-common-bright hover:bg-primary-dark hover:text-primary-light',
+        : 'text-common-bright hover:bg-[#702963] hover:text-[#e4b4db]',
       secondary: isActive
         ? 'text-black'
-        : 'text-white hover:bg-secondary-dark focus:bg-secondary-dark',
+        : 'text-white hover:bg-[#702963] focus:bg-[#702963]',
     },
   };
 
@@ -69,7 +69,7 @@ const ExpandableToolbarButton = ({
   );
 };
 
-const noop = () => {};
+const noop = () => { };
 
 ExpandableToolbarButton.defaultProps = {
   id: '',

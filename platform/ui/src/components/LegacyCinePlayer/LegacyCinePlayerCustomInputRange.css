@@ -21,7 +21,7 @@
   cursor: pointer;
   animate: 0.2s;
   box-shadow: 0px 0px 0px #000000;
-  @apply bg-primary-light;
+  @apply bg-[#4d4c4d];
   border-radius: 5px;
   border: 0px solid #000000;
 }
@@ -32,14 +32,14 @@
   height: 18px;
   width: 17px;
   border-radius: 50px;
-  @apply bg-primary-light;
+  @apply bg-[#4d4c4d];
   cursor: pointer;
   -webkit-appearance: none;
   margin-top: -9px;
 }
 
 .LegacyCinePlayer input[type='range']:focus::-webkit-slider-runnable-track {
-  @apply bg-primary-light;
+  @apply bg-[#4d4c4d];
 }
 
 .LegacyCinePlayer input[type='range']::-moz-range-track {
@@ -48,7 +48,7 @@
   cursor: pointer;
   animate: 0.2s;
   box-shadow: 0px 0px 0px #000000;
-  @apply bg-primary-light;
+  @apply bg-[#4d4c4d];
   border-radius: 5px;
   border: 0px solid #000000;
 }
@@ -59,7 +59,7 @@
   height: 12px;
   width: 12px;
   border-radius: 50px;
-  @apply bg-primary-light;
+  @apply bg-[#4d4c4d];
   cursor: pointer;
 }
 
@@ -74,14 +74,14 @@
 }
 
 .LegacyCinePlayer input[type='range']::-ms-fill-lower {
-  @apply bg-primary-light;
+  @apply bg-[#4d4c4d];
   border: 0px solid #000000;
   border-radius: 10px;
   box-shadow: 0px 0px 0px #000000;
 }
 
 .LegacyCinePlayer input[type='range']::-ms-fill-upper {
-  @apply bg-primary-light;
+  @apply bg-[#4d4c4d];
   border: 0px solid #000000;
   border-radius: 10px;
   box-shadow: 0px 0px 0px #000000;
@@ -94,14 +94,14 @@
   height: 18px;
   width: 17px;
   border-radius: 50px;
-  @apply bg-primary-light;
+  @apply bg-[#4d4c4d];
   cursor: pointer;
 }
 
 .LegacyCinePlayer input[type='range']:focus::-ms-fill-lower {
-  @apply bg-primary-light;
+  @apply bg-[#4d4c4d];
 }
 
 .LegacyCinePlayer input[type='range']:focus::-ms-fill-upper {
-  @apply bg-primary-light;
+  @apply bg-[#4d4c4d];
 }

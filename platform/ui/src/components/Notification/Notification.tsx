@@ -40,7 +40,7 @@ const Notification = ({ id, type, message, actions, onSubmit, onOutsideClick }) 
     },
     info: {
       icon: 'notifications-info',
-      color: 'text-primary-main',
+      color: 'text-[#e4b4db]',
     },
     success: {
       icon: 'info',
@@ -62,7 +62,7 @@ const Notification = ({ id, type, message, actions, onSubmit, onOutsideClick }) 
   return (
     <div
       ref={notificationRef}
-      className="border-customblue-10 bg-customblue-400 mx-2 mt-2 flex flex-col rounded-md border-2 p-2"
+      className="border-[#702963] bg-[#4d4c4d] mx-2 mt-2 flex flex-col rounded-md border-2 p-2"
       data-cy={id}
     >
       <div className="flex grow items-center">
@@ -95,7 +95,7 @@ const Notification = ({ id, type, message, actions, onSubmit, onOutsideClick }) 
 
 Notification.defaultProps = {
   type: 'info',
-  onOutsideClick: () => {},
+  onOutsideClick: () => { },
 };
 
 Notification.propTypes = {

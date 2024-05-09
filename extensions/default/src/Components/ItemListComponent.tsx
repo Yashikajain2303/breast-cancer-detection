@@ -25,7 +25,7 @@ function ItemListComponent({
   return (
     <div className="flex min-h-[1px] grow flex-col gap-4">
       <div className="flex items-center justify-between">
-        <div className="text-primary-light text-[20px]">{t(`Select ${itemLabel}`)}</div>
+        <div className="text-[#e4b4db] text-[20px]">{t(`Select ${itemLabel}`)}</div>
         <InputFilterText
           className="max-w-[40%] grow"
           value={filterValue}
@@ -37,7 +37,7 @@ function ItemListComponent({
         {itemList == null ? (
           <LoadingIndicatorProgress className={'h-full w-full'} />
         ) : itemList.length === 0 ? (
-          <div className="text-primary-light flex h-full flex-col items-center justify-center px-6 py-4">
+          <div className="text-[#e4b4db] flex h-full flex-col items-center justify-center px-6 py-4">
             <Icon
               name="magnifier"
               className="mb-4"
@@ -46,7 +46,7 @@ function ItemListComponent({
           </div>
         ) : (
           <>
-            <div className="bg-secondary-dark px-3 py-1.5 text-white">{t(itemLabel)}</div>
+            <div className="bg-[#702963] px-3 py-1.5 text-white">{t(itemLabel)}</div>
             <div className="ohif-scrollbar overflow-auto">
               {itemList
                 .filter(
@@ -55,11 +55,11 @@ function ItemListComponent({
                 )
                 .map(item => {
                   const border =
-                    'rounded border-transparent border-b-secondary-light border-[1px] hover:border-primary-light';
+                    'rounded border-transparent border-b-secondary-light border-[1px] hover:border-[#e4b4db]';
                   return (
                     <div
                       className={classNames(
-                        'hover:text-primary-light hover:bg-primary-dark group mx-2 flex items-center justify-between px-6 py-2',
+                        'hover:text-[#e4b4db] hover:bg-[#702963] group mx-2 flex items-center justify-between px-6 py-2',
                         border
                       )}
                       key={item.id}

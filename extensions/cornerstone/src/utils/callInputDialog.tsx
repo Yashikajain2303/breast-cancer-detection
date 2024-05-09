@@ -66,7 +66,7 @@ function callInputDialog(
           return (
             <Input
               autoFocus
-              className="border-primary-main bg-black"
+              className="border-[#e4b4db] bg-black"
               type="text"
               id="annotation"
               label={inputLabel}

@@ -75,7 +75,7 @@ const HotkeysPreferences = ({
                         <Typography
                           variant="subtitle"
                           className={classNames(
-                            'text-primary-light w-full pr-6 text-right',
+                            'text-[#e4b4db] w-full pr-6 text-right',
                             !isFirst && 'hidden'
                           )}
                         >
@@ -95,7 +95,7 @@ const HotkeysPreferences = ({
                         <Typography
                           variant="subtitle"
                           className={classNames(
-                            'text-primary-light pr-6 pl-0 text-left',
+                            'text-[#e4b4db] pr-6 pl-0 text-left',
                             !isFirst && 'hidden'
                           )}
                         >
@@ -127,7 +127,7 @@ const HotkeysPreferences = ({
   );
 };
 
-const noop = () => {};
+const noop = () => { };
 
 HotkeysPreferences.propTypes = {
   onChange: PropTypes.func,
