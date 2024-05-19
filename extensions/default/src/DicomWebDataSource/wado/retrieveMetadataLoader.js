@@ -44,11 +44,13 @@ export default class RetrieveMetadataLoader {
     let result;
     for (const loader of loaders) {
       result = await loader();
-      if (result && result.length) {
+      console.log("resss", result);
+      if (result && result?.length) {
         break; // closes iterator in case data is retrieved successfully
       }
     }
 
+    // @ts-ignore
     if (loaders.next().done && !result) {
       throw new Error('RetrieveMetadataLoader failed');
     }
@@ -57,8 +59,8 @@ export default class RetrieveMetadataLoader {
   }
 
   // Methods to be overwrite
-  async configLoad() {}
-  async preLoad() {}
-  async load(preLoadData) {}
-  async posLoad(loadData) {}
+  async configLoad() { }
+  async preLoad() { }
+  async load(preLoadData) { }
+  async posLoad(loadData) { }
 }

@@ -33,11 +33,11 @@ const setHeaders = (res, path) => {
     res.setHeader('Content-Encoding', 'br');
   }
   if (path.indexOf('.pdf') !== -1) {
-    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Type', '*/*');
   } else if (path.indexOf('frames') !== -1) {
-    res.setHeader('Content-Type', 'multipart/related');
+    res.setHeader('Content-Type', '*/*');
   } else {
-    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Content-Type', '*/*');
   }
 };
 

@@ -73,7 +73,7 @@ function modeFactory({ modeConfiguration }) {
     onModeEnter: function ({ servicesManager, extensionManager, commandsManager }) {
       const { measurementService, toolbarService, toolGroupService, customizationService } =
         servicesManager.services;
-
+      console.log(measurementService, 'i am getting a call')
       measurementService.clearMeasurements();
 
       // customizationService.addModeCustomizations([

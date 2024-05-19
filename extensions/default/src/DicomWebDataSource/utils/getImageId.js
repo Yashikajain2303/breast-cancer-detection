@@ -8,7 +8,7 @@ function buildInstanceWadoUrl(config, instance) {
   params.push(`studyUID=${StudyInstanceUID}`);
   params.push(`seriesUID=${SeriesInstanceUID}`);
   params.push(`objectUID=${SOPInstanceUID}`);
-  params.push('contentType=application/dicom');
+  // params.push('contentType=application/dicom');
   params.push('transferSyntax=*');
 
   const paramString = params.join('&');

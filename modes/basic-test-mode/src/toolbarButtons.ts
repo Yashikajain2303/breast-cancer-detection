@@ -5,10 +5,13 @@ import {
   WindowLevelMenuItem,
 } from '@ohif/ui';
 import { defaults, ToolbarService } from '@ohif/core';
+import { StudyBrowser, useImageViewer, useViewportGrid } from '@ohif/ui';
 import type { Button } from '@ohif/core/types';
 
 const { windowLevelPresets } = defaults;
 const { createButton } = ToolbarService;
+const { StudyInstanceUIDs } = useImageViewer();
+console.log(StudyInstanceUIDs, 'i am instance id')
 
 /**
  *

@@ -8,6 +8,7 @@ services:
   # Exposed server that's handling incoming web requests
   # Underlying image: openresty/openresty:alpine-fat
   ohif_viewer:
+    platform: linux/amd64
     build:
       # Project root
       context: ./../../../../
@@ -34,7 +35,8 @@ services:
   # TODO: Update to use Postgres
   # https://github.com/mrts/docker-postgresql-multiple-databases
   orthanc:
-    image: jodogne/orthanc-plugins
+    platform: linux/amd64
+    image: jodogne/orthanc-plugins:1.11.0
     hostname: orthanc
     container_name: orthanc
     volumes:

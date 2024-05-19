@@ -61,6 +61,7 @@ export default function initWADOImageLoader(
         sourceConfig.requestTransferSyntaxUID,
         sourceConfig.omitQuotationForMultipartRequest
       );
+      console.log(acceptHeader, 'acceptHeader')
 
       const xhrRequestHeaders = {
         Accept: acceptHeader,

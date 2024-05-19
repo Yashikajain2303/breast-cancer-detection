@@ -413,7 +413,7 @@ const OHIFCornerstoneViewport = React.memo(props => {
           //   float: 'right'
           // }}
           style={{
-            height: '100%',
+            height: displaySets[0].SeriesDescription === 'L CC' || displaySets[0].SeriesDescription === 'L MLO' ? '105%' : '95%',
             width: displaySets[0].SeriesDescription === 'L CC' || displaySets[0].SeriesDescription === 'L MLO' ? '160%' : '44%',
             float: displaySets[0].SeriesDescription === 'L CC' || displaySets[0].SeriesDescription === 'L MLO' ? 'right' : 'right'
           }}

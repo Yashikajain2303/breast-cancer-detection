@@ -8,6 +8,7 @@ async function searchRegistry(keyword) {
 
   try {
     const response = await axios.get(url);
+    console.log(response, 'response')
     const { objects } = response.data;
     return objects;
   } catch (error) {
