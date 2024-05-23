@@ -138,7 +138,7 @@ function CustomizableViewportOverlay({
         }
 
         const imageData = viewport.getImageData();
-
+        console.log(imageData, 'imageData')
         if (!imageData) {
           return;
         }
@@ -149,6 +149,7 @@ function CustomizableViewportOverlay({
         }
 
         const { spacing } = imageData;
+        console.log(spacing, 'spacing')
         // convert parallel scale to scale
         const scale = (element.clientHeight * spacing[0] * 0.5) / camera.parallelScale;
         setScale(scale);
@@ -182,6 +183,11 @@ function CustomizableViewportOverlay({
         scale,
         instanceNumber,
       };
+
+      console.log(element, 'iam------element----------1')
+      console.log(viewportData, 'iam------viewportData----------1')
+      console.log(imageSliceData, 'iam------imageSliceData----------1')
+
 
       if (!item) {
         return null;
@@ -223,9 +229,9 @@ function CustomizableViewportOverlay({
             <div key={`${keyPrefix}_${index}`}>
               {item?.condition
                 ? item.condition({
-                    instance: instances ? instances[item?.instanceIndex] : null,
-                    formatters: { formatDate: formatDICOMDate },
-                  })
+                  instance: instances ? instances[item?.instanceIndex] : null,
+                  formatters: { formatDate: formatDICOMDate },
+                })
                   ? _renderOverlayItem(item)
                   : null
                 : _renderOverlayItem(item)}
@@ -259,19 +265,19 @@ function CustomizableViewportOverlay({
 
   const topLeftItems = instances
     ? instances
-        .map((instance, index) => {
-          return [
-            {
-              ...studyDateItem,
-              instanceIndex: index,
-            },
-            {
-              ...seriesDescriptionItem,
-              instanceIndex: index,
-            },
-          ];
-        })
-        .flat()
+      .map((instance, index) => {
+        return [
+          {
+            ...studyDateItem,
+            instanceIndex: index,
+          },
+          {
+            ...seriesDescriptionItem,
+            instanceIndex: index,
+          },
+        ];
+      })
+      .flat()
     : [];
 
   return (

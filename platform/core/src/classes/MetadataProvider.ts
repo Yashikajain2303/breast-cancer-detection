@@ -7,6 +7,11 @@ import fetchPaletteColorLookupTableData from '../utils/metadataProvider/fetchPal
 import toNumber from '../utils/toNumber';
 import combineFrameInstance from '../utils/combineFrameInstance';
 
+
+export type OHIFViewportActionCornersProps = {
+  viewportId: string;
+};
+
 class MetadataProvider {
   constructor() {
     // Define the main "metadataLookup" private property as an immutable property.
@@ -127,6 +132,7 @@ class MetadataProvider {
 
   _getCornerstoneDICOMImageLoaderTag(wadoImageLoaderTag, instance) {
     let metadata = WADO_IMAGE_LOADER[wadoImageLoaderTag]?.(instance);
+    console.log(metadata, 'i am metadata')
     if (metadata) {
       return metadata;
     }
@@ -513,7 +519,7 @@ const WADO_IMAGE_LOADER = {
       rowCosines = ImageOrientationPatient.slice(0, 3);
       columnCosines = ImageOrientationPatient.slice(3, 6);
     }
-
+    console.log(instance, 'instance data')
     return {
       frameOfReferenceUID: instance.FrameOfReferenceUID,
       rows: toNumber(instance.Rows),

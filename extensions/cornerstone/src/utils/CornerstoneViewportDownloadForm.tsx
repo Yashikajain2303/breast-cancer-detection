@@ -217,7 +217,7 @@ const CornerstoneViewportDownloadForm = ({
       link.click();
     });
   };
-
+  console.log(loadImage, downloadBlob, 'blob data')
   return (
     <ViewportDownloadForm
       onClose={onClose}

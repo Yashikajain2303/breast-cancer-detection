@@ -9,7 +9,7 @@ function ViewportGrid({ numRows, numCols, layoutType, children }) {
   modifiedChildren[1].sort((a, b) => {
     const seriesA = a?.props?.children?.props?.children?.props?.displaySets[0]?.SeriesDescription.toUpperCase();
     const seriesB = b?.props?.children?.props?.children?.props?.displaySets[0]?.SeriesDescription.toUpperCase();
-    console.log(seriesA, seriesB, 'displaySetssss--1')
+    console.log(a?.props?.children?.props?.children?.props?.displaySets[0], b?.props?.children?.props?.children?.props?.displaySets[0], 'displaySetssss--1')
     return order.indexOf(seriesA) - order.indexOf(seriesB);
   });
   if (numCols === 2 && numRows === 2) {
