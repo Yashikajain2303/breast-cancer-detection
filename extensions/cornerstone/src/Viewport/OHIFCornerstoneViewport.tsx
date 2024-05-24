@@ -398,7 +398,47 @@ const OHIFCornerstoneViewport = React.memo(props => {
       indexPriority: -100,
     });
   }, [displaySets, viewportId, viewportActionCornersService, servicesManager, commandsManager]);
-  console.log(displaySets[0].SeriesDescription, 'displaysets inside')
+
+  const viewport = cornerstoneViewportService.getCornerstoneViewport(viewportId);
+  const instance = displaySets[0]?.instance;
+  const [result, setResult] = useState('');
+  const imageData = viewport?.getImageData();
+  console.log(imageData, 'imageData i am')
+  const { WindowCenter, WindowWidth, VOILUTFunction } = instance;
+  if (WindowCenter === undefined || WindowWidth === undefined) {
+    return;
+  }
+
+
+  const windowCenter = Array.isArray(WindowCenter) ? WindowCenter : WindowCenter;
+  const windowWidth = Array.isArray(WindowWidth) ? WindowWidth : WindowWidth;
+
+  const handleConvert = async () => {
+    // const pixelArray = [/* Your pixel array data here */];
+    // const windowCenter = 2048;
+    // const windowWidth = 4096;
+    // console.log(scalerData, 'imagedata scalerdata')
+    try {
+      const response = await axios.post('http://localhost:8000/convert', {
+        pixel_array: imageData?.scalerData,
+        window_center: windowCenter,
+        window_width: windowWidth
+      });
+      console.log(response, {
+        pixel_array: imageData?.scalarData,
+        window_center: windowCenter,
+        window_width: windowWidth
+      }, 'response dataaaa')
+      setResult(response.data.message);
+    } catch (error) {
+      setResult('Error converting DICOM to PNG');
+    }
+  };
+  useEffect(() => {
+    console.log('i got a call-----------')
+    handleConvert();
+  }, [])
+  console.log(result, 'result i got a call-----------')
   return (
     <React.Fragment>
       <div className="viewport-wrapper">

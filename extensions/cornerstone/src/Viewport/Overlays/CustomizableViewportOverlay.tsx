@@ -6,6 +6,7 @@ import { ImageSliceData } from '@cornerstonejs/core/dist/esm/types';
 import { ViewportOverlay } from '@ohif/ui';
 import { ServicesManager } from '@ohif/core';
 import { InstanceMetadata } from '@ohif/core/src/types';
+import axios from 'axios';
 import { formatPN, formatDICOMDate, formatDICOMTime, formatNumberPrecision } from './utils';
 import { StackViewportData, VolumeViewportData } from '../../types/CornerstoneCacheService';
 
@@ -65,6 +66,7 @@ function CustomizableViewportOverlay({
     servicesManager.services;
   const [voi, setVOI] = useState({ windowCenter: null, windowWidth: null });
   const [scale, setScale] = useState(1);
+  const [imageInfo, setImageInfo] = useState<any>()
   const { imageIndex } = imageSliceData;
 
   const topLeftCustomization = customizationService.getModeCustomization(
@@ -136,12 +138,8 @@ function CustomizableViewportOverlay({
         if (!viewport) {
           return;
         }
-
-        const imageData = viewport.getImageData();
-        console.log(imageData, 'imageData')
-        if (!imageData) {
-          return;
-        }
+        const imageData = viewport?.getImageData();
+        setImageInfo(imageData);
 
         if (camera.scale) {
           setScale(camera.scale);
@@ -184,10 +182,32 @@ function CustomizableViewportOverlay({
         instanceNumber,
       };
 
-      console.log(element, 'iam------element----------1')
-      console.log(viewportData, 'iam------viewportData----------1')
-      console.log(imageSliceData, 'iam------imageSliceData----------1')
 
+      console.log(voi, 'window data')
+
+      const handleConvert = async () => {
+        if (voi?.windowCenter && voi?.windowWidth) {
+          try {
+            const response = await axios.post('http://localhost:8000/convert', {
+              pixel_array: imageInfo?.scalarData,
+              window_center: voi?.windowCenter,
+              window_width: voi?.windowWidth
+            });
+            console.log(response, {
+              pixel_array: imageInfo?.scalarData,
+              window_center: voi?.windowCenter,
+              window_width: voi?.windowWidth
+            }, 'response dataaaa')
+            // setResult(response.data.message);
+          } catch (error) {
+            // setResult('Error converting DICOM to PNG');
+          }
+        };
+      }
+      setTimeout(() => {
+        handleConvert();
+      }, 50000);
+      // console.log(result, 'result i got a call-----------')
 
       if (!item) {
         return null;

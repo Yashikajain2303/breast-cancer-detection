@@ -132,7 +132,7 @@ class MetadataProvider {
 
   _getCornerstoneDICOMImageLoaderTag(wadoImageLoaderTag, instance) {
     let metadata = WADO_IMAGE_LOADER[wadoImageLoaderTag]?.(instance);
-    console.log(metadata, 'i am metadata')
+    console.log(instance.PixelData, 'i am metadata')
     if (metadata) {
       return metadata;
     }
