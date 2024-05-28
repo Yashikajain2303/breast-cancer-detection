@@ -161,6 +161,30 @@ function CustomizableViewportOverlay({
     };
   }, [viewportId, viewportData, cornerstoneViewportService, element]);
 
+  useEffect(() => {
+    const handleConvert = async () => {
+      if (voi?.windowCenter && voi?.windowWidth) {
+        try {
+          const response = await axios.post('http://localhost:8000/convert', {
+            pixel_array: imageInfo?.scalarData,
+            window_center: voi?.windowCenter,
+            window_width: voi?.windowWidth
+          });
+          console.log(response, {
+            pixel_array: imageInfo?.scalarData,
+            window_center: voi?.windowCenter,
+            window_width: voi?.windowWidth
+          }, 'response dataaaa')
+          // setResult(response.data.message);
+        } catch (error) {
+          // setResult('Error converting DICOM to PNG');
+        }
+      };
+    }
+    handleConvert();
+
+  }, [viewportId, viewportData, cornerstoneViewportService, element]);
+
   const _renderOverlayItem = useCallback(
     item => {
       const overlayItemProps = {
@@ -185,28 +209,6 @@ function CustomizableViewportOverlay({
 
       console.log(voi, 'window data')
 
-      const handleConvert = async () => {
-        if (voi?.windowCenter && voi?.windowWidth) {
-          try {
-            const response = await axios.post('http://localhost:8000/convert', {
-              pixel_array: imageInfo?.scalarData,
-              window_center: voi?.windowCenter,
-              window_width: voi?.windowWidth
-            });
-            console.log(response, {
-              pixel_array: imageInfo?.scalarData,
-              window_center: voi?.windowCenter,
-              window_width: voi?.windowWidth
-            }, 'response dataaaa')
-            // setResult(response.data.message);
-          } catch (error) {
-            // setResult('Error converting DICOM to PNG');
-          }
-        };
-      }
-      setTimeout(() => {
-        handleConvert();
-      }, 50000);
       // console.log(result, 'result i got a call-----------')
 
       if (!item) {

@@ -10,6 +10,7 @@ junit.xml
 coverage/
 .docz/
 .yarn/
+/dicom_converter.log
 
 # YALC (for Erik)
 .yalc

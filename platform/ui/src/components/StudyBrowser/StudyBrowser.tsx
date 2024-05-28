@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
@@ -7,6 +7,7 @@ import LegacyButtonGroup from '../LegacyButtonGroup';
 import LegacyButton from '../LegacyButton';
 import ThumbnailList from '../ThumbnailList';
 import { StringNumber } from '../../types';
+import axios from 'axios'
 
 const getTrackedSeries = displaySets => {
   let trackedSeries = 0;
@@ -33,6 +34,7 @@ const StudyBrowser = ({
 }) => {
   const { t } = useTranslation('StudyBrowser');
   const { customizationService } = servicesManager?.services || {};
+  const [hasConverted, setHasConverted] = useState(false);
 
   const getTabContent = () => {
     const tabData = tabs.find(tab => tab.name === activeTabName);
@@ -41,6 +43,7 @@ const StudyBrowser = ({
         const isExpanded = expandedStudyInstanceUIDs.includes(studyInstanceUid);
         // console.log(displaySets, 'displaySetssss')
         const order = ['R CC', 'L CC', 'R MLO', 'L MLO'];
+        console.log(displaySets, 'displaySets')
         // console.log(displaySets, 'displaySetssss--2')
         const sortedData = displaySets.sort((a, b) => {
           // console.log(a, b, 'displaySetssss--1')
@@ -49,6 +52,24 @@ const StudyBrowser = ({
 
           return order.indexOf(seriesA) - order.indexOf(seriesB);
         });
+
+
+        const handleConvert = async () => {
+          // const pixelArray = [/* Your pixel array data here */];
+          // const windowCenter = 2048;
+          // const windowWidth = 4096;
+          // console.log(scalerData, 'imagedata scalerdata')
+
+          const response = await axios.post('http://localhost:8000/convert', {
+            displaySets: displaySets
+          });
+        }
+
+        if (!hasConverted && displaySets?.length) {
+          handleConvert();
+          setHasConverted(true);
+        }
+
 
         // console.log(sortedData, 'displaySetssss');
         return (

@@ -201,6 +201,11 @@ const OHIFCornerstoneViewport = React.memo(props => {
     [viewportId, onElementEnabled, toolGroupService]
   );
 
+  // useEffect(() => {
+  //   console.log('i got a call-----------')
+  //   handleConvert();
+  // }, [])
+
   // disable the element upon unmounting
   useEffect(() => {
     cornerstoneViewportService.enableViewport(viewportId, elementRef.current);
@@ -398,6 +403,9 @@ const OHIFCornerstoneViewport = React.memo(props => {
       indexPriority: -100,
     });
   }, [displaySets, viewportId, viewportActionCornersService, servicesManager, commandsManager]);
+  // useEffect(() => {
+  //   handleConvert()
+  // }, [])
 
   const viewport = cornerstoneViewportService.getCornerstoneViewport(viewportId);
   const instance = displaySets[0]?.instance;
@@ -434,10 +442,7 @@ const OHIFCornerstoneViewport = React.memo(props => {
       setResult('Error converting DICOM to PNG');
     }
   };
-  useEffect(() => {
-    console.log('i got a call-----------')
-    handleConvert();
-  }, [])
+
   console.log(result, 'result i got a call-----------')
   return (
     <React.Fragment>
