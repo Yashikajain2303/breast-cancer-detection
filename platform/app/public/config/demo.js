@@ -22,7 +22,8 @@ window.config = {
         imageRendering: 'wadors',
         enableStudyLazyLoad: true,
         bulkDataURI: {
-          enabled: false,
+          enabled: true,
+          relativeResolution: 'series',
         },
         omitQuotationForMultipartRequest: true,
       },

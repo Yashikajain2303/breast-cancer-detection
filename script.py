@@ -10,7 +10,6 @@ cors = CORS(app)
 def convert():
     try:
         data = request.get_json()
-        print(f"Received data: {data}")
         display_sets = data['displaySets']
 
         result = convert_dicom_to_png(display_sets)

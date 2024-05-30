@@ -55,7 +55,7 @@ window.config = {
         // are in the series level or study level (some servers like series some study)
         bulkDataURI: {
           enabled: true,
-          relativeResolution: 'studies',
+          relativeResolution: 'series',
         },
         omitQuotationForMultipartRequest: true,
       },

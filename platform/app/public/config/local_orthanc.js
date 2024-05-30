@@ -35,6 +35,7 @@ window.config = {
         omitQuotationForMultipartRequest: true,
         bulkDataURI: {
           enabled: true,
+          relativeResolution: 'series',
         },
       },
     },

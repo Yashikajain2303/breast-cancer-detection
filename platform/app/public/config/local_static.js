@@ -34,7 +34,7 @@ window.config = {
         omitQuotationForMultipartRequest: true,
         bulkDataURI: {
           enabled: true,
-          relativeResolution: 'studies',
+          relativeResolution: 'series',
         },
       },
     },
@@ -58,7 +58,7 @@ window.config = {
         singlepart: 'video',
         bulkDataURI: {
           enabled: true,
-          relativeResolution: 'studies',
+          relativeResolution: 'series',
         },
       },
     },
@@ -82,7 +82,7 @@ window.config = {
         singlepart: 'bulkdata,video,pdf',
         bulkDataURI: {
           enabled: true,
-          relativeResolution: 'studies',
+          relativeResolution: 'series',
         },
       },
     },
@@ -105,7 +105,7 @@ window.config = {
         singlepart: 'bulkdata,video,pdf',
         bulkDataURI: {
           enabled: true,
-          relativeResolution: 'studies',
+          relativeResolution: 'series',
         },
       },
     },
@@ -128,7 +128,7 @@ window.config = {
         staticWado: true,
         bulkDataURI: {
           enabled: true,
-          relativeResolution: 'studies',
+          relativeResolution: 'series',
         },
       },
     },
