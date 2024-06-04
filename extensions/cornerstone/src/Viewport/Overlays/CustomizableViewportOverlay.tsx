@@ -147,7 +147,6 @@ function CustomizableViewportOverlay({
         }
 
         const { spacing } = imageData;
-        console.log(spacing, 'spacing')
         // convert parallel scale to scale
         const scale = (element.clientHeight * spacing[0] * 0.5) / camera.parallelScale;
         setScale(scale);
@@ -170,11 +169,7 @@ function CustomizableViewportOverlay({
             window_center: voi?.windowCenter,
             window_width: voi?.windowWidth
           });
-          console.log(response, {
-            pixel_array: imageInfo?.scalarData,
-            window_center: voi?.windowCenter,
-            window_width: voi?.windowWidth
-          }, 'response dataaaa')
+
           // setResult(response.data.message);
         } catch (error) {
           // setResult('Error converting DICOM to PNG');
@@ -205,9 +200,6 @@ function CustomizableViewportOverlay({
         scale,
         instanceNumber,
       };
-
-
-      console.log(voi, 'window data')
 
       // console.log(result, 'result i got a call-----------')
 

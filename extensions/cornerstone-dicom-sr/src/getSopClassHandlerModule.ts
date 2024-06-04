@@ -154,7 +154,6 @@ async function _load(displaySet, servicesManager, extensionManager) {
   const { displaySetService, measurementService } = servicesManager.services;
   const dataSources = extensionManager.getDataSources();
   const dataSource = dataSources[0];
-
   const { ContentSequence } = displaySet.instance;
 
   async function retrieveBulkData(obj, parentObj = null, key = null) {

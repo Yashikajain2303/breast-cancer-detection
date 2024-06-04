@@ -26,7 +26,6 @@ const CustomRectangleTool = () => {
           const rectangleData = calculateRectangle(startCoords, endCoords);
           setStartCoords(null);
           setCurrentCoords(null);
-          console.log('Rectangle:', rectangleData);
         }
       };
 

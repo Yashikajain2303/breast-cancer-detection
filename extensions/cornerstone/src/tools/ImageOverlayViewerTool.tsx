@@ -46,7 +46,7 @@ class ImageOverlayViewerTool extends AnnotationDisplayTool {
     super(toolProps, defaultToolProps);
   }
 
-  onSetToolDisabled = (): void => {};
+  onSetToolDisabled = (): void => { };
 
   protected getReferencedImageId(viewport: IStackViewport | IVolumeViewport): string {
     if (viewport instanceof VolumeViewport) {
@@ -115,7 +115,6 @@ class ImageOverlayViewerTool extends AnnotationDisplayTool {
     const overlayTopLeftOnCanvas = viewport.worldToCanvas(overlayTopLeftWorldPos);
     const overlayBottomRightWorldPos = utilities.imageToWorldCoords(imageId, [width, height]);
     const overlayBottomRightOnCanvas = viewport.worldToCanvas(overlayBottomRightWorldPos);
-
     // add image to the annotations svg layer
     const svgns = 'http://www.w3.org/2000/svg';
     const svgNodeHash = `image-overlay-${_id}`;

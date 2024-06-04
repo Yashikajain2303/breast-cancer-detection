@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 
 function TrackedCornerstoneViewport(props) {
   const { displaySets, viewportId, servicesManager, extensionManager } = props;
-  console.log(displaySets, 'i am displaySet')
+  // console.log(displaySets, 'i am displaySet')
   const {
     measurementService,
     cornerstoneViewportService,

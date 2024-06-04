@@ -375,7 +375,6 @@ const OHIFCornerstoneViewport = React.memo(props => {
       unsubscribeFromJumpToMeasurementEvents();
     };
   }, [displaySets, elementRef, viewportId]);
-  console.log(displaySets, 'displaySets-------------------------3')
   // Set up the window level action menu in the viewport action corners.
   useEffect(() => {
     // Doing an === check here because the default config value when not set is true
@@ -394,7 +393,6 @@ const OHIFCornerstoneViewport = React.memo(props => {
       verticalDirection: AllInOneMenu.VerticalDirection.TopToBottom,
       horizontalDirection: AllInOneMenu.HorizontalDirection.RightToLeft,
     });
-    console.log(elementRef.current, 'elementRef');
     viewportActionCornersService.setComponent({
       viewportId,
       id: 'windowLevelActionMenu',
@@ -411,7 +409,6 @@ const OHIFCornerstoneViewport = React.memo(props => {
   const instance = displaySets[0]?.instance;
   const [result, setResult] = useState('');
   const imageData = viewport?.getImageData();
-  console.log(imageData, 'imageData i am')
   const { WindowCenter, WindowWidth, VOILUTFunction } = instance;
   if (WindowCenter === undefined || WindowWidth === undefined) {
     return;
@@ -432,18 +429,13 @@ const OHIFCornerstoneViewport = React.memo(props => {
         window_center: windowCenter,
         window_width: windowWidth
       });
-      console.log(response, {
-        pixel_array: imageData?.scalarData,
-        window_center: windowCenter,
-        window_width: windowWidth
-      }, 'response dataaaa')
+
       setResult(response.data.message);
     } catch (error) {
       setResult('Error converting DICOM to PNG');
     }
   };
 
-  console.log(result, 'result i got a call-----------')
   return (
     <React.Fragment>
       <div className="viewport-wrapper">

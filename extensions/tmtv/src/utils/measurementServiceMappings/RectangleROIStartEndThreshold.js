@@ -2,7 +2,7 @@ import SUPPORTED_TOOLS from './constants/supportedTools';
 import getSOPInstanceAttributes from './utils/getSOPInstanceAttributes';
 
 const RectangleROIStartEndThreshold = {
-  toAnnotation: (measurement, definition) => {},
+  toAnnotation: (measurement, definition) => { },
 
   /**
    * Maps cornerstone annotation event data to measurement service format.
@@ -12,6 +12,7 @@ const RectangleROIStartEndThreshold = {
    */
   toMeasurement: (csToolsEventDetail, displaySetService, cornerstoneViewportService) => {
     const { annotation, viewportId } = csToolsEventDetail;
+    console.log(annotation, viewportId, 'viewport data')
     const { metadata, data, annotationUID } = annotation;
 
     if (!metadata || !data) {

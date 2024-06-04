@@ -175,13 +175,69 @@ const toolbarButtons: Button[] = [
   },
   {
     id: 'AITools',
-    uiType: 'ohif.radioGroup',
+    uiType: 'ohif.splitButton',
     props: {
+      groupId: 'AITools',
       type: 'tool',
-      icon: 'ai-icon',
-      label: 'AI Tools',
-      commands: setToolActiveToolbar,
+      //   type: 'tool',
+      //   icon: 'ai-icon',
+      //   label: 'AI Tools',
+      //   commands: setToolActiveToolbar,
+      primary: createButton({
+        id: 'AITools',
+        icon: 'ai-icon',
+        label: 'AI Tools',
+        tooltip: 'AI Tool',
+        commands: setToolActiveToolbar
+      }),
+      secondary: {
+        icon: 'chevron-down',
+        tooltip: 'AI Tools',
+      },
+      items: [
+        createButton({
+          id: 'focalnetDino',
+          icon: 'focalnet-dino',
+          label: 'Focalnet Dino',
+          tooltip: 'Focalnet Dino',
+          commands: setToolActiveToolbar
+        }),
+        createButton({
+          id: 'multiview',
+          icon: 'focalnet-dino',
+          label: 'Multiview',
+          tooltip: 'Multiview',
+          commands: setToolActiveToolbar
+        }),
+        createButton({
+          id: 'densemass',
+          icon: 'focalnet-dino',
+          label: 'Dense Mass',
+          tooltip: 'Dense Mass',
+          commands: setToolActiveToolbar
+        }),
+        createButton({
+          id: 'smallmass',
+          icon: 'focalnet-dino',
+          label: 'Small Mass',
+          tooltip: 'Small Mass',
+          commands: setToolActiveToolbar
+        }),
+        createButton({
+          id: 'clinicalHistory',
+          icon: 'focalnet-dino',
+          label: 'Clinical History',
+          tooltip: 'Clinical History',
+          commands: setToolActiveToolbar
+        }),
+      ],
     },
+    // uiType: 'ohif.radioGroup',
+    // props: {
+    //   type: 'tool',
+    //   icon: 'ai-icon',
+    //   label: 'AI Tools',
+    //   commands: setToolActiveToolbar,
   },
   {
     id: 'Capture',

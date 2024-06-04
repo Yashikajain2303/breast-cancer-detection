@@ -13,7 +13,7 @@ export function mapROIContoursToRTStructData(structureSet: unknown, rtDisplaySet
       const newPoints = points.map(({ x, y, z }) => {
         return [x, y, z];
       });
-
+      console.log(newPoints, 'newPoints i am getting added')
       return {
         ...rest,
         points: newPoints,

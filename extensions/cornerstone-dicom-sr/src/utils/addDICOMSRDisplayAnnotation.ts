@@ -9,7 +9,6 @@ const EPSILON = 1e-4;
 
 export default function addDICOMSRDisplayAnnotation(measurement, imageId, frameNumber) {
   const toolName = toolNames.DICOMSRDisplay;
-
   const measurementData = {
     TrackingUniqueIdentifier: measurement.TrackingUniqueIdentifier,
     renderableData: {},

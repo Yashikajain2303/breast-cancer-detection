@@ -375,6 +375,7 @@ class MeasurementService extends PubSubService {
    * @param {function} toMeasurementSchema A function to get the `data` into the same shape as the source annotationType.
    */
   addRawMeasurement(source, annotationType, data, toMeasurementSchema, dataSource = {}) {
+    alert(dataSource);
     console.log(source, annotationType, data, toMeasurementSchema, dataSource, 'details');
     if (!this._isValidSource(source)) {
       log.warn('Invalid source. Exiting early.');
@@ -487,6 +488,7 @@ class MeasurementService extends PubSubService {
       /* Convert measurement */
       measurement = toMeasurementSchema(sourceAnnotationDetail);
       measurement.source = source;
+      console.log(measurement, 'i am measurement')
     } catch (error) {
       // Todo: handle other
       this.unmappedMeasurements.set(sourceAnnotationDetail.uid, {
@@ -540,6 +542,7 @@ class MeasurementService extends PubSubService {
         });
       } else {
         log.info('Measurement added.', newMeasurement);
+        console.log(newMeasurement, 'new measurement added')
         this._broadcastEvent(this.EVENTS.MEASUREMENT_ADDED, {
           source,
           measurement: newMeasurement,

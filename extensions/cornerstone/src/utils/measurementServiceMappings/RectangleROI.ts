@@ -42,6 +42,29 @@ const RectangleROI = {
     }
 
     const { points } = data.handles;
+    console.log(points, 'we are points')
+    // [
+    //   [
+    //     0,
+    //     124.61280139939905,
+    //     -129.34214082079328
+    //   ],
+    //   [
+    //     0,
+    //     154.6654388455529,
+    //     -129.34214082079328
+    //   ],
+    //   [
+    //     0,
+    //     124.61280139939905,
+    //     -152.71641439002406
+    //   ],
+    //   [
+    //     0,
+    //     154.6654388455529,
+    //     -152.71641439002406
+    //   ]
+    // ];
 
     const xCoordinates = points.map(point => point[1]);
     const yCoordinates = points.map(point => point[2]);
@@ -66,6 +89,17 @@ const RectangleROI = {
     console.log("Top-Left X:-----------1", topLeftCorner);
     // console.log("Top-Left Y:-----------1", topLeft[1]);
     console.log("Bottom-Right:-----------1", bottomRightCorner);
+    console.log(annotationUID,
+      SOPInstanceUID,
+      points,
+      metadata,
+      SeriesInstanceUID,
+      StudyInstanceUID,
+      topLeftCorner,
+      bottomRightCorner,
+      metadata.toolName, displaySet.displaySetInstanceUID,
+      length, 'measuremeneeent details')
+    // breadth, getValueTypeFromToolType(toolName))
     return {
       uid: annotationUID,
       SOPInstanceUID,

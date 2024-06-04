@@ -128,7 +128,6 @@ function getDisplayText(annotation, displaySet) {
   if (!data.cachedStats || !data.cachedStats[`imageId:${metadata.referencedImageId}`]) {
     return [];
   }
-  console.log(data.cachedStats[`imageId:${metadata.referencedImageId}`], 'cached data')
   const { mean, stdDev, max, area, modalityUnit, areaUnit, perimeter } =
     data.cachedStats[`imageId:${metadata.referencedImageId}`];
 

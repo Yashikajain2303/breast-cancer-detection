@@ -210,6 +210,7 @@ import layoutCommon2x2 from './../../assets/icons/layout-common-2x2.svg';
 import layoutCommon2x3 from './../../assets/icons/layout-common-2x3.svg';
 import iconToolRotate from './../../assets/icons/tool-3d-rotate.svg';
 import aiIcon from './../../assets/icons/ai_logo.svg';
+import focalnetDino from './../../assets/icons/focalnet-dino.svg';
 
 /** New investigational use */
 import investigationalUse from './../../assets/icons/illustration-investigational-use.svg';
@@ -326,6 +327,7 @@ const ICONS = {
   'tool-polygon': toolPolygon,
   'tool-3d-rotate': iconToolRotate,
   'ai-icon': aiIcon,
+  'focalnet-dino': focalnetDino,
   'edit-patient': editPatient,
   'icon-mpr': iconMPR,
   'icon-next-inactive': iconNextInactive,
