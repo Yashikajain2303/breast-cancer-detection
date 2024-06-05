@@ -106,13 +106,13 @@ function ActionButtons({ onExportClick, onCreateReportClick, disabled, data }) {
         <form onSubmit={handleSubmit}>
           <div className="flex mb-6 ">
             <div className="text-white">
-              {data.map((item, index) => (
+              {/* {data.map((item, index) => (
                 <div key={index}>
                   <p className="text-green">Annotation No. {index + 1}</p>
                   Top Left: [{item.baseDisplayText[0]}, {item.baseDisplayText[1]}]<br />
                   Bottom Right: [{item.baseLabel[0]}, {item.baseLabel[1]}]
                 </div>
-              ))}
+              ))} */}
               <label className="text-white">Add indications*:</label>
               <input
                 className="p-2 text-black"
