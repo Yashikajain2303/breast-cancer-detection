@@ -4,8 +4,8 @@ window.config = {
   extensions: [],
   modes: [],
   customizationService: {
-    // Shows a custom route -access via http://localhost:3000/custom
-    // helloPage: '@ohif/extension-default.customizationModule.helloPage',
+    dicomUploadComponent:
+      '@ohif/extension-cornerstone.customizationModule.cornerstoneDicomUploadComponent',
   },
   showStudyList: true,
   // some windows systems have issues with more than 3 web workers
@@ -47,6 +47,7 @@ window.config = {
         enableStudyLazyLoad: true,
         supportsFuzzyMatching: false,
         supportsWildcard: true,
+        dicomUploadEnabled: true,
         staticWado: true,
         singlepart: 'bulkdata,video,pdf',
       },
@@ -57,13 +58,16 @@ window.config = {
       sourceName: 'dicomjson',
       configuration: {
         name: 'json',
+        dicomUploadEnabled: true,
       },
     },
     {
       friendlyName: 'dicom local',
       namespace: '@ohif/extension-default.dataSourcesModule.dicomlocal',
       sourceName: 'dicomlocal',
-      configuration: {},
+      configuration: {
+        dicomUploadEnabled: true,
+      },
     },
   ],
   httpErrorHandler: error => {

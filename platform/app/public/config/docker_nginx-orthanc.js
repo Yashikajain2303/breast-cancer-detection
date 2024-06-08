@@ -3,6 +3,10 @@ window.config = {
   showStudyList: true,
   extensions: [],
   modes: [],
+  customizationService: {
+    dicomUploadComponent:
+      '@ohif/extension-cornerstone.customizationModule.cornerstoneDicomUploadComponent',
+  },
   // below flag is for performance reasons, but it might not work for all servers
   showWarningMessageForCrossOrigin: true,
   showCPUFallbackMessage: true,
@@ -20,6 +24,7 @@ window.config = {
         qidoRoot: '/dicom-web',
         wadoRoot: '/dicom-web',
         qidoSupportsIncludeField: false,
+        dicomUploadEnabled: true,
         imageRendering: 'wadors',
         thumbnailRendering: 'wadors',
         omitQuotationForMultipartRequest: true,
@@ -30,6 +35,7 @@ window.config = {
       sourceName: 'dicomjson',
       configuration: {
         friendlyName: 'dicom json',
+        dicomUploadEnabled: true,
         name: 'json',
       },
     },
@@ -38,6 +44,7 @@ window.config = {
       sourceName: 'dicomlocal',
       configuration: {
         friendlyName: 'dicom local',
+        dicomUploadEnabled: true,
       },
     },
   ],

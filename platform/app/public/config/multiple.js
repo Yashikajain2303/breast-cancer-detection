@@ -3,14 +3,11 @@ window.config = {
   isNewHP: true,
 
   routerBasename: '/',
-  customizationService: [
-    '@ohif/extension-default.customizationModule.datasources',
-    {
-      id: 'class:StudyBrowser',
-      true: 'black',
-      false: 'default',
-    },
-  ],
+  customizationService: {
+    dicomUploadComponent:
+
+      '@ohif/extension-cornerstone.customizationModule.cornerstoneDicomUploadComponent'
+  },
   extensions: [],
   modes: ['@ohif/mode-test', '@ohif/mode-basic-dev-mode'],
   showStudyList: true,
@@ -34,6 +31,7 @@ window.config = {
         qidoSupportsIncludeField: false,
         supportsReject: true,
         supportsStow: true,
+        dicomUploadEnabled: true,
         imageRendering: 'wadors',
         thumbnailRendering: 'wadors',
         enableStudyLazyLoad: true,
@@ -62,6 +60,7 @@ window.config = {
         imageRendering: 'wadors',
         thumbnailRendering: 'wadors',
         enableStudyLazyLoad: true,
+        dicomUploadEnabled: true,
         supportsFuzzyMatching: false,
         supportsWildcard: true,
         staticWado: true,
@@ -82,6 +81,7 @@ window.config = {
         thumbnailRendering: 'wadors',
         enableStudyLazyLoad: true,
         supportsFuzzyMatching: false,
+        dicomUploadEnabled: true,
         supportsWildcard: true,
         staticWado: true,
         singlepart: 'bulkdata,video,pdf',
@@ -101,6 +101,7 @@ window.config = {
         imageRendering: 'wadors',
         thumbnailRendering: 'wadors',
         enableStudyLazyLoad: true,
+        dicomUploadEnabled: true,
         supportsFuzzyMatching: false,
         supportsWildcard: true,
         staticWado: true,
@@ -113,6 +114,7 @@ window.config = {
       configuration: {
         friendlyName: 'dicom json',
         name: 'json',
+        dicomUploadEnabled: true,
       },
     },
     {
@@ -120,6 +122,7 @@ window.config = {
       sourceName: 'dicomlocal',
       configuration: {
         friendlyName: 'dicom local',
+        dicomUploadEnabled: true,
       },
     },
   ],

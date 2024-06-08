@@ -1,5 +1,6 @@
 import * as cornerstone from '@cornerstonejs/core';
 import * as cornerstoneTools from '@cornerstonejs/tools';
+import { addTool } from '@cornerstonejs/tools';
 
 cornerstoneTools.extension.defineExtension('customLayout', {
   populateContextMenu: populateContextMenu, // Function to add an option to the context menu
@@ -20,6 +21,19 @@ function populateContextMenu(menu, options) {
     }
   });
 }
+
+document.getElementById('focalnetDino').addEventListener('click', function () {
+  alert('triggered')
+  const element = document.getElementById('cornerstoneElement');
+  const referenceLinesTool = cornerstoneTools.ReferenceLinesTool.createNew(element);
+
+  // Optional: Configure tool properties
+  cornerstoneTools.ReferenceLinesTool.setColor('red');
+  cornerstoneTools.ReferenceLinesTool.setWidth(2);
+
+  // Add the tool to the viewport
+  addTool(referenceLinesTool);
+});
 
 function applyCustomLayout(viewport) {
   const element = viewport.element;

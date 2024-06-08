@@ -2,6 +2,10 @@ window.config = {
   routerBasename: '/',
   extensions: [],
   modes: ['@ohif/mode-test'],
+  customizationService: {
+    dicomUploadComponent:
+      '@ohif/extension-cornerstone.customizationModule.cornerstoneDicomUploadComponent',
+  },
   showStudyList: true,
   // below flag is for performance reasons, but it might not work for all servers
   maxNumberOfWebWorkers: 3,
@@ -30,6 +34,7 @@ window.config = {
         thumbnailRendering: 'wadors',
         enableStudyLazyLoad: true,
         supportsFuzzyMatching: false,
+        dicomUploadEnabled: true,
         supportsWildcard: true,
         singlepart: 'video,thumbnail,pdf',
         omitQuotationForMultipartRequest: true,
@@ -55,6 +60,7 @@ window.config = {
         enableStudyLazyLoad: true,
         supportsFuzzyMatching: false,
         supportsWildcard: true,
+        dicomUploadEnabled: true,
         staticWado: true,
         singlepart: 'video',
         bulkDataURI: {
@@ -78,6 +84,7 @@ window.config = {
         thumbnailRendering: 'wadors',
         enableStudyLazyLoad: true,
         supportsFuzzyMatching: false,
+        dicomUploadEnabled: true,
         supportsWildcard: true,
         staticWado: true,
         singlepart: 'bulkdata,video,pdf',
@@ -101,6 +108,7 @@ window.config = {
         thumbnailRendering: 'wadors',
         enableStudyLazyLoad: true,
         supportsFuzzyMatching: false,
+        dicomUploadEnabled: true,
         supportsWildcard: true,
         staticWado: true,
         singlepart: 'bulkdata,video,pdf',
@@ -124,6 +132,7 @@ window.config = {
         imageRendering: 'wadors',
         thumbnailRendering: 'wadors',
         enableStudyLazyLoad: true,
+        dicomUploadEnabled: true,
         supportsFuzzyMatching: false,
         supportsWildcard: true,
         staticWado: true,
@@ -139,6 +148,7 @@ window.config = {
       configuration: {
         friendlyName: 'dicom json',
         name: 'json',
+        dicomUploadEnabled: true
       },
     },
     {
@@ -146,6 +156,7 @@ window.config = {
       sourceName: 'dicomlocal',
       configuration: {
         friendlyName: 'dicom local',
+        dicomUploadEnabled: true
       },
     },
   ],

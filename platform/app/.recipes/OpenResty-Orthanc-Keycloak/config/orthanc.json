@@ -6,7 +6,10 @@
   "MaximumStorageSize": 0,
   "MaximumPatientCount": 0,
   "LuaScripts": [],
-  "Plugins": ["/usr/share/orthanc/plugins", "/usr/local/share/orthanc/plugins"],
+  "Plugins": [
+    "/usr/share/orthanc/plugins",
+    "/usr/local/share/orthanc/plugins"
+  ],
   "ConcurrentJobs": 2,
   "HttpServerEnabled": true,
   "HttpPort": 8042,
@@ -26,7 +29,7 @@
   "RleTransferSyntaxAccepted": true,
   "UnknownSopClassAccepted": false,
   "DicomScpTimeout": 30,
-
+  "IngestTranscoding": "1.2.840.10008.1.2.4.80",
   "RemoteAccessAllowed": true,
   "SslEnabled": false,
   "SslCertificate": "certificate.pem",
@@ -43,9 +46,7 @@
   "OrthancPeers": {},
   "OrthancPeersInDatabase": false,
   "HttpProxy": "",
-
   "HttpVerbose": true,
-
   "HttpTimeout": 10,
   "HttpsVerifyPeers": true,
   "HttpsCACertificates": "",
@@ -74,7 +75,6 @@
   "MediaArchiveSize": 1,
   "StorageAccessOnFind": "Always",
   "MetricsEnabled": true,
-
   "DicomWeb": {
     "Enable": true,
     "Root": "/dicom-web/",

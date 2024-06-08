@@ -36,7 +36,7 @@ services:
   # https://github.com/mrts/docker-postgresql-multiple-databases
   orthanc:
     platform: linux/amd64
-    image: jodogne/orthanc-plugins:1.11.0
+    image: jodogne/orthanc-plugins:1.12.3
     hostname: orthanc
     container_name: orthanc
     volumes:

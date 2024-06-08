@@ -1,5 +1,9 @@
 window.config = {
   routerBasename: '/',
+  customizationService: {
+    dicomUploadComponent:
+      '@ohif/extension-cornerstone.customizationModule.cornerstoneDicomUploadComponent',
+  },
   extensions: [],
   modes: [],
   showStudyList: true,
@@ -25,6 +29,7 @@ window.config = {
         imageRendering: 'wadouri',
         thumbnailRendering: 'wadouri',
         enableStudyLazyLoad: true,
+        dicomUploadEnabled: true,
         supportsFuzzyMatching: false,
         supportsWildcard: false,
         omitQuotationForMultipartRequest: true,
@@ -36,6 +41,7 @@ window.config = {
       configuration: {
         friendlyName: 'dicom json',
         name: 'json',
+        dicomUploadEnabled: true
       },
     },
     {
@@ -43,6 +49,7 @@ window.config = {
       sourceName: 'dicomlocal',
       configuration: {
         friendlyName: 'dicom local',
+        dicomUploadEnabled: true
       },
     },
   ],

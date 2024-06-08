@@ -497,7 +497,7 @@ function WorkList({
   const { component: dicomUploadComponent } =
     customizationService.get('dicomUploadComponent') ?? {};
   const uploadProps =
-    dicomUploadComponent && dataSource.getConfig()?.dicomUploadEnabled
+    dicomUploadComponent
       ? {
         title: 'Upload files',
         closeButton: true,
@@ -584,7 +584,7 @@ WorkList.propTypes = {
     getConfig: PropTypes.func,
   }).isRequired,
   isLoadingData: PropTypes.bool.isRequired,
-  servicesManager: PropTypes.instanceOf(ServicesManager),
+  servicesManager: PropTypes.object.isRequired,
 };
 
 const defaultFilterValues = {

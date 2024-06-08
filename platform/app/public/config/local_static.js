@@ -1,6 +1,10 @@
 window.config = {
   routerBasename: '/',
-  customizationService: ['@ohif/extension-default.customizationModule.helloPage'],
+  customizationService: {
+    dicomUploadComponent:
+
+      '@ohif/extension-cornerstone.customizationModule.cornerstoneDicomUploadComponent'
+  },
   extensions: [],
   modes: [],
   showStudyList: true,
@@ -28,6 +32,7 @@ window.config = {
         imageRendering: 'wadors',
         thumbnailRendering: 'wadors',
         enableStudyLazyLoad: true,
+        dicomUploadEnabled: true,
         supportsFuzzyMatching: false,
         supportsWildcard: true,
         singlepart: 'video,thumbnail,pdf',
@@ -55,6 +60,7 @@ window.config = {
         supportsFuzzyMatching: false,
         supportsWildcard: true,
         staticWado: true,
+        dicomUploadEnabled: true,
         singlepart: 'video',
         bulkDataURI: {
           enabled: true,
@@ -77,6 +83,7 @@ window.config = {
         thumbnailRendering: 'wadors',
         enableStudyLazyLoad: true,
         supportsFuzzyMatching: false,
+        dicomUploadEnabled: true,
         supportsWildcard: true,
         staticWado: true,
         singlepart: 'bulkdata,video,pdf',
@@ -101,6 +108,7 @@ window.config = {
         enableStudyLazyLoad: true,
         supportsFuzzyMatching: false,
         supportsWildcard: true,
+        dicomUploadEnabled: true,
         staticWado: true,
         singlepart: 'bulkdata,video,pdf',
         bulkDataURI: {
@@ -121,6 +129,7 @@ window.config = {
         qidoSupportsIncludeField: false,
         supportsReject: false,
         imageRendering: 'wadors',
+        dicomUploadEnabled: true,
         thumbnailRendering: 'wadors',
         enableStudyLazyLoad: true,
         supportsFuzzyMatching: false,
@@ -138,6 +147,7 @@ window.config = {
       configuration: {
         friendlyName: 'dicom json',
         name: 'json',
+        dicomUploadEnabled: true,
       },
     },
     {
@@ -145,6 +155,7 @@ window.config = {
       sourceName: 'dicomlocal',
       configuration: {
         friendlyName: 'dicom local',
+        dicomUploadEnabled: true,
       },
     },
   ],

@@ -2,6 +2,10 @@ window.config = {
   routerBasename: '/',
   extensions: [],
   modes: [],
+  customizationService: {
+    dicomUploadComponent:
+      '@ohif/extension-cornerstone.customizationModule.cornerstoneDicomUploadComponent',
+  },
   showStudyList: true,
   maxNumberOfWebWorkers: 3,
   // below flag is for performance reasons, but it might not work for all servers
@@ -22,6 +26,7 @@ window.config = {
         qidoRoot: '/dicomweb',
         wadoRoot: '/dicomweb',
         qidoSupportsIncludeField: false,
+        dicomUploadEnabled: true,
         imageRendering: 'wadors',
         thumbnailRendering: 'wadors',
         enableStudyLazyLoad: true,
@@ -38,6 +43,7 @@ window.config = {
       configuration: {
         friendlyName: 'dicom json',
         name: 'json',
+        dicomUploadEnabled: true
       },
     },
     {
@@ -45,6 +51,7 @@ window.config = {
       sourceName: 'dicomlocal',
       configuration: {
         friendlyName: 'dicom local',
+        dicomUploadEnabled: true
       },
     },
   ],

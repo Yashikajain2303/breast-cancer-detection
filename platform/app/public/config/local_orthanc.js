@@ -44,6 +44,7 @@ window.config = {
       sourceName: 'dicomjson',
       configuration: {
         friendlyName: 'dicom json',
+        dicomUploadEnabled: true,
         name: 'json',
       },
     },
@@ -52,6 +53,7 @@ window.config = {
       sourceName: 'dicomlocal',
       configuration: {
         friendlyName: 'dicom local',
+        dicomUploadEnabled: true,
       },
     },
   ],
