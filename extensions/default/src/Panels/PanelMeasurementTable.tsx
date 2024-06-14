@@ -88,7 +88,6 @@ export default function PanelMeasurementTable({
       return;
     }
 
-    alert('called')
     const promptResult = await createReportDialogPrompt(uiDialogService, {
       extensionManager,
     });
@@ -239,8 +238,6 @@ PanelMeasurementTable.propTypes = {
 
 function _getMappedMeasurements(measurementService) {
   const measurements = measurementService.getMeasurements();
-  alert(measurements);
-  // console.log(measurements, 'fetched measurements')
   const mappedMeasurements = measurements.map((m, index) =>
     _mapMeasurementToDisplay(m, index, measurementService.VALUE_TYPES)
   );

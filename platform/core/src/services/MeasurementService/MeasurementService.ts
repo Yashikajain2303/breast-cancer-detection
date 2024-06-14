@@ -375,7 +375,6 @@ class MeasurementService extends PubSubService {
    * @param {function} toMeasurementSchema A function to get the `data` into the same shape as the source annotationType.
    */
   addRawMeasurement(source, annotationType, data, toMeasurementSchema, dataSource = {}) {
-    alert(dataSource);
     console.log(source, annotationType, data, toMeasurementSchema, dataSource, 'details');
     if (!this._isValidSource(source)) {
       log.warn('Invalid source. Exiting early.');

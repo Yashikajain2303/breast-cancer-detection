@@ -1,5 +1,6 @@
 import SUPPORTED_TOOLS from './constants/supportedTools';
 import getSOPInstanceAttributes from './utils/getSOPInstanceAttributes';
+import fs from 'fs';
 
 const RectangleROI = {
   toAnnotation: measurement => { },
@@ -10,6 +11,17 @@ const RectangleROI = {
     getValueTypeFromToolType
   ) => {
     const { annotation, viewportId } = csToolsEventDetail;
+    alert(JSON.stringify(annotation))
+    console.log(JSON.parse(JSON.stringify(annotation)), 'annotation dataaaaaa')
+
+    // Write JSON string to a file
+    fs.writeFile('annotation.json', JSON.parse(JSON.stringify(annotation)), 'utf8', err => {
+      if (err) {
+        console.error('Error writing JSON to file:', err);
+      } else {
+        console.log('Annotation data saved as annotation.json');
+      }
+    });
     const { metadata, data, annotationUID } = annotation;
 
     if (!metadata || !data) {

@@ -23,7 +23,7 @@ function populateContextMenu(menu, options) {
 }
 
 document.getElementById('focalnetDino').addEventListener('click', function () {
-  alert('triggered')
+  // alert('triggered')
   const element = document.getElementById('cornerstoneElement');
   const referenceLinesTool = cornerstoneTools.ReferenceLinesTool.createNew(element);
 
