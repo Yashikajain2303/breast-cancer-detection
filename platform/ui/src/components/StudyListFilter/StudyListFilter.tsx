@@ -17,8 +17,6 @@ const StudyListFilter = ({
   onUploadClick,
   getDataSourceConfigurationComponent,
 }) => {
-  console.log(onUploadClick, 'onUploadClick--------------1'
-  )
   const { t } = useTranslation('StudyList');
   const { sortBy, sortDirection } = filterValues;
   const filterSorting = { sortBy, sortDirection };

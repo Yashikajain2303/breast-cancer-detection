@@ -201,8 +201,6 @@ function CustomizableViewportOverlay({
         instanceNumber,
       };
 
-      // console.log(result, 'result i got a call-----------')
-
       if (!item) {
         return null;
       }

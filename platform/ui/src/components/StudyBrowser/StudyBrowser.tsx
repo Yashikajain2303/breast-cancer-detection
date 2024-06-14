@@ -16,7 +16,6 @@ const getTrackedSeries = displaySets => {
       trackedSeries++;
     }
   });
-  console.log(trackedSeries, 'trackedSeries')
   return trackedSeries;
 };
 
@@ -41,12 +40,8 @@ const StudyBrowser = ({
     return tabData.studies.map(
       ({ studyInstanceUid, date, description, numInstances, modalities, displaySets }) => {
         const isExpanded = expandedStudyInstanceUIDs.includes(studyInstanceUid);
-        // console.log(displaySets, 'displaySetssss')
         const order = ['R CC', 'L CC', 'R MLO', 'L MLO'];
-        console.log(displaySets, 'displaySets')
-        // console.log(displaySets, 'displaySetssss--2')
         const sortedData = displaySets.sort((a, b) => {
-          // console.log(a, b, 'displaySetssss--1')
           const seriesA = a.description.toUpperCase();
           const seriesB = b.description.toUpperCase();
 
@@ -55,10 +50,6 @@ const StudyBrowser = ({
 
 
         const handleConvert = async () => {
-          // const pixelArray = [/* Your pixel array data here */];
-          // const windowCenter = 2048;
-          // const windowWidth = 4096;
-          // console.log(scalerData, 'imagedata scalerdata')
 
           const response = await axios.post('http://localhost:8000/convert', {
             displaySets: displaySets
@@ -69,9 +60,6 @@ const StudyBrowser = ({
           handleConvert();
           setHasConverted(true);
         }
-
-
-        // console.log(sortedData, 'displaySetssss');
         return (
           <React.Fragment key={studyInstanceUid}>
             <StudyItem

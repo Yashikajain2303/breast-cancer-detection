@@ -11,7 +11,6 @@ import type { Button } from '@ohif/core/types';
 const { windowLevelPresets } = defaults;
 const { createButton } = ToolbarService;
 const { StudyInstanceUIDs } = useImageViewer();
-// console.log(StudyInstanceUIDs, 'i am instance id')
 
 /**
  *

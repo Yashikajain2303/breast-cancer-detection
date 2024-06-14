@@ -12,7 +12,6 @@ const RectangleROIStartEndThreshold = {
    */
   toMeasurement: (csToolsEventDetail, displaySetService, cornerstoneViewportService) => {
     const { annotation, viewportId } = csToolsEventDetail;
-    console.log(annotation, viewportId, 'viewport data')
     const { metadata, data, annotationUID } = annotation;
 
     if (!metadata || !data) {

@@ -1,6 +1,5 @@
 import SUPPORTED_TOOLS from './constants/supportedTools';
 import getSOPInstanceAttributes from './utils/getSOPInstanceAttributes';
-import fs from 'fs';
 
 const RectangleROI = {
   toAnnotation: measurement => { },
@@ -11,17 +10,6 @@ const RectangleROI = {
     getValueTypeFromToolType
   ) => {
     const { annotation, viewportId } = csToolsEventDetail;
-    alert(JSON.stringify(annotation))
-    console.log(JSON.parse(JSON.stringify(annotation)), 'annotation dataaaaaa')
-
-    // Write JSON string to a file
-    fs.writeFile('annotation.json', JSON.parse(JSON.stringify(annotation)), 'utf8', err => {
-      if (err) {
-        console.error('Error writing JSON to file:', err);
-      } else {
-        console.log('Annotation data saved as annotation.json');
-      }
-    });
     const { metadata, data, annotationUID } = annotation;
 
     if (!metadata || !data) {
@@ -54,7 +42,6 @@ const RectangleROI = {
     }
 
     const { points } = data.handles;
-    console.log(points, 'we are points')
     // [
     //   [
     //     0,
@@ -81,14 +68,6 @@ const RectangleROI = {
     const xCoordinates = points.map(point => point[1]);
     const yCoordinates = points.map(point => point[2]);
 
-
-
-    // const length = Math.max(...xCoordinates) - Math.min(...xCoordinates);
-    // const breadth = Math.max(...yCoordinates) - Math.min(...yCoordinates);
-    // console.log(points, 'points');
-    // const topLeft = points[1];
-    // const bottomRight = points[2];
-
     const minX = Math.round(Math.min(...points.map(point => point[1])));
     const maxX = Math.round(Math.max(...points.map(point => point[1])));
     const minY = Math.round(Math.min(...points.map(point => point[2])));
@@ -97,21 +76,6 @@ const RectangleROI = {
     // Assuming X-coordinates don't change significantly (adjust if needed)
     const topLeftCorner = [minX, -maxY];
     const bottomRightCorner = [maxX, -minY];
-
-    console.log("Top-Left X:-----------1", topLeftCorner);
-    // console.log("Top-Left Y:-----------1", topLeft[1]);
-    console.log("Bottom-Right:-----------1", bottomRightCorner);
-    console.log(annotationUID,
-      SOPInstanceUID,
-      points,
-      metadata,
-      SeriesInstanceUID,
-      StudyInstanceUID,
-      topLeftCorner,
-      bottomRightCorner,
-      metadata.toolName, displaySet.displaySetInstanceUID,
-      length, 'measuremeneeent details')
-    // breadth, getValueTypeFromToolType(toolName))
     return {
       uid: annotationUID,
       SOPInstanceUID,
