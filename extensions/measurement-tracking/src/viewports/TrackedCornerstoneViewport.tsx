@@ -7,10 +7,12 @@ import { annotation } from '@cornerstonejs/tools';
 import { useTrackedMeasurements } from './../getContextModule';
 import { BaseVolumeViewport, Enums } from '@cornerstonejs/core';
 import { useTranslation } from 'react-i18next';
+import sample from './sample.png';
 
 function TrackedCornerstoneViewport(props) {
+
   const { displaySets, viewportId, servicesManager, extensionManager } = props;
-  // console.log(displaySets, 'i am displaySet')
+  console.log(displaySets, 'displaySets dataaaaaaa')
   const {
     measurementService,
     cornerstoneViewportService,
@@ -227,6 +229,12 @@ function TrackedCornerstoneViewport(props) {
   return (
     <>
       <div className="relative flex h-full w-full flex-row overflow-hidden">
+        {/* <img
+          src={sample}
+          alt={"not found"}
+          className="min-h-32 object-contain"
+          crossOrigin="anonymous"
+        /> */}
         {getCornerstoneViewport()}
       </div>
     </>

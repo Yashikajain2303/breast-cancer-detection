@@ -217,16 +217,6 @@ const toolbarButtons: Button[] = [
     },
   },
   {
-    id: 'AITools',
-    type: 'ohif.radioGroup',
-    props: {
-      type: 'tool',
-      icon: 'ai-icon',
-      label: 'AI Tools',
-      commands: setToolActiveToolbar,
-    },
-  },
-  {
     id: 'Capture',
     uiType: 'ohif.radioGroup',
     props: {
