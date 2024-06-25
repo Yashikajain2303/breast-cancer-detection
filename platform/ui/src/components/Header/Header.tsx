@@ -123,6 +123,31 @@ function Header({
   //   setDropdownOpen(false);
   // };
 
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState('');
+  const options = [
+    { id: 0, label: 'Focalnet Dino' },
+    { id: 1, label: 'Multiview' },
+    { id: 2, label: 'Dense Mass' },
+    { id: 3, label: 'Small Mass' },
+    { id: 4, label: 'Clinical History' }
+  ];
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
+  const handleSelect = (item) => {
+    setSelectedItem(item);
+    localStorage.setItem('items', JSON.stringify(item));
+    setDropdownOpen(false);
+  };
+
+  const clearSelection = () => {
+    setSelectedItem('');
+    setDropdownOpen(false);
+  };
+
   return (
     <NavBar
       isSticky={isSticky}
