@@ -11,7 +11,8 @@ coverage/
 .docz/
 .yarn/
 /dicom_converter.log
-
+/models_backend
+models_backend
 # YALC (for Erik)
 .yalc
 yalc.lock
