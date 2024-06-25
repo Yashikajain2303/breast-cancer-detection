@@ -96,7 +96,6 @@ const cornerstoneExtension: Types.Extensions.Extension = {
       // const onNewImageHandler = jumpData => {
       //   commandsManager.runCommand('jumpToImage', jumpData);
       // };
-      console.log(props, 'props dataaaa')
       const { toolbarService } = (servicesManager as ServicesManager).services;
 
       return (

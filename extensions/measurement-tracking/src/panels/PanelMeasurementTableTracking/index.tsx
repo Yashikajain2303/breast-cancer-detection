@@ -186,13 +186,7 @@ function PanelMeasurementTableTracking({ servicesManager, extensionManager }) {
             description={displayStudySummary.description}
           />
         )}
-        <MeasurementTable
-          title="Measurements"
-          data={displayMeasurementsWithoutFindings}
-          servicesManager={servicesManager}
-          onClick={jumpToImage}
-          onEdit={onMeasurementItemEditHandler}
-        />
+
         {additionalFindings.length !== 0 && (
           <MeasurementTable
             title="Additional Findings"
@@ -204,23 +198,32 @@ function PanelMeasurementTableTracking({ servicesManager, extensionManager }) {
         )}
       </div>
       {/* {console.log("before onclick", !appConfig?.disableEditing)} */}
-      {console.log(additionalFindings, displayMeasurements, displayMeasurementsWithoutFindings, 'details')}
       {!appConfig?.disableEditing && (
-        <div className="flex justify-center p-4">
-          <ActionButtons
-            data={displayMeasurements}
-            onExportClick={() => { exportReport }}
-            onCreateReportClick={() => {
-              sendTrackedMeasurementsEvent('SAVE_REPORT', {
-                viewportId: viewportGrid.activeViewportId,
-                isBackupSave: true,
-              });
-            }}
-            disabled={
-              additionalFindings.length === 0 && displayMeasurementsWithoutFindings.length === 0
-            }
+        <>
+          <MeasurementTable
+            title="Measurements"
+            data={displayMeasurementsWithoutFindings}
+            servicesManager={servicesManager}
+            onClick={jumpToImage}
+            onEdit={onMeasurementItemEditHandler}
           />
-        </div>
+          <div className="flex justify-center p-4">
+
+            <ActionButtons
+              data={displayMeasurements}
+              onExportClick={() => { exportReport }}
+              onCreateReportClick={() => {
+                sendTrackedMeasurementsEvent('SAVE_REPORT', {
+                  viewportId: viewportGrid.activeViewportId,
+                  isBackupSave: true,
+                });
+              }}
+              disabled={
+                additionalFindings.length === 0 && displayMeasurementsWithoutFindings.length === 0
+              }
+            />
+          </div>
+        </>
       )}
     </>
   );

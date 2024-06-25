@@ -160,25 +160,6 @@ function CustomizableViewportOverlay({
     };
   }, [viewportId, viewportData, cornerstoneViewportService, element]);
 
-  useEffect(() => {
-    const handleConvert = async () => {
-      if (voi?.windowCenter && voi?.windowWidth) {
-        try {
-          const response = await axios.post('http://localhost:8000/convert', {
-            pixel_array: imageInfo?.scalarData,
-            window_center: voi?.windowCenter,
-            window_width: voi?.windowWidth
-          });
-
-          // setResult(response.data.message);
-        } catch (error) {
-          // setResult('Error converting DICOM to PNG');
-        }
-      };
-    }
-    handleConvert();
-
-  }, [viewportId, viewportData, cornerstoneViewportService, element]);
 
   const _renderOverlayItem = useCallback(
     item => {
@@ -200,8 +181,6 @@ function CustomizableViewportOverlay({
         scale,
         instanceNumber,
       };
-
-      // console.log(result, 'result i got a call-----------')
 
       if (!item) {
         return null;

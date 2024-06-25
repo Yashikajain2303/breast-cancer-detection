@@ -47,7 +47,6 @@ function getThresholdValues(
   );
 
   const ptValue = getRoiStats(referencedVolumes[0], annotations);
-  console.log(referencedVolumes[0], annotations, 'annotation data')
   return {
     ctLower: -Infinity,
     ctUpper: +Infinity,

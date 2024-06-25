@@ -70,10 +70,9 @@ function modeFactory({ modeConfiguration }) {
     /**
      * Lifecycle hooks
      */
-    onModeEnter: function ({ servicesManager, extensionManager, commandsManager }) {
+    onModeEnter: async function ({ servicesManager, extensionManager, commandsManager }) {
       const { measurementService, toolbarService, toolGroupService, customizationService } =
         servicesManager.services;
-      console.log(measurementService, 'i am getting a call')
       measurementService.clearMeasurements();
 
       // customizationService.addModeCustomizations([
@@ -104,6 +103,7 @@ function modeFactory({ modeConfiguration }) {
         'Capture',
         'Layout',
         'Crosshairs',
+        'RectangleOverlayViewer',
         'MoreTools',
       ]);
 
@@ -135,6 +135,8 @@ function modeFactory({ modeConfiguration }) {
       //     },
       //   ]),
       // ];
+
+
     },
     onModeExit: ({ servicesManager }) => {
       const {

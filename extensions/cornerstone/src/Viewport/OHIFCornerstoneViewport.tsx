@@ -201,11 +201,6 @@ const OHIFCornerstoneViewport = React.memo(props => {
     [viewportId, onElementEnabled, toolGroupService]
   );
 
-  // useEffect(() => {
-  //   console.log('i got a call-----------')
-  //   handleConvert();
-  // }, [])
-
   // disable the element upon unmounting
   useEffect(() => {
     cornerstoneViewportService.enableViewport(viewportId, elementRef.current);
@@ -417,24 +412,6 @@ const OHIFCornerstoneViewport = React.memo(props => {
 
   const windowCenter = Array.isArray(WindowCenter) ? WindowCenter : WindowCenter;
   const windowWidth = Array.isArray(WindowWidth) ? WindowWidth : WindowWidth;
-
-  const handleConvert = async () => {
-    // const pixelArray = [/* Your pixel array data here */];
-    // const windowCenter = 2048;
-    // const windowWidth = 4096;
-    // console.log(scalerData, 'imagedata scalerdata')
-    try {
-      const response = await axios.post('http://localhost:8000/convert', {
-        pixel_array: imageData?.scalerData,
-        window_center: windowCenter,
-        window_width: windowWidth
-      });
-
-      setResult(response.data.message);
-    } catch (error) {
-      setResult('Error converting DICOM to PNG');
-    }
-  };
 
   return (
     <React.Fragment>

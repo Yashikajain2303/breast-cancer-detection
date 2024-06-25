@@ -6,7 +6,6 @@ const metadataProvider = OHIF.classes.MetadataProvider;
 
 export default function getPTImageIdInstanceMetadata(imageId: string): InstanceMetadata {
   const dicomMetaData = metadataProvider.get('instance', imageId);
-  // console.log(dicomMetaData, 'dicomMetaData')
   if (!dicomMetaData) {
     throw new Error('dicom metadata are required');
   }

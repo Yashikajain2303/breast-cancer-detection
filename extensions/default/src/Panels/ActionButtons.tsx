@@ -6,7 +6,6 @@ import { LegacyButton, LegacyButtonGroup } from '@ohif/ui';
 
 function ActionButtons({ onExportClick, onCreateReportClick, data }) {
   const { t } = useTranslation('MeasurementTable');
-  // console.log(data, 'data123');
   return (
     <React.Fragment>
       <LegacyButtonGroup

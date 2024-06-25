@@ -44,7 +44,6 @@ export default class RetrieveMetadataLoader {
     let result;
     for (const loader of loaders) {
       result = await loader();
-      // console.log("resss", result);
       if (result && result?.length) {
         break; // closes iterator in case data is retrieved successfully
       }

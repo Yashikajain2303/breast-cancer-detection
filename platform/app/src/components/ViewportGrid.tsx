@@ -38,7 +38,6 @@ function ViewerViewportGrid(props) {
     viewportMatchDetails
   ) => {
     const availableDisplaySets = displaySetService.getActiveDisplaySets();
-    console.log(availableDisplaySets, 'availableDisplaySets')
     if (!availableDisplaySets.length) {
       console.log('No available display sets', availableDisplaySets);
       return;
@@ -250,10 +249,8 @@ function ViewerViewportGrid(props) {
     const viewportPanes = [];
 
     const numViewportPanes = viewportGridService.getNumViewportPanes();
-    console.log(numViewportPanes, 'numViewportPanes')
     for (let i = 0; i < numViewportPanes; i++) {
       const paneMetadata = Array.from(viewports.values())[i] || {};
-      console.log(paneMetadata, 'panelMetaData')
       const {
         displaySetInstanceUIDs,
         viewportOptions,
@@ -267,9 +264,7 @@ function ViewerViewportGrid(props) {
 
       const viewportId = viewportOptions.viewportId;
       const isActive = activeViewportId === viewportId;
-      console.log(displaySetInstanceUIDs, 'displaySetInstanceUIDs');
       const displaySetInstanceUIDsToUse = displaySetInstanceUIDs || [];
-      console.log(displaySetInstanceUIDsToUse, 'displaySetInstanceUIDsToUse');
       // This is causing the viewport components re-render when the activeViewportId changes
       const displaySets = displaySetInstanceUIDsToUse
         .map(displaySetInstanceUID => {
@@ -289,7 +284,6 @@ function ViewerViewportGrid(props) {
         return displaySet.needsRerendering;
       });
 
-      // console.log(displaySets, dataSource, displaySetOptions, displaySetsNeedsRerendering, 'displaySets')
       const onInteractionHandler = event => {
         if (isActive) {
           return;

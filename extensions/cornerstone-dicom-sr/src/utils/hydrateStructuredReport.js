@@ -213,8 +213,6 @@ export default function hydrateStructuredReport(
         matchingMapping.toMeasurementSchema,
         dataSource
       );
-      alert(newAnnotationUID)
-      console.log(newAnnotationUID, 'newAnnotationUID');
       if (disableEditing) {
         const addedAnnotation = annotationManager.getAnnotation(newAnnotationUID);
         locking.setAnnotationLocked(addedAnnotation, true);

@@ -67,7 +67,8 @@ function createDicomJSONApi(dicomJsonConfig) {
         url = query.get('url');
       }
       let metaData = getMetaDataByURL(url);
-
+      alert(metaData);
+      console.log(metaData, 'metadata------------1')
       // if we have already cached the data from this specific url
       // We are only handling one StudyInstanceUID to run; however,
       // all studies for patientID will be put in the correct tab
@@ -112,7 +113,7 @@ function createDicomJSONApi(dicomJsonConfig) {
     },
     query: {
       studies: {
-        mapParams: () => {},
+        mapParams: () => { },
         search: async param => {
           const [key, value] = Object.entries(param)[0];
           const mappedParam = mappings[key];

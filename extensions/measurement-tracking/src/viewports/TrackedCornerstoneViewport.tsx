@@ -1,16 +1,15 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
-
 import { Tooltip, Icon, ViewportActionArrows, useViewportGrid } from '@ohif/ui';
-
 import { annotation } from '@cornerstonejs/tools';
 import { useTrackedMeasurements } from './../getContextModule';
 import { BaseVolumeViewport, Enums } from '@cornerstonejs/core';
 import { useTranslation } from 'react-i18next';
+import { getData } from '../../../../indexedDB';
 
 function TrackedCornerstoneViewport(props) {
+
   const { displaySets, viewportId, servicesManager, extensionManager } = props;
-  // console.log(displaySets, 'i am displaySet')
   const {
     measurementService,
     cornerstoneViewportService,
@@ -18,31 +17,21 @@ function TrackedCornerstoneViewport(props) {
     viewportActionCornersService,
   } = servicesManager.services;
 
-  // Todo: handling more than one displaySet on the same viewport
   const displaySet = displaySets[0];
   const { t } = useTranslation('Common');
-
   const [viewportGrid] = useViewportGrid();
   const { activeViewportId } = viewportGrid;
-
   const [trackedMeasurements, sendTrackedMeasurementsEvent] = useTrackedMeasurements();
-
   const [isTracked, setIsTracked] = useState(false);
   const [trackedMeasurementUID, setTrackedMeasurementUID] = useState(null);
   const [viewportElem, setViewportElem] = useState(null);
-
   const { trackedSeries } = trackedMeasurements.context;
-
   const { SeriesInstanceUID } = displaySet;
 
   const updateIsTracked = useCallback(() => {
     const viewport = cornerstoneViewportService.getCornerstoneViewport(viewportId);
-
     if (viewport instanceof BaseVolumeViewport) {
-      // A current image id will only exist for volume viewports that can have measurements tracked.
-      // Typically these are those volume viewports for the series of acquisition.
       const currentImageId = viewport?.getCurrentImageId();
-
       if (!currentImageId) {
         if (isTracked) {
           setIsTracked(false);
@@ -50,7 +39,6 @@ function TrackedCornerstoneViewport(props) {
         return;
       }
     }
-
     if (trackedSeries.includes(SeriesInstanceUID) !== isTracked) {
       setIsTracked(!isTracked);
     }
@@ -59,7 +47,6 @@ function TrackedCornerstoneViewport(props) {
   const onElementEnabled = useCallback(
     evt => {
       if (evt.detail.element !== viewportElem) {
-        // The VOLUME_VIEWPORT_NEW_VOLUME event allows updateIsTracked to reliably fetch the image id for a volume viewport.
         evt.detail.element?.addEventListener(
           Enums.Events.VOLUME_VIEWPORT_NEW_VOLUME,
           updateIsTracked
@@ -75,7 +62,9 @@ function TrackedCornerstoneViewport(props) {
   }, [updateIsTracked, viewportElem]);
 
   useEffect(updateIsTracked, [updateIsTracked]);
-
+  useEffect(() => {
+    localStorage.setItem('manualBoundingBoxCoordinates', '');
+  }, [])
   useEffect(() => {
     const { unsubscribe } = cornerstoneViewportService.subscribe(
       cornerstoneViewportService.EVENTS.VIEWPORT_DATA_CHANGED,
@@ -83,11 +72,9 @@ function TrackedCornerstoneViewport(props) {
         if (props.viewportId !== viewportId) {
           return;
         }
-
         updateIsTracked();
       }
     );
-
     return () => {
       unsubscribe();
     };
@@ -100,63 +87,41 @@ function TrackedCornerstoneViewport(props) {
           lineDash: '',
         },
       });
-
       cornerstoneViewportService.getRenderingEngine().renderViewport(viewportId);
-
       return;
     }
-
     annotation.config.style.setViewportToolStyles(viewportId, {
       global: {
         lineDash: '4,4',
       },
     });
-
     cornerstoneViewportService.getRenderingEngine().renderViewport(viewportId);
-
     return () => {
       annotation.config.style.setViewportToolStyles(viewportId, {});
     };
   }, [isTracked]);
 
-  /**
-   * The effect for listening to measurement service measurement added events
-   * and in turn firing an event to update the measurement tracking state machine.
-   * The TrackedCornerstoneViewport is the best place for this because when
-   * a measurement is added, at least one TrackedCornerstoneViewport will be in
-   * the DOM and thus can react to the events fired.
-   */
   useEffect(() => {
     const added = measurementService.EVENTS.MEASUREMENT_ADDED;
     const addedRaw = measurementService.EVENTS.RAW_MEASUREMENT_ADDED;
     const subscriptions = [];
-
     [added, addedRaw].forEach(evt => {
       subscriptions.push(
         measurementService.subscribe(evt, ({ source, measurement }) => {
           const { activeViewportId } = viewportGridService.getState();
-
-          // Each TrackedCornerstoneViewport receives the MeasurementService's events.
-          // Only send the tracked measurements event for the active viewport to avoid
-          // sending it more than once.
           if (viewportId === activeViewportId) {
-            const { referenceStudyUID: StudyInstanceUID,
-              referenceSeriesUID: SeriesInstanceUID,
-              uid: measurementId } =
-              measurement;
-
+            const { referenceStudyUID: StudyInstanceUID, referenceSeriesUID: SeriesInstanceUID, uid: measurementId } = measurement;
             sendTrackedMeasurementsEvent('SET_DIRTY', { SeriesInstanceUID });
             sendTrackedMeasurementsEvent('TRACK_SERIES', {
               viewportId,
               StudyInstanceUID,
               SeriesInstanceUID,
-              measurementId
+              measurementId,
             });
           }
         }).unsubscribe
       );
     });
-
     return () => {
       subscriptions.forEach(unsub => {
         unsub();
@@ -172,13 +137,10 @@ function TrackedCornerstoneViewport(props) {
         trackedMeasurementUID,
         trackedMeasurements
       );
-
       if (!newTrackedMeasurementUID) {
         return;
       }
-
       setTrackedMeasurementUID(newTrackedMeasurementUID);
-
       measurementService.jumpToMeasurement(viewportId, newTrackedMeasurementUID);
     },
     [measurementService, servicesManager, trackedMeasurementUID, trackedMeasurements, viewportId]
@@ -191,7 +153,6 @@ function TrackedCornerstoneViewport(props) {
       switchMeasurement,
       viewportId === activeViewportId
     );
-
     viewportActionCornersService.setComponents([
       {
         viewportId,
@@ -210,11 +171,112 @@ function TrackedCornerstoneViewport(props) {
     ]);
   }, [activeViewportId, isTracked, switchMeasurement, viewportActionCornersService, viewportId]);
 
+  const [storedValue, setStoredValue] = useState(null);
+  const modelType = localStorage.getItem('items');
+  useEffect(() => {
+    const checkLocalStorage = async () => {
+      const storedValue = await getData("response");
+      console.log(storedValue, 'storedValue')
+      if (storedValue) {
+        setStoredValue(storedValue);
+        clearInterval(checkInterval);
+      }
+    };
+    const checkInterval = setInterval(checkLocalStorage, 10000);
+    return () => clearInterval(checkInterval);
+  }, []);
+
+  const [isDrawing, setIsDrawing] = useState(false);
+  const [startCoords, setStartCoords] = useState({ x: 0, y: 0 });
+  const [currentCoords, setCurrentCoords] = useState({ x: 0, y: 0 });
+  const [boundingBoxes, setBoundingBoxes] = useState([]);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  const handleMouseDown = (event) => {
+    if (!imageLoaded) return;
+    const rect = event.target.getBoundingClientRect();
+    setStartCoords({
+      x: event.clientX - rect.left,
+      y: event.clientY - rect.top,
+    });
+    setCurrentCoords({
+      x: event.clientX - rect.left,
+      y: event.clientY - rect.top,
+    });
+    setIsDrawing(true);
+  };
+
+  const handleMouseMove = (event) => {
+    if (!isDrawing || !imageLoaded) return;
+    const rect = event.target.getBoundingClientRect();
+    setCurrentCoords({
+      x: event.clientX - rect.left,
+      y: event.clientY - rect.top,
+    });
+  };
+
+  const handleMouseUp = () => {
+    if (!imageLoaded) return;
+    setIsDrawing(false);
+    setBoundingBoxes([...boundingBoxes, { start: startCoords, end: currentCoords }]);
+  };
+
+  useEffect(() => {
+    if (boundingBoxes.length > 0) {
+      localStorage.setItem('manualBoundingBoxCoordinates', JSON.stringify(boundingBoxes));
+    }
+  }, [boundingBoxes]);
+
+  useEffect(() => {
+    if (!storedValue) return;
+    const img = new Image();
+    img.src = storedValue?.message[displaySet?.SeriesDescription]?.img;
+    img.onload = () => setImageLoaded(true);
+  }, [storedValue, displaySet]);
+
+  // const removeBoundingBox = (index) => {
+  //   const updatedBoxes = [...boundingBoxes];
+  //   updatedBoxes.splice(index, 1);
+  //   setBoundingBoxes(updatedBoxes);
+  // };
+
+  const getBoundingBoxStyle = (start, end, index: null) => {
+    const left = Math.min(start.x, end.x);
+    const top = Math.min(start.y, end.y);
+    const width = Math.abs(end.x - start.x);
+    const height = Math.abs(end.y - start.y);
+
+    return {
+      position: 'absolute',
+      border: '2px solid #702963',
+      left,
+      top,
+      width,
+      height,
+      cursor: 'pointer', // Optional: Change cursor to pointer when hovering over bounding box
+      // Adding a cross icon (assuming you have an icon component)
+      padding: '2px',
+      // backgroundColor: 'white',
+      // display: 'flex',
+      // justifyContent: 'center',
+      // alignItems: 'center',
+      // borderRadius: '50%',
+      // boxShadow: '0 0 5px rgba(0, 0, 0, 0.3)',
+      // textAlign: 'center',
+      // Cross icon style
+      crossIcon: {
+        width: '12px',
+        height: '12px',
+        cursor: 'pointer',
+      },
+      // onClick: removeBox(index),
+    };
+  };
+
   const getCornerstoneViewport = () => {
     const { component: Component } = extensionManager.getModuleEntry(
       '@ohif/extension-cornerstone.viewportModule.cornerstone'
     );
-
     return (
       <Component
         {...props}
@@ -224,12 +286,54 @@ function TrackedCornerstoneViewport(props) {
     );
   };
 
+  const removeBoundingBox = (index) => {
+    const updatedBoxes = [...boundingBoxes];
+    updatedBoxes.splice(index, 1);
+    setBoundingBoxes(updatedBoxes);
+  };
+
   return (
-    <>
-      <div className="relative flex h-full w-full flex-row overflow-hidden">
-        {getCornerstoneViewport()}
-      </div>
-    </>
+    <div className="relative flex h-full w-full flex-row overflow-hidden">
+      {storedValue && modelType?.length > 0 ? (
+        <>
+          <img
+            src={storedValue?.message[displaySet?.SeriesDescription]?.img}
+            alt="Annotated"
+            style={{ display: 'block' }}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+          />
+          {boundingBoxes.map((box, index: any) => (
+            <div key={index} style={getBoundingBoxStyle(box.start, box.end, index)}>
+              <div
+                style={{
+                  width: '10px',
+                  height: '10px',
+                  backgroundColor: 'white',
+                  color: '#702963',
+                  opacity: "0.5",
+                  fontSize: '10px',
+                  lineHeight: '10px',
+                  textAlign: 'center',
+                  cursor: 'pointer',
+                  userSelect: 'none',
+                }}
+                onClick={() => removeBoundingBox(index)}
+              >
+                x
+              </div>
+            </div>
+          ))}
+          {isDrawing && (
+            <div style={getBoundingBoxStyle(startCoords, currentCoords, null)}></div>
+          )}
+        </>
+      ) : (
+        getCornerstoneViewport()
+      )}
+    </div>
+
   );
 }
 
@@ -260,11 +364,6 @@ function _getNextMeasurementUID(
 
   const { trackedSeries } = trackedMeasurements.context;
 
-  // Get the potentially trackable measurements for the series of the
-  // active viewport.
-  // The measurements to jump between are the same
-  // regardless if this series is tracked or not.
-
   const filteredMeasurements = measurements.filter(
     m =>
       trackedSeries.includes(m.referenceSeriesUID) &&
@@ -272,7 +371,6 @@ function _getNextMeasurementUID(
   );
 
   if (!filteredMeasurements.length) {
-    // No measurements on this series.
     return;
   }
 
@@ -282,7 +380,6 @@ function _getNextMeasurementUID(
   let measurementIndex = uids.findIndex(uid => uid === trackedMeasurementId);
 
   if (measurementIndex === -1) {
-    // Not tracking a measurement, or previous measurement now deleted, revert to 0.
     measurementIndex = 0;
   } else {
     measurementIndex += direction;
@@ -323,31 +420,21 @@ function _getStatusComponent(isTracked, t) {
         content={
           <div className="flex py-2">
             <div className="flex pt-1">
-              <Icon
-                name="info-link"
-                className="text-[#e4b4db] w-4"
-              />
+              <Icon name="info-link" className="text-[#e4b4db] w-4" />
             </div>
             <div className="ml-4 flex">
               <span className="text-common-light text-base">
                 {isTracked ? (
                   <>{t('Series is tracked and can be viewed in the measurement panel')}</>
                 ) : (
-                  <>
-                    {t(
-                      'Measurements for untracked series will not be shown in the measurements panel'
-                    )}
-                  </>
+                  <>{t('Measurements for untracked series will not be shown in the measurements panel')}</>
                 )}
               </span>
             </div>
           </div>
         }
       >
-        <Icon
-          name={'viewport-status-tracked'}
-          className="text-white"
-        />
+        <Icon name={'viewport-status-tracked'} className="text-white" />
       </Tooltip>
     </div>
   );

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-
+import { saveData, getData } from '../../../../../indexedDB'; // Adjust the path if necessary
 import StudyItem from '../StudyItem';
 import LegacyButtonGroup from '../LegacyButtonGroup';
 import LegacyButton from '../LegacyButton';
 import ThumbnailList from '../ThumbnailList';
 import { StringNumber } from '../../types';
-import axios from 'axios'
+import axios from 'axios';
 
 const getTrackedSeries = displaySets => {
   let trackedSeries = 0;
@@ -16,7 +16,6 @@ const getTrackedSeries = displaySets => {
       trackedSeries++;
     }
   });
-  console.log(trackedSeries, 'trackedSeries')
   return trackedSeries;
 };
 
@@ -35,21 +34,39 @@ const StudyBrowser = ({
   const { t } = useTranslation('StudyBrowser');
   const { customizationService } = servicesManager?.services || {};
   const [hasConverted, setHasConverted] = useState(false);
+  const [response, setResponse] = useState();
+
+  useEffect(() => {
+    saveData("response", response).catch(console.error);
+  }, [response]);
+
+  // const handleConvert = async (displaySets, studies) => {
+  //   try {
+  //     const response: any = await axios.post('http://localhost:8000/convert', {
+  //       displaySets,
+  //       studies
+  //     });
+  //     setResponse(response);
+  //     if (response && response.data) {
+  //       await saveData("response", response.data);
+  //       console.log('response has been saved', response?.data)
+  //     } else {
+  //       console.error('No data received from the server');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error in handleConvert:', error);
+  //   }
+  // };
 
   const getTabContent = () => {
     const tabData = tabs.find(tab => tab.name === activeTabName);
     return tabData.studies.map(
       ({ studyInstanceUid, date, description, numInstances, modalities, displaySets }) => {
         const isExpanded = expandedStudyInstanceUIDs.includes(studyInstanceUid);
-        // console.log(displaySets, 'displaySetssss')
         const order = ['R CC', 'L CC', 'R MLO', 'L MLO'];
-        console.log(displaySets, 'displaySets')
-        // console.log(displaySets, 'displaySetssss--2')
         const sortedData = displaySets.sort((a, b) => {
-          // console.log(a, b, 'displaySetssss--1')
           const seriesA = a.description.toUpperCase();
           const seriesB = b.description.toUpperCase();
-
           return order.indexOf(seriesA) - order.indexOf(seriesB);
         });
 
@@ -59,19 +76,27 @@ const StudyBrowser = ({
           // const windowCenter = 2048;
           // const windowWidth = 4096;
           // console.log(scalerData, 'imagedata scalerdata')
-
-          const response = await axios.post('http://localhost:8000/convert', {
-            displaySets: displaySets
-          });
+          try {
+            const response: any = await axios.post('http://localhost:8000/convert', {
+              displaySets: displaySets,
+              studies: tabData.studies
+            });
+            setResponse(response);
+            if (response && response.data) {
+              await saveData("response", response.data);
+              console.log('response has been saved', response?.data)
+            } else {
+              console.error('No data received from the server');
+            }
+          } catch (error) {
+            console.error('Error in handleConvert:', error);
+          }
         }
 
         if (!hasConverted && displaySets?.length) {
           handleConvert();
           setHasConverted(true);
         }
-
-
-        // console.log(sortedData, 'displaySetssss');
         return (
           <React.Fragment key={studyInstanceUid}>
             <StudyItem
@@ -107,7 +132,6 @@ const StudyBrowser = ({
         className="w-100 border-[#e4b4db] bg-[#702963] flex h-16 flex-row items-center justify-center border-b p-4"
         data-cy={'studyBrowser-panel'}
       >
-        {/* TODO Revisit design of LegacyButtonGroup later - for now use LegacyButton for its children.*/}
         <LegacyButtonGroup
           variant="outlined"
           color="secondary"
@@ -117,7 +141,6 @@ const StudyBrowser = ({
             const { name, label, studies } = tab;
             const isActive = activeTabName === name;
             const isDisabled = !studies.length;
-            // Apply the contrasting color for brighter button color visibility
             const classStudyBrowser = customizationService?.getModeCustomization(
               'class:StudyBrowser'
             ) || {
@@ -182,15 +205,7 @@ StudyBrowser.propTypes = {
               componentType: PropTypes.oneOf(['thumbnail', 'thumbnailTracked', 'thumbnailNoImage'])
                 .isRequired,
               isTracked: PropTypes.bool,
-              /**
-               * Data the thumbnail should expose to a receiving drop target. Use a matching
-               * `dragData.type` to identify which targets can receive this draggable item.
-               * If this is not set, drag-n-drop will be disabled for this thumbnail.
-               *
-               * Ref: https://react-dnd.github.io/react-dnd/docs/api/use-drag#specification-object-members
-               */
               dragData: PropTypes.shape({
-                /** Must match the "type" a dropTarget expects */
                 type: PropTypes.string.isRequired,
               }),
             })

@@ -11,7 +11,6 @@ import type { Button } from '@ohif/core/types';
 const { windowLevelPresets } = defaults;
 const { createButton } = ToolbarService;
 const { StudyInstanceUIDs } = useImageViewer();
-// console.log(StudyInstanceUIDs, 'i am instance id')
 
 /**
  *
@@ -214,16 +213,6 @@ const toolbarButtons: Button[] = [
       type: 'tool',
       icon: 'tool-3d-rotate',
       label: '3D Rotate',
-      commands: setToolActiveToolbar,
-    },
-  },
-  {
-    id: 'AITools',
-    type: 'ohif.radioGroup',
-    props: {
-      type: 'tool',
-      icon: 'ai-icon',
-      label: 'AI Tools',
       commands: setToolActiveToolbar,
     },
   },

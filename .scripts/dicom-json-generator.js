@@ -15,6 +15,7 @@
  *   dicomweb:https://ohif-assets.s3.us-east-2.amazonaws.com/dicom-json/data/Series1/Instance1
  * - outputJSONPath: path to the output JSON file
  */
+const { Console } = require('console');
 const dcmjs = require('dcmjs');
 const path = require('path');
 const fs = require('fs').promises;
@@ -34,6 +35,8 @@ const model = {
 async function convertDICOMToJSON(studyDirectory, urlPrefix, outputPath) {
   try {
     const files = await recursiveReadDir(studyDirectory);
+    console.log(files, 'files dataaaaaaaaa--------1')
+    alert('came here 1')
     console.debug('Processing...');
 
     for (const file of files) {
@@ -50,6 +53,7 @@ async function convertDICOMToJSON(studyDirectory, urlPrefix, outputPath) {
     console.log('Successfully loaded data');
 
     model.studies.forEach(study => {
+      console.log(study, 'study details-------------1')
       study.NumInstances = findInstancesNumber(study);
       study.Modalities = findModalities(study).join('/');
     });
@@ -86,7 +90,7 @@ function createImageId(fileLocation, urlPrefix, studyDirectory) {
 function processInstance(instance) {
   const { StudyInstanceUID, SeriesInstanceUID } = instance;
   let study = getStudy(StudyInstanceUID);
-
+  console.log(instance, 'studydataaaaaaaaaaaaaaaaa------------1')
   if (!study) {
     study = createStudyMetadata(StudyInstanceUID, instance);
     model.studies.push(study);

@@ -77,7 +77,6 @@ export default function PanelMeasurementTable({
     const trackedMeasurements = measurements.filter(
       m => displaySet.StudyInstanceUID === m.referenceStudyUID
     );
-    // console.log(activeViewport, measurements, displaySet, trackedMeasurements, 'details-------------1')
     if (trackedMeasurements.length <= 0) {
       uiNotificationService.show({
         title: 'No Measurements',
@@ -88,11 +87,9 @@ export default function PanelMeasurementTable({
       return;
     }
 
-    alert('called')
     const promptResult = await createReportDialogPrompt(uiDialogService, {
       extensionManager,
     });
-    // console.log(promptResult, 'promptResult')
     if (promptResult.action === CREATE_REPORT_DIALOG_RESPONSE.CREATE_REPORT) {
       const dataSources = extensionManager.getDataSources(promptResult.dataSourceName);
       const dataSource = dataSources[0];
@@ -108,7 +105,6 @@ export default function PanelMeasurementTable({
       const options = findSRWithSameSeriesDescription(SeriesDescription, displaySetService);
 
       const getReport = async () => {
-        // console.log(trackedMeasurements, 'trackedmeasurements')
         return commandsManager.runCommand(
           'storeMeasurements',
           {
@@ -239,8 +235,6 @@ PanelMeasurementTable.propTypes = {
 
 function _getMappedMeasurements(measurementService) {
   const measurements = measurementService.getMeasurements();
-  alert(measurements);
-  // console.log(measurements, 'fetched measurements')
   const mappedMeasurements = measurements.map((m, index) =>
     _mapMeasurementToDisplay(m, index, measurementService.VALUE_TYPES)
   );
@@ -264,13 +258,7 @@ function _mapMeasurementToDisplay(measurement, index, types) {
     findingSites,
     finding,
   } = measurement;
-  // console.log(baseDisplayText,
-  //   uid,
-  //   baseLabel,
-  //   type,
-  //   selected,
-  //   findingSites,
-  //   finding, 'i am measurement detail')
+
   const firstSite = findingSites?.[0];
   const label = baseLabel || finding?.text || firstSite?.text || '(empty)';
   let displayText = baseDisplayText || [];
