@@ -65,8 +65,8 @@ def convert_pixel_array(img, plot=False, plot_multiview=False, results = None):
     img = np.array(img.pixel_array)
     img = ((img - img.min()) / (img.max() - img.min())) * 255.0
     img = Image.fromarray(np.uint8(img)).convert("RGB")
-    # if plot:
-    #     img = plot_results(img, results)
+    if plot:
+        img = plot_results(img, results)
     buff = io.BytesIO()
     img.save(buff, format="PNG")
     img_str = base64.b64encode(buff.getvalue())
