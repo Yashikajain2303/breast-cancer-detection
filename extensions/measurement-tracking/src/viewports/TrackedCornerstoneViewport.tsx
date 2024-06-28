@@ -172,11 +172,29 @@ function TrackedCornerstoneViewport(props) {
   }, [activeViewportId, isTracked, switchMeasurement, viewportActionCornersService, viewportId]);
 
   const [storedValue, setStoredValue] = useState(null);
-  const modelType = localStorage.getItem('items');
+  let modelType = localStorage.getItem('items');
+  window.addEventListener("itemsData", function () {
+    modelType = localStorage.getItem("items")
+  });
   useEffect(() => {
     const checkLocalStorage = async () => {
-      const storedValue = await getData("response");
-      console.log(storedValue, 'storedValue')
+      let responseData = "response";
+      if (modelType === "Focalnet Dino") {
+        responseData = "focalnetResponse"
+      }
+      else if (modelType === "Multiview") {
+        responseData = "mutliviewResponse"
+      }
+      else if (modelType === "Dense Mass") {
+        responseData = "densemassResponse"
+      }
+      else if (modelType === "Small Mass") {
+        responseData = "smallmassResponse"
+      }
+      else if (modelType === "Clinical History") {
+        responseData = "clinicalResponse"
+      }
+      const storedValue = await getData(responseData);
       if (storedValue) {
         setStoredValue(storedValue);
         clearInterval(checkInterval);
@@ -184,7 +202,7 @@ function TrackedCornerstoneViewport(props) {
     };
     const checkInterval = setInterval(checkLocalStorage, 10000);
     return () => clearInterval(checkInterval);
-  }, []);
+  }, [modelType]);
 
   const [isDrawing, setIsDrawing] = useState(false);
   const [startCoords, setStartCoords] = useState({ x: 0, y: 0 });
@@ -234,11 +252,6 @@ function TrackedCornerstoneViewport(props) {
     img.onload = () => setImageLoaded(true);
   }, [storedValue, displaySet]);
 
-  // const removeBoundingBox = (index) => {
-  //   const updatedBoxes = [...boundingBoxes];
-  //   updatedBoxes.splice(index, 1);
-  //   setBoundingBoxes(updatedBoxes);
-  // };
 
   const getBoundingBoxStyle = (start, end, index: null) => {
     const left = Math.min(start.x, end.x);
@@ -291,7 +304,6 @@ function TrackedCornerstoneViewport(props) {
     updatedBoxes.splice(index, 1);
     setBoundingBoxes(updatedBoxes);
   };
-
   return (
     <div className="relative flex h-full w-full flex-row overflow-hidden">
       {storedValue && modelType?.length > 0 ? (

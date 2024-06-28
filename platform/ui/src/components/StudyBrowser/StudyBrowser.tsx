@@ -40,24 +40,6 @@ const StudyBrowser = ({
     saveData("response", response).catch(console.error);
   }, [response]);
 
-  // const handleConvert = async (displaySets, studies) => {
-  //   try {
-  //     const response: any = await axios.post('http://localhost:8000/convert', {
-  //       displaySets,
-  //       studies
-  //     });
-  //     setResponse(response);
-  //     if (response && response.data) {
-  //       await saveData("response", response.data);
-  //       console.log('response has been saved', response?.data)
-  //     } else {
-  //       console.error('No data received from the server');
-  //     }
-  //   } catch (error) {
-  //     console.error('Error in handleConvert:', error);
-  //   }
-  // };
-
   const getTabContent = () => {
     const tabData = tabs.find(tab => tab.name === activeTabName);
     return tabData.studies.map(
@@ -72,19 +54,39 @@ const StudyBrowser = ({
 
 
         const handleConvert = async () => {
-          // const pixelArray = [/* Your pixel array data here */];
-          // const windowCenter = 2048;
-          // const windowWidth = 4096;
-          // console.log(scalerData, 'imagedata scalerdata')
           try {
             const response: any = await axios.post('http://localhost:8000/convert', {
               displaySets: displaySets,
               studies: tabData.studies
             });
+            const focalnetResponse: any = await axios.post('http://localhost:8000/focalnetRun', {
+              displaySets: displaySets,
+              studies: tabData.studies
+            });
+            const clinicalResponse: any = await axios.post('http://localhost:8000/clinicalRun', {
+              displaySets: displaySets,
+              studies: tabData.studies
+            });
+            const smallmassResponse: any = await axios.post('http://localhost:8000/smallmassRun', {
+              displaySets: displaySets,
+              studies: tabData.studies
+            });
+            const densemassResponse: any = await axios.post('http://localhost:8000/densemassRun', {
+              displaySets: displaySets,
+              studies: tabData.studies
+            });
+            const mutliviewResponse: any = await axios.post('http://localhost:8000/mutliviewRun', {
+              displaySets: displaySets,
+              studies: tabData.studies
+            });
             setResponse(response);
             if (response && response.data) {
+              await saveData("focalnetResponse", focalnetResponse.data);
+              await saveData("clinicalResponse", clinicalResponse.data);
+              await saveData("smallmassResponse", smallmassResponse.data);
+              await saveData("densemassResponse", densemassResponse.data);
+              await saveData("mutliviewResponse", mutliviewResponse.data);
               await saveData("response", response.data);
-              console.log('response has been saved', response?.data)
             } else {
               console.error('No data received from the server');
             }

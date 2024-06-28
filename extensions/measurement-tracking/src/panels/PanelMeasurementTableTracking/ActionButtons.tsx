@@ -85,7 +85,6 @@ function ActionButtons({ onExportClick, onCreateReportClick, disabled, data }) {
 
   const isSubmitDisabled = formData.findings.trim() === '' || formData.indications.trim() === '';
   const manualBoundingBoxCoordinates = localStorage.getItem('manualBoundingBoxCoordinates');
-  console.log(JSON.parse(manualBoundingBoxCoordinates), 'manualBoundingBoxCoordinates');
   return (
     <div className="m-2">
       <form onSubmit={handleSubmit}>

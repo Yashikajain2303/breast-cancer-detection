@@ -26,6 +26,7 @@ function Header({
   const { t } = useTranslation('Header');
   useEffect(() => {
     localStorage.setItem('items', '');
+    window.dispatchEvent(new Event("itemsData"));
   }, []);
 
   // TODO: this should be passed in as a prop instead and the react-router-dom
@@ -75,7 +76,8 @@ function Header({
     { id: 1, label: 'Multiview' },
     { id: 2, label: 'Dense Mass' },
     { id: 3, label: 'Small Mass' },
-    { id: 4, label: 'Clinical History' }
+    { id: 4, label: 'Clinical History' },
+    { id: 5, label: 'Run all models' }
   ];
 
   const toggleDropdown = () => {
@@ -88,13 +90,15 @@ function Header({
     setTimeout(() => {
       setToastMessage('');
     }, 2000);
-    localStorage.setItem('items', JSON.stringify(item));
+    localStorage.setItem('items', item);
+    window.dispatchEvent(new Event("itemsData"));
     setDropdownOpen(false);
   };
 
   const clearSelection = () => {
     setSelectedItem('');
     localStorage.setItem('items', '');
+    window.dispatchEvent(new Event("itemsData"));
     setDropdownOpen(false);
   };
 
