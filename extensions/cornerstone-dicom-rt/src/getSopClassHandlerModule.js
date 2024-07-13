@@ -22,7 +22,6 @@ function _getDisplaySetsFromSeries(instances, servicesManager, extensionManager)
     wadoUri,
     wadoUriRoot,
   } = instance;
-
   const displaySet = {
     Modality: 'RTSTRUCT',
     loading: false,

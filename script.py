@@ -247,6 +247,13 @@ def multiviewRun():
         print(response)
         return response
 
+@app.route('/api/instances', methods=['GET'])
+def get_instances():
+    orthanc_url = 'http://localhost:8042/instances?expand=true'
+    response = requests.get(orthanc_url)
+    return jsonify(response.json())
+
+
 @app.route('/convert', methods=['POST'])
 def convert():
         print("LOG flask thread: ", threading.get_ident())

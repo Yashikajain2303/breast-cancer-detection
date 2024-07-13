@@ -80,7 +80,7 @@ const StudyBrowser = ({
               studies: tabData.studies
             });
             setResponse(response);
-            if (response && response.data) {
+            if (response) {
               await saveData("focalnetResponse", focalnetResponse.data);
               await saveData("clinicalResponse", clinicalResponse.data);
               await saveData("smallmassResponse", smallmassResponse.data);

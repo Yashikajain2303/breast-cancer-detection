@@ -45,10 +45,10 @@ function createDicomLocalApi(dicomLocalConfig) {
   const { name } = dicomLocalConfig;
 
   const implementation = {
-    initialize: ({ params, query }) => {},
+    initialize: ({ params, query }) => { },
     query: {
       studies: {
-        mapParams: () => {},
+        mapParams: () => { },
         search: params => {
           const studyUIDs = DicomMetadataStore.getStudyInstanceUIDs();
 
@@ -215,7 +215,7 @@ function createDicomLocalApi(dicomLocalConfig) {
         SeriesInstanceUID,
         SOPInstanceUID
       );
-
+      console.log('came here too')
       let imageId = storedInstance.url;
 
       if (frame !== undefined) {

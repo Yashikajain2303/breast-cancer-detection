@@ -172,6 +172,11 @@ function PanelMeasurementTableTracking({ servicesManager, extensionManager }) {
     dm => dm.measurementType === measurementService.VALUE_TYPES.POINT
   );
 
+  let orthancId = localStorage.getItem("orthancId");
+
+  useEffect(() => {
+    orthancId = localStorage.getItem("orthancId");
+  }, [trackedStudy]);
   return (
     <>
       <div
@@ -221,6 +226,7 @@ function PanelMeasurementTableTracking({ servicesManager, extensionManager }) {
               disabled={
                 additionalFindings.length === 0 && displayMeasurementsWithoutFindings.length === 0
               }
+              orthancId={orthancId}
             />
           </div>
         </>

@@ -25,7 +25,7 @@ function _getDisplaySetsFromSeries(instances, servicesManager, extensionManager)
     wadoUri,
     wadoUriRoot,
   } = instance;
-
+  console.log(SOPInstanceUID, 'SOPInstanceUID')
   const displaySet = {
     Modality: 'SEG',
     loading: false,

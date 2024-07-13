@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useCallback, useState } from 'react';
 import ReactResizeDetector from 'react-resize-detector';
 import PropTypes from 'prop-types';
 import * as cs3DTools from '@cornerstonejs/tools';
+import axios from 'axios'
 import {
   Enums,
   eventTarget,
@@ -402,8 +403,22 @@ const OHIFCornerstoneViewport = React.memo(props => {
 
   const viewport = cornerstoneViewportService.getCornerstoneViewport(viewportId);
   const instance = displaySets[0]?.instance;
-  const [result, setResult] = useState('');
+  const [result, setResult] = useState<any>('');
   const imageData = viewport?.getImageData();
+  console.log(instance?.SOPInstanceUID, 'instance data')
+  useEffect(async () => {
+    try {
+      const response = await axios.post('http://localhost:8000/lookup', new URLSearchParams({
+        data: instance.SOPInstanceUID,
+      }));
+      localStorage.setItem("orthancId", response?.data[0]?.ID);
+      setResult(response?.data[0]?.ID);
+    } catch (error) {
+      console.error('Error:', JSON.stringify(error));
+    }
+  }, [instance?.SOPInstanceUID]);
+
+
   const { WindowCenter, WindowWidth, VOILUTFunction } = instance;
   if (WindowCenter === undefined || WindowWidth === undefined) {
     return;

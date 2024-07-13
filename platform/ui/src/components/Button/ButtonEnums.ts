@@ -1,6 +1,7 @@
 enum type {
   primary = 'primary',
   secondary = 'secondary',
+  button = "button",
 }
 enum size {
   medium = 'medium',

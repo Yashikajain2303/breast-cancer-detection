@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { Button, ButtonEnums } from '@ohif/ui';
-import dcmjs from 'dcmjs';
+import axios from 'axios';
 
-function ActionButtons({ onExportClick, onCreateReportClick, disabled, data }) {
+function ActionButtons({ onExportClick, onCreateReportClick, disabled, data, orthancId }) {
   const { t } = useTranslation('MeasurementTable');
+  console.log(orthancId, 'orthancId');
   const [formData, setFormData] = useState({
     indications: '',
     findings: '',
@@ -23,11 +24,13 @@ function ActionButtons({ onExportClick, onCreateReportClick, disabled, data }) {
   const handleChange = (e) => {
     const { name, value, dataset } = e.target;
     if (dataset.index !== undefined) {
+      const index = dataset.index;
+      const property = name.split('_')[0];
       setFormData((prevState) => {
         const updatedAnnotations = [...prevState.annotations];
-        updatedAnnotations[dataset.index] = {
-          ...updatedAnnotations[dataset.index],
-          [name]: value,
+        updatedAnnotations[index] = {
+          ...updatedAnnotations[index],
+          [property]: value,
         };
         return {
           ...prevState,
@@ -41,6 +44,20 @@ function ActionButtons({ onExportClick, onCreateReportClick, disabled, data }) {
       }));
     }
   };
+
+  async function updateLabels(instanceId, newLabel) {
+    try {
+      const response = await axios.put('http://localhost:8000/update_labels', {
+        instance_id: instanceId,
+        new_label: newLabel,
+      });
+      console.log(instanceId, response.data, 'response data data');
+      return response.data;
+    } catch (error) {
+      console.error('Error updating labels:', error);
+      throw error;
+    }
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -84,10 +101,65 @@ function ActionButtons({ onExportClick, onCreateReportClick, disabled, data }) {
   };
 
   const isSubmitDisabled = formData.findings.trim() === '' || formData.indications.trim() === '';
-  const manualBoundingBoxCoordinates = localStorage.getItem('manualBoundingBoxCoordinates');
+
+  function cleanAndFormatJsonString(jsonArray) {
+    let result = '';
+    jsonArray.forEach(obj => {
+      Object.keys(obj).forEach(key => {
+        if (obj[key] !== null) {
+          result += key + obj[key].toString().replace(/,/g, '');
+        }
+      });
+    });
+    return result;
+  }
+  let manualBoundingBoxCoordinates: any = localStorage.getItem('manualBoundingBoxCoordinates')
+  if (manualBoundingBoxCoordinates?.length > 0) {
+    manualBoundingBoxCoordinates = JSON.parse(manualBoundingBoxCoordinates);
+  }
+  else {
+    manualBoundingBoxCoordinates = []
+  }
+  const handleUpdateLabels = async (e) => {
+    e.preventDefault();
+    const { annotations } = formData;
+
+    try {
+      for (let index = 0; index < annotations.length; index++) {
+        const annotation = annotations[index];
+        if (!annotation.biradScore || !annotation.lesionType) {
+          console.warn(`Skipping annotation ${index + 1} due to missing data.`);
+          continue;
+        }
+
+        const submissionData = {
+          topLeft: data[index].baseDisplayText,
+          bottomRight: data[index].baseLabel,
+          biradScore: annotation.biradScore,
+          lesionType: annotation.lesionType,
+        };
+
+        console.log(`Updating label for annotation ${index + 1}:`, submissionData);
+
+        const formattedString = cleanAndFormatJsonString([submissionData]);
+        console.log('Formatted string:', formattedString);
+
+        // Make the API call to update label
+        const response = await updateLabels(orthancId, formattedString);
+        console.log(`Label updated successfully for annotation ${index + 1}:`, response);
+      }
+
+      // Optionally, add logic to update UI or show notifications after all updates
+    } catch (error) {
+      console.error('Failed to update labels:', error);
+      // Optionally, show error messages or handle the error state
+    }
+  };
+
+
   return (
     <div className="m-2">
-      <form onSubmit={handleSubmit}>
+      <form>
         <div className="flex flex-col mb-6 space-y-4">
           <div className="text-white">
             {data.map((item, index) => (
@@ -100,14 +172,14 @@ function ActionButtons({ onExportClick, onCreateReportClick, disabled, data }) {
                 </p>
 
                 <div className="form-group">
-                  <div className=" items-center mb-2">
+                  <div className="items-center mb-2">
                     <div className="flex flex-col mr-4">
                       <p className="text-yellow-300 font-medium text-sm">Birad Score:</p>
                       {[1, 2, 3, 4, 5, 6].map((score) => (
                         <label key={score} className="flex items-center">
                           <input
                             type="radio"
-                            name={`biradScore${index}`}
+                            name={`biradScore_${index}`}
                             value={score}
                             className="mr-1"
                             data-index={index}
@@ -124,7 +196,7 @@ function ActionButtons({ onExportClick, onCreateReportClick, disabled, data }) {
                         <label key={type} className="mr-4 flex items-center">
                           <input
                             type="radio"
-                            name={`lesionType${index}`}
+                            name={`lesionType_${index}`}
                             value={type}
                             className="mr-1"
                             data-index={index}
@@ -138,6 +210,64 @@ function ActionButtons({ onExportClick, onCreateReportClick, disabled, data }) {
                 </div>
               </div>
             ))}
+            {manualBoundingBoxCoordinates?.map((item, index) => (
+              <div key={index} className="ohif-scrollbar max-h-112 overflow-auto p-4 bg-gray-800 rounded-lg shadow-md border border-gray-700 mb-4">
+                <p className="text-green-400 font-semibold text-sm">Annotation No. {index + 1}</p>
+                <p className="mb-2 text-sm">
+                  <span className="text-blue-300">Top Left:</span> [{item.baseDisplayText[0]}, {item.baseDisplayText[1]}]
+                  <br />
+                  <span className="text-blue-300">Bottom Right:</span> [{item.baseLabel[0]}, {item.baseLabel[1]}]
+                </p>
+
+                <div className="form-group">
+                  <div className="items-center mb-2">
+                    <div className="flex flex-col mr-4">
+                      <p className="text-yellow-300 font-medium text-sm">Birad Score:</p>
+                      {[1, 2, 3, 4, 5, 6].map((score) => (
+                        <label key={score} className="flex items-center">
+                          <input
+                            type="radio"
+                            name={`biradScore_${index}`}
+                            value={score}
+                            className="mr-1"
+                            data-index={index}
+                            onChange={handleChange}
+                          />
+                          <span className="text-white text-sm">{score}</span>
+                        </label>
+                      ))}
+                    </div>
+
+                    <div className="flex flex-col">
+                      <p className="text-yellow-300 font-medium text-sm">Lesion Type:</p>
+                      {['Mass', 'Calcification'].map((type) => (
+                        <label key={type} className="mr-4 flex items-center">
+                          <input
+                            type="radio"
+                            name={`lesionType_${index}`}
+                            value={type}
+                            className="mr-1"
+                            data-index={index}
+                            onChange={handleChange}
+                          />
+                          <span className="text-white text-sm">{type}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+
+            <Button
+              className="m-2 ml-0"
+              type={ButtonEnums.type.button}
+              size={ButtonEnums.size.small}
+              // disabled={isSubmitDisabled}
+              onClick={handleUpdateLabels}
+            >
+              {t('Mark Label')}
+            </Button>
           </div>
 
           <div className="mb-4">
@@ -175,6 +305,7 @@ function ActionButtons({ onExportClick, onCreateReportClick, disabled, data }) {
             <input
               className="p-2 text-black"
               type="text"
+              name="histopathology"
               value={formData.histopathology}
               onChange={(e) => handleChange('histopathology', e.target.value)}
               aria-label="Histopathology (Biopsy Results)"

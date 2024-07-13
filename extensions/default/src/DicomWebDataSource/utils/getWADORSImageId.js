@@ -1,5 +1,6 @@
 function buildInstanceWadoRsUri(instance, config) {
   const { StudyInstanceUID, SeriesInstanceUID, SOPInstanceUID } = instance;
+  console.log(StudyInstanceUID, SeriesInstanceUID, SOPInstanceUID, 'SOPInstanceUID here')
   return `${config.wadoRoot}/studies/${StudyInstanceUID}/series/${SeriesInstanceUID}/instances/${SOPInstanceUID}`;
 }
 
