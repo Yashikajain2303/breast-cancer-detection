@@ -11,6 +11,7 @@ import Dropdown from '../Dropdown';
 import HeaderPatientInfo from '../HeaderPatientInfo';
 import { PatientInfoVisibility } from '../../types/PatientInfoVisibility';
 import { getData } from '../../../../../indexedDB';
+import DialogBox from './DialogBox';
 
 function Header({
   children,
@@ -70,6 +71,7 @@ function Header({
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState('');
+  const [promptOpen, setPromptOpen] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState('');
   const options = [
     { id: 0, label: 'Focalnet Dino' },
@@ -79,13 +81,15 @@ function Header({
     { id: 4, label: 'Clinical History' },
     { id: 5, label: 'Run all models' }
   ];
-
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
 
   const handleSelect = (item) => {
     setSelectedItem(item);
+    if (item === 'Clinical History') {
+      setPromptOpen(true);
+    }
     setToastMessage('Please wait...');
     setTimeout(() => {
       setToastMessage('');
@@ -101,56 +105,6 @@ function Header({
     window.dispatchEvent(new Event("itemsData"));
     setDropdownOpen(false);
   };
-
-  // const [dropdownOpen, setDropdownOpen] = useState(false);
-  // const [selectedItem, setSelectedItem] = useState('');
-  // const options = [
-  //   { id: 0, label: 'Focalnet Dino' },
-  //   { id: 1, label: 'Multiview' },
-  //   { id: 2, label: 'Dense Mass' },
-  //   { id: 3, label: 'Small Mass' },
-  //   { id: 4, label: 'Clinical History' }
-  // ];
-
-  // const toggleDropdown = () => {
-  //   setDropdownOpen(!dropdownOpen);
-  // };
-
-  // const handleSelect = (item) => {
-  //   setSelectedItem(item);
-  //   localStorage.setItem('items', JSON.stringify(item));
-  //   setDropdownOpen(false);
-  // };
-
-  // const clearSelection = () => {
-  //   setSelectedItem('');
-  //   setDropdownOpen(false);
-  // };
-
-  // const [dropdownOpen, setDropdownOpen] = useState(false);
-  // const [selectedItem, setSelectedItem] = useState('');
-  // const options = [
-  //   { id: 0, label: 'Focalnet Dino' },
-  //   { id: 1, label: 'Multiview' },
-  //   { id: 2, label: 'Dense Mass' },
-  //   { id: 3, label: 'Small Mass' },
-  //   { id: 4, label: 'Clinical History' }
-  // ];
-
-  // const toggleDropdown = () => {
-  //   setDropdownOpen(!dropdownOpen);
-  // };
-
-  // const handleSelect = (item) => {
-  //   setSelectedItem(item);
-  //   localStorage.setItem('items', JSON.stringify(item));
-  //   setDropdownOpen(false);
-  // };
-
-  // const clearSelection = () => {
-  //   setSelectedItem('');
-  //   setDropdownOpen(false);
-  // };
 
   return (
     <NavBar
@@ -216,7 +170,16 @@ function Header({
                   </svg>
                 </button>
               </div>
-
+              {selectedItem === 'Clinical History' && promptOpen && !dropdownOpen &&
+                <>
+                  <DialogBox
+                    title="Enter your findings"
+                    onClose={() => { setPromptOpen(false) }}
+                  >
+                    This is the content of the dialog box.
+                  </DialogBox>
+                </>
+              }
               {dropdownOpen && (
                 <div className="absolute right-0 z-10 mt-2 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                   <div className="py-1 min-w-max" role="none">

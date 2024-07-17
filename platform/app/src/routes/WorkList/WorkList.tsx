@@ -275,16 +275,11 @@ function WorkList({
         {
           key: 'patientName',
           content: patientName ? (
-            <TooltipClipboard>{patientName}</TooltipClipboard>
+            <TooltipClipboard>Study {rowKey}</TooltipClipboard>
           ) : (
             <span className="text-gray-700">(Empty)</span>
           ),
           gridCol: 4,
-        },
-        {
-          key: 'mrn',
-          content: <TooltipClipboard>{mrn}</TooltipClipboard>,
-          gridCol: 3,
         },
         {
           key: 'studyDate',

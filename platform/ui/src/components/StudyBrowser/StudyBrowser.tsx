@@ -54,16 +54,10 @@ const StudyBrowser = ({
 
 
         const handleConvert = async () => {
+          await saveData("displaySets", displaySets);
+          await saveData('studies', tabData.studiess)
           try {
-            const response: any = await axios.post('http://localhost:8000/convert', {
-              displaySets: displaySets,
-              studies: tabData.studies
-            });
             const focalnetResponse: any = await axios.post('http://localhost:8000/focalnetRun', {
-              displaySets: displaySets,
-              studies: tabData.studies
-            });
-            const clinicalResponse: any = await axios.post('http://localhost:8000/clinicalRun', {
               displaySets: displaySets,
               studies: tabData.studies
             });
@@ -82,11 +76,9 @@ const StudyBrowser = ({
             setResponse(response);
             if (response) {
               await saveData("focalnetResponse", focalnetResponse.data);
-              await saveData("clinicalResponse", clinicalResponse.data);
               await saveData("smallmassResponse", smallmassResponse.data);
               await saveData("densemassResponse", densemassResponse.data);
               await saveData("mutliviewResponse", mutliviewResponse.data);
-              await saveData("response", response.data);
             } else {
               console.error('No data received from the server');
             }
